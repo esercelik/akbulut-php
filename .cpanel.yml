@@ -4,4 +4,6 @@ deployment:
     # - if [ $current_branch == "main" ]; then export DEPLOYPATH=/home/akbulute/development/; fi;
     - if [ $current_branch == "main" ]; then export DEPLOYPATH=/home/akbulute/public_html/; fi;
     - composer install --no-dev --optimize-autoloader
+    - /home/akbulute/nodevenv/public_html/public/24/bin/npm install
+    - /home/akbulute/nodevenv/public_html/public/24/bin/npm run build
     - /bin/cp -R * $DEPLOYPATH
