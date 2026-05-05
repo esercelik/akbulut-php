@@ -3,4 +3,7 @@ deployment:
     - current_branch=$(git rev-parse --abbrev-ref HEAD)
     - if [ $current_branch == "main" ]; then export DEPLOYPATH=/home/username/development/; fi;
     - if [ $current_branch == "production" ]; then export DEPLOYPATH=/home/username/public_html/; fi;
+    - composer require
+    - npm install
+    - npm run build
     - /bin/cp -R * $DEPLOYPATH
