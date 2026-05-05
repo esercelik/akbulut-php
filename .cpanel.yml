@@ -1,0 +1,6 @@
+deployment:
+  tasks:
+    - current_branch=$(git rev-parse --abbrev-ref HEAD)
+    - if [ $current_branch == "main" ]; then export DEPLOYPATH=/home/username/development/; fi;
+    - if [ $current_branch == "production" ]; then export DEPLOYPATH=/home/username/public_html/; fi;
+    - /bin/cp -R * $DEPLOYPATH
