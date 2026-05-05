@@ -1,0 +1,765 @@
+
+> dev
+> vite --host 127.0.0.1
+
+Inertia SSR dev endpoint: /__inertia_ssr
+[2m16:55:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m info: Types generated for actions, routes, form variants
+  Plugin: [35m@laravel/vite-plugin-wayfinder[39m
+Warming up Inertia SSR module graph...
+
+  [32m[1mVITE[22m v8.0.10[39m  [2mready in [0m[1m5507[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m5173[22m/[39m
+
+  [31m[1mLARAVEL[22m v13.7.0[39m  [2mplugin[22m [1mv3.1.0[22m
+
+  [32m➜[39m  [1mAPP_URL[22m: [36mhttp://localhost:[1m8000[22m[39m
+SSR skipped, module graph is still warming up...
+SSR skipped, module graph is still warming up...
+Inertia SSR module graph warmed up
+[32m2026-05-04 13:57:40[0m SSR admin/consultants [90m132.07ms[0m
+[32m2026-05-04 13:57:59[0m SSR admin/consultants [90m150.99ms[0m
+[32m2026-05-04 13:58:29[0m SSR site/consultant-portfolio [90m117.19ms[0m
+[32m2026-05-04 13:58:35[0m SSR site/listings [90m150.82ms[0m
+[32m2026-05-04 13:58:44[0m SSR site/listings [90m85.17ms[0m
+[32m2026-05-04 13:58:47[0m SSR site/home [90m576.73ms[0m
+[32m2026-05-04 13:58:53[0m SSR site/listings [90m67.65ms[0m
+[32m2026-05-04 13:59:25[0m SSR admin/consultants [90m213.48ms[0m
+[32m2026-05-04 13:59:30[0m SSR admin/consultants [90m186.34ms[0m
+[32m2026-05-04 13:59:50[0m SSR admin/consultants [90m255.91ms[0m
+[32m2026-05-04 14:01:02[0m SSR admin/consultants [90m217.58ms[0m
+[2m17:01:48[22m [36m[1m[vite][22m[39m [32mfull reload[39m [2mroutes\web.php[22m
+[2m17:01:48[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/css/app.css?direct[22m
+[2m17:01:48[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/pages/admin/consultants.tsx[22m
+[2m17:01:49[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/components/delete-user.tsx[22m
+[2m17:01:49[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx[22m
+[32m2026-05-04 14:01:50[0m SSR admin/consultants [90m445.66ms[0m
+[32m2026-05-04 14:01:51[0m SSR site/home [90m652.43ms[0m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listings.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listing-form.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/listings/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/messages/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/settings/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/appearance/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx, /resources/js/components/user-menu-content.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/profile/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/security/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m info: Types generated for actions, routes, form variants
+  Plugin: [35m@laravel/vite-plugin-wayfinder[39m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx and 7 more[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/wayfinder/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/messages/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listings.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listing-form.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/listings/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/appearance/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/security/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx, /resources/js/components/user-menu-content.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/profile/index.ts[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/components/delete-user.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:01:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/settings/index.ts[22m
+[2m17:01:52[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:01:52[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[32m2026-05-04 14:02:25[0m SSR site/home [90m818.64ms[0m
+[32m2026-05-04 14:02:28[0m SSR site/home [90m378.26ms[0m
+[32m2026-05-04 14:02:31[0m SSR site/home [90m303.36ms[0m
+[32m2026-05-04 14:02:48[0m SSR site/home [90m333.96ms[0m
+[32m2026-05-04 14:04:16[0m SSR site/contact [90m83.24ms[0m
+[32m2026-05-04 14:05:16[0m SSR site/home [90m499.54ms[0m
+[2m17:05:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ConsultantsSection.tsx, /resources/css/app.css?direct[22m
+[2m17:05:55[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ConsultantsSection.tsx[22m
+[2m17:05:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/home.tsx, /resources/css/app.css?direct[22m
+[2m17:05:55[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/pages/site/home.tsx[22m
+[32m2026-05-04 14:05:56[0m SSR site/home [90m620.60ms[0m
+[32m2026-05-04 14:05:57[0m SSR admin/consultants [90m369.10ms[0m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/components/delete-user.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx[22m
+[32m2026-05-04 14:05:57[0m SSR site/home [90m601.75ms[0m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 2 more[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/index.ts[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/index.ts[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/index.ts[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/messages/index.ts[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listings.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listing-form.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/listings/index.ts[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/settings/index.ts[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/appearance/index.ts[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/security/index.ts[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m info: Types generated for actions, routes, form variants
+  Plugin: [35m@laravel/vite-plugin-wayfinder[39m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx, /resources/js/components/user-menu-content.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/profile/index.ts[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/components/delete-user.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mresources/js/wayfinder/index.ts[22m
+[2m17:05:57[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/wayfinder/index.ts[22m
+[2m17:05:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 2 more[22m
+[2m17:05:58[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/index.ts[22m
+[2m17:05:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:05:58[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/index.ts[22m
+[2m17:05:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:05:58[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/appearance/index.ts[22m
+[2m17:05:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx[22m
+[2m17:05:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx, /resources/js/components/user-menu-content.tsx[22m
+[2m17:05:58[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/profile/index.ts[22m
+[2m17:05:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[2m17:05:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:05:58[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/security/index.ts[22m
+[2m17:05:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:05:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[2m17:05:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx[22m
+[2m17:05:59[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:05:59[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/index.ts[22m
+[2m17:05:59[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listings.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listing-form.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:05:59[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/listings/index.ts[22m
+[2m17:05:59[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:05:59[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/messages/index.ts[22m
+[2m17:05:59[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:05:59[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/settings/index.ts[22m
+[2m17:05:59[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:05:59[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[2m17:05:59[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:05:59[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[32m2026-05-04 14:07:54[0m SSR admin/dashboard [90m1426.67ms[0m
+[2m17:08:51[22m [36m[1m[vite][22m[39m [32mfull reload[39m [2mresources\views\app.blade.php[22m
+[2m17:08:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/css/app.css?direct[22m
+[32m2026-05-04 14:08:53[0m SSR admin/consultants [90m472.98ms[0m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/index.ts[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listings.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listing-form.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/listings/index.ts[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/messages/index.ts[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/settings/index.ts[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 2 more[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/index.ts[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/appearance/index.ts[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/index.ts[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx, /resources/js/components/user-menu-content.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/profile/index.ts[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/security/index.ts[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 2 more[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/index.ts[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m info: Types generated for actions, routes, form variants
+  Plugin: [35m@laravel/vite-plugin-wayfinder[39m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/components/delete-user.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx[22m
+[2m17:08:54[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/wayfinder/index.ts[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/index.ts[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/appearance/index.ts[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx, /resources/js/components/user-menu-content.tsx[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/profile/index.ts[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/security/index.ts[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/settings/index.ts[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/index.ts[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listings.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listing-form.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/listings/index.ts[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/messages/index.ts[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:08:55[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[32m2026-05-04 14:08:59[0m SSR site/home [90m4817.21ms[0m
+[32m2026-05-04 14:08:59[0m SSR admin/consultants [90m240.58ms[0m
+[32m2026-05-04 14:09:00[0m SSR site/home [90m486.86ms[0m
+[32m2026-05-04 14:09:15[0m SSR site/home [90m316.47ms[0m
+[32m2026-05-04 14:09:19[0m SSR site/consultant-portfolio [90m65.89ms[0m
+[32m2026-05-04 14:10:39[0m SSR site/home [90m348.10ms[0m
+[32m2026-05-04 14:10:49[0m SSR site/listings [90m186.92ms[0m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ui/Badge.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ui/Badge.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/BrandLogo.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/BrandLogo.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/about.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ui/Button.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ui/Button.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ui/Container.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ui/Container.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ui/SectionTitle.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ui/SectionTitle.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/BrandLogo.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/BrandLogo.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ConsultantsSection.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ConsultantsSection.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ContactCTA.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ContactCTA.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ContactRequestForm.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ContactRequestForm.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/FeaturedListings.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/FeaturedListings.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/css/app.css?direct, /resources/js/components/site/Footer.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/Footer.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/HeroSection.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/HeroSection.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/HomeStats.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/HomeStats.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/css/app.css?direct, /resources/js/components/site/Navbar.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/Navbar.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ProcessSection.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ProcessSection.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/PropertyCard.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/PropertyCard.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/RegionalExpertise.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/RegionalExpertise.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/SearchBar.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/SearchBar.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ServicesSection.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ServicesSection.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/SiteImage.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/SiteImage.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/css/app.css?direct, /resources/js/components/site/SiteLink.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/SiteLink.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/css/app.css?direct, /resources/js/components/site/SiteShell.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/SiteShell.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/TestimonialsSection.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/TestimonialsSection.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/css/app.css?direct, /resources/js/components/site/SiteShell.tsx, /resources/js/components/site/Navbar.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/usePathname.ts[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/WhyChooseUs.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/WhyChooseUs.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/about.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/consultant-portfolio.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/pages/site/consultant-portfolio.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/contact.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/pages/site/contact.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/home.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/pages/site/home.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/listing-detail.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/listings.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/pages/site/listings.tsx[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mresources/js/data/site/consultants.ts[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/data/site/consultants.ts[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/listing-detail.tsx, /resources/js/components/site/FeaturedListings.tsx, /resources/css/app.css?direct[22m
+[2m17:12:12[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/data/site/properties.ts[22m
+[2m17:12:17[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/resources/js/components/site/SearchBar.tsx[22m Could not Fast Refresh ("defaultFilterOptions" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:12:17[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/home.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/listings.tsx[22m
+[32m2026-05-04 14:12:19[0m SSR site/home [90m5747.01ms[0m
+[32m2026-05-04 14:12:20[0m SSR admin/settings [90m438.07ms[0m
+[32m2026-05-04 14:12:20[0m SSR site/home [90m334.52ms[0m
+[32m2026-05-04 14:12:21[0m SSR site/home [90m424.45ms[0m
+[32m2026-05-04 14:12:21[0m SSR admin/settings [90m48.84ms[0m
+[32m2026-05-04 14:12:46[0m SSR admin/dashboard [90m133.76ms[0m
+[2m17:13:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ConsultantsSection.tsx, /resources/css/app.css?direct[22m
+[2m17:13:08[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ConsultantsSection.tsx[22m
+[32m2026-05-04 14:13:35[0m SSR site/home [90m492.27ms[0m
+[32m2026-05-04 14:15:52[0m SSR site/home [90m396.64ms[0m
+[32m2026-05-04 14:16:44[0m SSR site/home [90m394.26ms[0m
+[2m17:17:34[22m [36m[1m[vite][22m[39m [32mfull reload[39m [2mresources\views\app.blade.php[22m
+[2m17:17:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/home.tsx, /resources/css/app.css?direct[22m
+[2m17:17:34[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/pages/site/home.tsx[22m
+[2m17:17:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ConsultantsSection.tsx, /resources/css/app.css?direct[22m
+[2m17:17:34[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ConsultantsSection.tsx[22m
+[2m17:17:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/about.tsx, /resources/css/app.css?direct[22m
+[2m17:17:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/contact.tsx, /resources/css/app.css?direct[22m
+[2m17:17:34[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/pages/site/contact.tsx[22m
+[2m17:17:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ContactRequestForm.tsx, /resources/css/app.css?direct[22m
+[2m17:17:34[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ContactRequestForm.tsx[22m
+[2m17:17:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/css/app.css?direct, /resources/js/components/site/Navbar.tsx[22m
+[2m17:17:34[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/Navbar.tsx[22m
+[2m17:17:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/css/app.css?direct, /resources/js/components/site/Footer.tsx[22m
+[2m17:17:34[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/Footer.tsx[22m
+[32m2026-05-04 14:17:36[0m SSR admin/settings [90m352.19ms[0m
+[32m2026-05-04 14:17:36[0m SSR admin/consultants [90m260.53ms[0m
+[32m2026-05-04 14:17:37[0m SSR site/home [90m965.58ms[0m
+[2m17:18:22[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ui/Badge.tsx, /resources/css/app.css?direct[22m
+[2m17:18:22[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ui/Badge.tsx[22m
+[2m17:18:22[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ui/Button.tsx, /resources/css/app.css?direct[22m
+[2m17:18:22[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ui/Button.tsx[22m
+[2m17:18:22[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ui/Container.tsx, /resources/css/app.css?direct[22m
+[2m17:18:22[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ui/Container.tsx[22m
+[2m17:18:23[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ui/SectionTitle.tsx, /resources/css/app.css?direct[22m
+[2m17:18:23[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ui/SectionTitle.tsx[22m
+[2m17:18:23[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/BrandLogo.tsx, /resources/css/app.css?direct[22m
+[2m17:18:23[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/BrandLogo.tsx[22m
+[2m17:18:23[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ConsultantsSection.tsx, /resources/css/app.css?direct[22m
+[2m17:18:23[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ConsultantsSection.tsx[22m
+[2m17:18:23[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ContactCTA.tsx, /resources/css/app.css?direct[22m
+[2m17:18:23[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ContactCTA.tsx[22m
+[2m17:18:23[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ContactRequestForm.tsx, /resources/css/app.css?direct[22m
+[2m17:18:23[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ContactRequestForm.tsx[22m
+[2m17:18:23[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/FeaturedListings.tsx, /resources/css/app.css?direct[22m
+[2m17:18:23[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/FeaturedListings.tsx[22m
+[2m17:18:24[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/css/app.css?direct, /resources/js/components/site/Footer.tsx[22m
+[2m17:18:24[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/Footer.tsx[22m
+[2m17:18:24[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/HeroSection.tsx, /resources/css/app.css?direct[22m
+[2m17:18:24[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/HeroSection.tsx[22m
+[2m17:18:24[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/HomeStats.tsx, /resources/css/app.css?direct[22m
+[2m17:18:24[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/HomeStats.tsx[22m
+[2m17:18:24[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/css/app.css?direct, /resources/js/components/site/Navbar.tsx[22m
+[2m17:18:24[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/Navbar.tsx[22m
+[2m17:18:24[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ProcessSection.tsx, /resources/css/app.css?direct[22m
+[2m17:18:24[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ProcessSection.tsx[22m
+[2m17:18:25[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/PropertyCard.tsx, /resources/css/app.css?direct[22m
+[2m17:18:25[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/PropertyCard.tsx[22m
+[2m17:18:25[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/RegionalExpertise.tsx, /resources/css/app.css?direct[22m
+[2m17:18:25[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/RegionalExpertise.tsx[22m
+[2m17:18:25[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/SearchBar.tsx, /resources/css/app.css?direct[22m
+[2m17:18:25[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/SearchBar.tsx[22m
+[2m17:18:25[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/ServicesSection.tsx, /resources/css/app.css?direct[22m
+[2m17:18:25[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/ServicesSection.tsx[22m
+[2m17:18:26[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/SiteImage.tsx, /resources/css/app.css?direct[22m
+[2m17:18:26[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/SiteImage.tsx[22m
+[2m17:18:26[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/css/app.css?direct, /resources/js/components/site/SiteLink.tsx[22m
+[2m17:18:26[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/SiteLink.tsx[22m
+[2m17:18:26[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/css/app.css?direct, /resources/js/components/site/SiteShell.tsx[22m
+[2m17:18:26[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/SiteShell.tsx[22m
+[2m17:18:26[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/TestimonialsSection.tsx, /resources/css/app.css?direct[22m
+[2m17:18:26[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/TestimonialsSection.tsx[22m
+[2m17:18:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/css/app.css?direct, /resources/js/components/site/SiteShell.tsx, /resources/js/components/site/Navbar.tsx[22m
+[2m17:18:27[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/usePathname.ts[22m
+[2m17:18:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/WhyChooseUs.tsx, /resources/css/app.css?direct[22m
+[2m17:18:27[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/WhyChooseUs.tsx[22m
+[2m17:18:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/about.tsx, /resources/css/app.css?direct[22m
+[2m17:18:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx, /resources/css/app.css?direct[22m
+[2m17:18:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/consultant-portfolio.tsx, /resources/css/app.css?direct[22m
+[2m17:18:27[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/pages/site/consultant-portfolio.tsx[22m
+[2m17:18:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/contact.tsx, /resources/css/app.css?direct[22m
+[2m17:18:27[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/pages/site/contact.tsx[22m
+[2m17:18:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/home.tsx, /resources/css/app.css?direct[22m
+[2m17:18:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/pages/site/home.tsx[22m
+[2m17:18:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/listing-detail.tsx, /resources/css/app.css?direct[22m
+[2m17:18:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/listings.tsx, /resources/css/app.css?direct[22m
+[2m17:18:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/pages/site/listings.tsx[22m
+[2m17:18:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mresources/js/data/site/consultants.ts[22m
+[2m17:18:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/data/site/consultants.ts[22m
+[2m17:18:31[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/resources/js/components/site/SearchBar.tsx[22m Could not Fast Refresh ("defaultFilterOptions" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m17:18:31[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/home.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/listings.tsx[22m
+[32m2026-05-04 14:18:33[0m SSR site/home [90m6388.29ms[0m
+[32m2026-05-04 14:18:33[0m SSR admin/consultants [90m404.28ms[0m
+[32m2026-05-04 14:18:33[0m SSR admin/settings [90m44.64ms[0m
+[32m2026-05-04 14:18:34[0m SSR site/home [90m470.81ms[0m
+[32m2026-05-04 14:18:39[0m SSR site/home [90m337.62ms[0m
+[32m2026-05-04 14:20:07[0m SSR site/home [90m432.72ms[0m
+[2m17:20:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mresources/js/data/site/consultants.ts[22m
+[2m17:20:34[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/data/site/consultants.ts[22m
+[2m17:20:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/consultant-portfolio.tsx, /resources/css/app.css?direct[22m
+[2m17:20:34[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/pages/site/consultant-portfolio.tsx[22m
+[2m17:20:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/listing-detail.tsx, /resources/js/components/site/FeaturedListings.tsx, /resources/css/app.css?direct[22m
+[2m17:20:34[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/data/site/properties.ts[22m
+[32m2026-05-04 14:20:35[0m SSR site/home [90m755.53ms[0m
+[32m2026-05-04 14:20:35[0m SSR admin/consultants [90m188.29ms[0m
+[32m2026-05-04 14:20:35[0m SSR admin/settings [90m44.96ms[0m
+[2m17:21:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/consultant-portfolio.tsx, /resources/css/app.css?direct[22m
+[2m17:21:35[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/pages/site/consultant-portfolio.tsx[22m
+[2m17:22:15[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/listing-detail.tsx, /resources/css/app.css?direct[22m
+[32m2026-05-04 14:25:13[0m SSR site/listings [90m263.19ms[0m
+[32m2026-05-04 14:25:16[0m SSR admin/dashboard [90m91.52ms[0m
+[32m2026-05-04 14:30:34[0m SSR admin/consultants [90m208.11ms[0m
+[2m17:30:35[22m [36m[1m[vite][22m[39m [32mfull reload[39m [2mroutes\web.php[22m
+[32m2026-05-04 14:30:36[0m SSR admin/consultants [90m565.47ms[0m
+[32m2026-05-04 14:30:37[0m SSR admin/consultants [90m431.35ms[0m
+[2m17:30:37[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/components/delete-user.tsx[22m
+[2m17:30:37[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx[22m
+[32m2026-05-04 14:30:37[0m SSR admin/listing-form [90m248.80ms[0m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/index.ts[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/index.ts[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/settings/index.ts[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listings.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listing-form.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/listings/index.ts[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/messages/index.ts[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/appearance/index.ts[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 2 more[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/index.ts[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx, /resources/js/components/user-menu-content.tsx[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/profile/index.ts[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/security/index.ts[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/components/delete-user.tsx[22m
+[2m17:30:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 2 more[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/index.ts[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 2 more[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/index.ts[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 2 more[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/index.ts[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 2 more[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/index.ts[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/index.ts[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listings.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listing-form.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/listings/index.ts[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/messages/index.ts[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/index.ts[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/settings/index.ts[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx, /resources/js/components/user-menu-content.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/profile/index.ts[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 2 more[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/wayfinder/index.ts[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/index.ts[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/security/index.ts[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/messages/index.ts[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/appearance/index.ts[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[2m17:30:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m info: Types generated for actions, routes, form variants
+  Plugin: [35m@laravel/vite-plugin-wayfinder[39m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/messages/index.ts[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/settings/index.ts[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx, /resources/js/components/user-menu-content.tsx[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/profile/index.ts[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/security/index.ts[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/appearance/index.ts[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m info: Types generated for actions, routes, form variants
+  Plugin: [35m@laravel/vite-plugin-wayfinder[39m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx, /resources/js/components/user-menu-content.tsx[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/profile/index.ts[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 2 more[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/wayfinder/index.ts[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/settings/index.ts[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m info: Types generated for actions, routes, form variants
+  Plugin: [35m@laravel/vite-plugin-wayfinder[39m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/security/index.ts[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:30:40[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/appearance/index.ts[22m
+[2m17:32:47[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mresources/js/pages/admin/consultant-edit.tsx[22m
+[2m17:32:47[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/pages/admin/consultant-edit.tsx[22m
+[2m17:32:47[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/css/app.css?direct[22m
+[2m17:32:47[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/pages/admin/consultants.tsx[22m
+
+[31mCould not open index.js in the editor.[39m
+[31mThe editor process exited with an error: (code 9).[39m
+
+
+[31mCould not open index.js in the editor.[39m
+[31mThe editor process exited with an error: (code 9).[39m
+
+
+[31mCould not open index.js in the editor.[39m
+[31mThe editor process exited with an error: (code 9).[39m
+
+
+[31mCould not open index.ts in the editor.[39m
+[31mThe editor process exited with an error: (code 9).[39m
+
+[2m17:38:26[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/components/delete-user.tsx[22m
+[2m17:38:26[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/components/delete-user.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultant-edit.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/index.ts[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/index.ts[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listings.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listing-form.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/listings/index.ts[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/messages/index.ts[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/settings/index.ts[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 2 more[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/index.ts[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx, /resources/js/components/user-menu-content.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/profile/index.ts[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/security/index.ts[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/appearance/index.ts[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 2 more[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/index.ts[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 2 more[22m
+[2m17:38:27[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/index.ts[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/index.ts[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m info: Types generated for actions, routes, form variants
+  Plugin: [35m@laravel/vite-plugin-wayfinder[39m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mresources/js/wayfinder/index.ts[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/wayfinder/index.ts[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultant-edit.tsx[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/index.ts[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listings.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listing-form.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/listings/index.ts[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/messages/index.ts[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/appearance/index.ts[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx, /resources/js/components/user-menu-content.tsx[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/profile/index.ts[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/security/index.ts[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/settings/index.ts[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultant-edit.tsx[22m
+[2m17:38:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[32m2026-05-04 14:38:28[0m SSR site/home [90m357.68ms[0m
+[32m2026-05-04 14:38:29[0m SSR admin/consultants [90m222.21ms[0m
+[32m2026-05-04 14:38:29[0m SSR site/home [90m262.56ms[0m
+[32m2026-05-04 14:38:34[0m SSR site/home [90m443.99ms[0m
+[32m2026-05-04 14:38:34[0m SSR admin/consultants [90m243.04ms[0m
+[2m17:38:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/components/delete-user.tsx[22m
+[2m17:38:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx[22m
+[32m2026-05-04 14:38:35[0m SSR site/home [90m428.89ms[0m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultant-edit.tsx[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/index.ts[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/index.ts[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listings.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listing-form.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/listings/index.ts[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/messages/index.ts[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/settings/index.ts[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 2 more[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/index.ts[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/appearance/index.ts[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx, /resources/js/components/user-menu-content.tsx[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/profile/index.ts[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:38:35[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/security/index.ts[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/components/delete-user.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 2 more[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/index.ts[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mresources/js/wayfinder/index.ts[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/wayfinder/index.ts[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m info: Types generated for actions, routes, form variants
+  Plugin: [35m@laravel/vite-plugin-wayfinder[39m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/index.ts[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/appearance/index.ts[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx, /resources/js/components/user-menu-content.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/profile/index.ts[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/security/index.ts[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultant-edit.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/index.ts[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/settings/index.ts[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/messages/index.ts[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listings.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listing-form.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/listings/index.ts[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultant-edit.tsx[22m
+[2m17:38:36[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[32m2026-05-04 14:38:37[0m SSR admin/consultants [90m634.39ms[0m
+[32m2026-05-04 14:38:37[0m SSR site/home [90m332.54ms[0m
+[2m17:38:45[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/FeaturedListings.tsx, /resources/css/app.css?direct[22m
+[2m17:38:45[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/FeaturedListings.tsx[22m
+[2m17:39:10[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/site/PropertyCard.tsx, /resources/css/app.css?direct[22m
+[2m17:39:10[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/components/site/PropertyCard.tsx[22m
+[2m17:39:25[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/home.tsx, /resources/css/app.css?direct[22m
+[2m17:39:25[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/pages/site/home.tsx[22m
+[32m2026-05-04 14:39:25[0m SSR admin/consultants [90m225.90ms[0m
+[32m2026-05-04 14:39:26[0m SSR site/home [90m715.62ms[0m
+[32m2026-05-04 14:39:26[0m SSR site/home [90m365.17ms[0m
+[32m2026-05-04 14:39:39[0m SSR admin/dashboard [90m89.62ms[0m
+[32m2026-05-04 14:39:55[0m SSR site/home [90m349.10ms[0m
+[32m2026-05-04 14:39:58[0m SSR site/home [90m294.90ms[0m
+[32m2026-05-04 14:40:06[0m SSR site/home [90m527.46ms[0m
+[32m2026-05-04 14:40:06[0m SSR admin/dashboard [90m76.85ms[0m
+[2m17:40:06[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/components/delete-user.tsx[22m
+[2m17:40:06[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx[22m
+[32m2026-05-04 14:40:07[0m SSR site/home [90m430.29ms[0m
+[2m17:40:07[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 2 more[22m
+[2m17:40:07[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/index.ts[22m
+[2m17:40:07[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx[22m
+[2m17:40:07[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:40:07[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultant-edit.tsx[22m
+[2m17:40:07[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/index.ts[22m
+[2m17:40:07[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[2m17:40:07[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[2m17:40:07[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:40:07[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/index.ts[22m
+[2m17:40:07[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/settings/index.ts[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/messages/index.ts[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listings.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listing-form.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/listings/index.ts[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/appearance/index.ts[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx, /resources/js/components/user-menu-content.tsx[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/profile/index.ts[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/security/index.ts[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m info: Types generated for actions, routes, form variants
+  Plugin: [35m@laravel/vite-plugin-wayfinder[39m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 4 more[22m
+[2m17:40:08[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/wayfinder/index.ts[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/index.ts[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/appearance/index.ts[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/security/index.ts[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx, /resources/js/components/user-menu-content.tsx[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/profile/index.ts[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultant-edit.tsx[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/index.ts[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/messages/index.ts[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/settings/index.ts[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listings.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listing-form.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/listings/index.ts[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultant-edit.tsx[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/components/delete-user.tsx[22m
+[2m17:40:09[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx[22m
+[2m17:40:21[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/listing-detail.tsx, /resources/css/app.css?direct[22m
+[32m2026-05-04 14:40:58[0m SSR site/home [90m751.70ms[0m
+[32m2026-05-04 14:41:29[0m SSR site/listings [90m541.05ms[0m
+[32m2026-05-04 14:41:42[0m SSR site/listing-detail [90m181.35ms[0m
+[32m2026-05-04 14:41:55[0m SSR site/home [90m248.24ms[0m
+[32m2026-05-04 14:42:00[0m SSR site/about [90m51.56ms[0m
+[32m2026-05-04 14:42:07[0m SSR site/contact [90m49.54ms[0m
+[32m2026-05-04 14:42:13[0m SSR site/home [90m285.75ms[0m
+[32m2026-05-04 14:42:18[0m SSR site/consultant-portfolio [90m85.52ms[0m
+[32m2026-05-04 14:42:26[0m SSR site/admin-login [90m24.38ms[0m

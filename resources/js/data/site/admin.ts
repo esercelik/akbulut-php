@@ -1,0 +1,32 @@
+export const adminMessages = [
+  {
+    id: 1,
+    name: "Zeynep Arslan",
+    phone: "+90 532 000 10 10",
+    email: "zeynep@example.com",
+    listing: "Boğaz Manzaralı Premium Villa",
+    message: "Detaylı sunum ve randevu bilgisi almak istiyorum.",
+    date: "02.05.2026",
+    read: false,
+  },
+  {
+    id: 2,
+    name: "Can Yıldırım",
+    phone: "+90 533 000 20 20",
+    email: "can@example.com",
+    listing: "Nişantaşı Lüks Rezidans Dairesi",
+    message: "Kiralama koşulları hakkında bilgi rica ederim.",
+    date: "01.05.2026",
+    read: true,
+  },
+  {
+    id: 3,
+    name: "Merve Kaya",
+    phone: "+90 534 000 30 30",
+    email: "merve@example.com",
+    listing: "Kadıköy Caddede Yatırımlık Dükkan",
+    message: "Yatırım getirisi ve mevcut kira potansiyelini öğrenmek istiyorum.",
+    date: "30.04.2026",
+    read: false,
+  },
+];

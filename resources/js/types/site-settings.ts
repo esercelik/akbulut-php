@@ -1,0 +1,41 @@
+export type SiteStat = {
+  value: string;
+  label: string;
+};
+
+export type SiteSettings = {
+  siteName: string;
+  phone: string;
+  whatsapp: string;
+  email: string;
+  address: string;
+  logo: string;
+  logoUrl: string;
+  favicon: string;
+  faviconUrl: string;
+  heroTitle: string;
+  heroSubtitle: string;
+  heroButtonText: string;
+  heroButtonLink: string;
+  aboutTitle: string;
+  aboutText: string;
+  footerText: string;
+  seoTitle: string;
+  seoDescription: string;
+  seoKeywords: string;
+  ogImage: string;
+  ogImageUrl: string;
+  instagramUrl: string;
+  facebookUrl: string;
+  youtubeUrl: string;
+  linkedinUrl: string;
+  statSalesCount: string;
+  statSalesLabel: string;
+  statPortfolioCount: string;
+  statPortfolioLabel: string;
+  statExperienceCount: string;
+  statExperienceLabel: string;
+  statSatisfactionCount: string;
+  statSatisfactionLabel: string;
+  stats: SiteStat[];
+};

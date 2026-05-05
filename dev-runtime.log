@@ -1,0 +1,142 @@
+[vite] 
+[vite] > dev
+[vite] > vite
+[vite] 
+[queue] 
+[queue]  INFO Processing jobs from the [default] queue. 
+[queue] 
+[vite] Inertia SSR dev endpoint: /__inertia_ssr
+[server] 
+[server]  INFO Server running on [http://127.0.0.1:8000]. 
+[server] 
+[server]  Press Ctrl+C to stop the server
+[server] 
+[vite] [2m16:54:15[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m info: Types generated for actions, routes, form variants
+[vite]   Plugin: [35m@laravel/vite-plugin-wayfinder[39m
+[vite] Port 5173 is in use, trying another one...
+[vite] [2m16:54:17[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [optimizer] scanning dependencies...
+[vite] Warming up Inertia SSR module graph...
+[vite] 
+[vite]   [32m[1mVITE[22m v8.0.10[39m  [2mready in [0m[1m7550[22m[2m[0m ms[22m
+[vite] 
+[vite]   [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5174[22m/[39m
+[vite] [2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[vite] 
+[vite]   [31m[1mLARAVEL[22m v13.7.0[39m  [2mplugin[22m [1mv3.1.0[22m
+[vite] 
+[vite]   [32m➜[39m  [1mAPP_URL[22m: [36mhttp://localhost:[1m8000[22m[39m
+[vite] SSR skipped, module graph is still warming up...
+[vite] [2m16:54:32[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [optimizer] bundling dependencies...
+[vite] [2m16:54:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [optimizer] bundling dependencies...
+[vite] [2m16:54:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/components/delete-user.tsx[22m
+[vite] [2m16:54:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx[22m
+[vite] [2m16:54:37[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [optimizer] bundling dependencies...
+[vite] [2m16:54:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[vite] [2m16:54:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listing-form.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listings.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[vite] [2m16:54:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[vite] [2m16:54:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[vite] [2m16:54:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx[22m
+[vite] [2m16:54:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[vite] [2m16:54:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[vite] [2m16:54:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[vite] [2m16:54:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[vite] [2m16:54:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[vite] [2m16:54:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx[22m
+[vite] [2m16:54:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[vite] [2m16:54:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx[22m
+[vite] [2m16:54:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx[22m
+[vite] [2m16:54:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[vite] SSR skipped, module graph is still warming up...
+[vite] [2m16:54:38[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "./listings" from "resources/js/routes/admin/index.ts". Does the file exist?[39m
+[vite]   Plugin: [35mvite:import-analysis[39m
+[vite]   File: [36mC:/Users/eserc/akbulut-php/resources/js/routes/admin/index.ts[39m:2:21
+[vite] [33m  1  |  import { queryParams } from "./../../wayfinder";
+[vite]   2  |  import listings from "./listings";
+[vite]      |                        ^
+[vite]   3  |  import consultants from "./consultants";
+[vite]   4  |  import messages from "./messages";[39m
+[vite]       at TransformPluginContext._formatLog (file:///C:/Users/eserc/akbulut-php/node_modules/vite/dist/node/chunks/node.js:30375:39)
+[vite]       at TransformPluginContext.error (file:///C:/Users/eserc/akbulut-php/node_modules/vite/dist/node/chunks/node.js:30372:14)
+[vite]       at normalizeUrl (file:///C:/Users/eserc/akbulut-php/node_modules/vite/dist/node/chunks/node.js:27654:18)
+[vite]       at async file:///C:/Users/eserc/akbulut-php/node_modules/vite/dist/node/chunks/node.js:27717:30
+[vite]       at async Promise.all (index 1)
+[vite]       at async TransformPluginContext.transform (file:///C:/Users/eserc/akbulut-php/node_modules/vite/dist/node/chunks/node.js:27685:4)
+[vite]       at async EnvironmentPluginContainer.transform (file:///C:/Users/eserc/akbulut-php/node_modules/vite/dist/node/chunks/node.js:30164:14)
+[vite]       at async loadAndTransform (file:///C:/Users/eserc/akbulut-php/node_modules/vite/dist/node/chunks/node.js:24512:26)
+[vite] [2m16:54:38[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./listings" from "resources/js/routes/admin/index.ts". Does the file exist?
+[vite]   Plugin: [35mvite:import-analysis[39m
+[vite]   File: [36mC:/Users/eserc/akbulut-php/resources/js/routes/admin/index.ts[39m:2:21
+[vite] [33m  1  |  import { queryParams } from "./../../wayfinder";
+[vite]   2  |  import listings from "./listings";
+[vite]      |                        ^
+[vite]   3  |  import consultants from "./consultants";
+[vite]   4  |  import messages from "./messages";[39m
+[vite] [2m16:54:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ new dependencies optimized: [33m@radix-ui/react-checkbox, @radix-ui/react-label[32m[39m
+[vite] [2m16:54:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ optimized dependencies changed. reloading[39m
+[vite] [2m16:54:38[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /resources/js/routes/admin/listings/index.ts (resolved id: C:/Users/eserc/akbulut-php/resources/js/routes/admin/listings/index.ts) in C:/Users/eserc/akbulut-php/resources/js/pages/admin/listing-form.tsx. Does the file exist?
+[vite] [2m16:54:38[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /resources/js/routes/admin/messages/index.ts (resolved id: C:/Users/eserc/akbulut-php/resources/js/routes/admin/messages/index.ts) in C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx. Does the file exist?
+[vite] [2m16:54:38[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "@/routes" from "resources/js/components/app-sidebar.tsx". Does the file exist?[39m
+[vite]   Plugin: [35mvite:import-analysis[39m
+[vite]   File: [36mC:/Users/eserc/akbulut-php/resources/js/components/app-sidebar.tsx[39m:16:26
+[vite] [33m  7  |  import { NavUser } from "@/components/nav-user";
+[vite]   8  |  import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } fro...
+[vite]   9  |  import { dashboard } from "@/routes";
+[vite]      |                             ^
+[vite]   10 |  var _jsxFileName = "C:/Users/eserc/akbulut-php/resources/js/components/app-sidebar.tsx";
+[vite]   11 |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";[39m
+[vite]       at TransformPluginContext._formatLog (file:///C:/Users/eserc/akbulut-php/node_modules/vite/dist/node/chunks/node.js:30375:39)
+[vite]       at TransformPluginContext.error (file:///C:/Users/eserc/akbulut-php/node_modules/vite/dist/node/chunks/node.js:30372:14)
+[vite]       at normalizeUrl (file:///C:/Users/eserc/akbulut-php/node_modules/vite/dist/node/chunks/node.js:27654:18)
+[vite]       at async file:///C:/Users/eserc/akbulut-php/node_modules/vite/dist/node/chunks/node.js:27717:30
+[vite]       at async Promise.all (index 8)
+[vite]       at async TransformPluginContext.transform (file:///C:/Users/eserc/akbulut-php/node_modules/vite/dist/node/chunks/node.js:27685:4)
+[vite]       at async EnvironmentPluginContainer.transform (file:///C:/Users/eserc/akbulut-php/node_modules/vite/dist/node/chunks/node.js:30164:14)
+[vite]       at async loadAndTransform (file:///C:/Users/eserc/akbulut-php/node_modules/vite/dist/node/chunks/node.js:24512:26)
+[vite] [2m16:54:38[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "@/routes" from "resources/js/components/app-sidebar.tsx". Does the file exist?
+[vite]   Plugin: [35mvite:import-analysis[39m
+[vite]   File: [36mC:/Users/eserc/akbulut-php/resources/js/components/app-sidebar.tsx[39m:16:26
+[vite] [33m  7  |  import { NavUser } from "@/components/nav-user";
+[vite]   8  |  import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } fro...
+[vite]   9  |  import { dashboard } from "@/routes";
+[vite]      |                             ^
+[vite]   10 |  var _jsxFileName = "C:/Users/eserc/akbulut-php/resources/js/components/app-sidebar.tsx";
+[vite]   11 |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";[39m
+[vite] [2m16:54:38[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "@/routes" from "resources/js/components/app-sidebar.tsx". Does the file exist?
+[vite]   Plugin: [35mvite:import-analysis[39m
+[vite]   File: [36mC:/Users/eserc/akbulut-php/resources/js/components/app-sidebar.tsx[39m:16:26
+[vite] [33m  7  |  import { NavUser } from "@/components/nav-user";
+[vite]   8  |  import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } fro...
+[vite]   9  |  import { dashboard } from "@/routes";
+[vite]      |                             ^
+[vite]   10 |  var _jsxFileName = "C:/Users/eserc/akbulut-php/resources/js/components/app-sidebar.tsx";
+[vite]   11 |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";[39m
+[vite] [2m16:54:38[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /resources/js/routes/appearance/index.ts (resolved id: C:/Users/eserc/akbulut-php/resources/js/routes/appearance/index.ts) in C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx. Does the file exist?
+[vite] [2m16:54:38[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /resources/js/routes/security/index.ts (resolved id: C:/Users/eserc/akbulut-php/resources/js/routes/security/index.ts) in C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx. Does the file exist?
+[vite] [2m16:54:38[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /resources/js/routes/admin/consultants/index.ts (resolved id: C:/Users/eserc/akbulut-php/resources/js/routes/admin/consultants/index.ts) in C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx. Does the file exist?
+[vite] [2m16:54:38[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /resources/js/routes/admin/consultants/index.ts (resolved id: C:/Users/eserc/akbulut-php/resources/js/routes/admin/consultants/index.ts) in C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx. Does the file exist?
+[vite] [2m16:54:38[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /resources/js/routes/profile/index.ts (resolved id: C:/Users/eserc/akbulut-php/resources/js/routes/profile/index.ts) in C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx. Does the file exist?
+[vite] [2m16:54:38[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /resources/js/routes/admin/index.ts (resolved id: C:/Users/eserc/akbulut-php/resources/js/routes/admin/index.ts) in C:/Users/eserc/akbulut-php/resources/js/components/admin/AdminSidebar.tsx. Does the file exist?
+[vite] [2m16:54:38[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /resources/js/routes/index.ts (resolved id: C:/Users/eserc/akbulut-php/resources/js/routes/index.ts) in C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx. Does the file exist?
+[vite] [2m16:54:38[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /resources/js/routes/index.ts (resolved id: C:/Users/eserc/akbulut-php/resources/js/routes/index.ts) in C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx. Does the file exist?
+[vite] [2m16:54:38[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /resources/js/routes/index.ts (resolved id: C:/Users/eserc/akbulut-php/resources/js/routes/index.ts) in C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx. Does the file exist?
+[vite] [2m16:54:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[vite] [2m16:54:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/welcome.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx, /resources/js/components/admin/AdminHeader.tsx, /resources/js/components/admin/AdminSidebar.tsx, /resources/js/layouts/auth/auth-simple-layout.tsx and 1 more[22m
+[vite] [2m16:54:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[vite] [2m16:54:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/resources/js/components/admin/AdminSidebar.tsx[22m
+[vite] [2m16:54:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/appearance.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[vite] [2m16:54:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/site/admin-login.tsx[22m
+[vite] [2m16:54:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/reset-password.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/login.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/forgot-password.tsx[22m
+[vite] [2m16:54:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[vite] [2m16:54:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/register.tsx[22m
+[vite] [2m16:54:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /resources/js/layouts/settings/layout.tsx[22m
+[vite] [2m16:54:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx, /resources/js/components/two-factor-setup-modal.tsx, /resources/js/components/two-factor-recovery-codes.tsx[22m
+[vite] [2m16:54:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/verify-email.tsx[22m
+[vite] [2m16:54:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/consultants.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[vite] [2m16:54:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listing-form.tsx, /@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/listings.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[vite] [2m16:54:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/admin/messages.tsx, /resources/js/components/admin/AdminSidebar.tsx[22m
+[vite] [2m16:54:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/profile.tsx, /resources/js/components/delete-user.tsx[22m
+[vite] [2m16:54:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/settings/security.tsx[22m
+[vite] [2m16:54:42[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/confirm-password.tsx[22m
+[vite] [2m16:54:42[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@id/C:/Users/eserc/akbulut-php/resources/js/pages/auth/two-factor-challenge.tsx[22m
+[vite] [2m16:54:42[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mresources/js/routes/admin/consultants/profile-photo/index.ts[22m
+[vite] Inertia SSR module graph warmed up
