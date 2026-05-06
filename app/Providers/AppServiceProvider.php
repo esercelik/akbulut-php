@@ -31,6 +31,10 @@ class AppServiceProvider extends ServiceProvider
         JsonResource::withoutWrapping();
         Schema::defaultStringLength(250);
         View::composer('*', fn ($view) => $view->with('siteSettings', SiteSettingsData::shared()));
+
+        if (app()->isProduction()) {
+            URL::forceScheme('https');
+        }
     }
 
     /**
