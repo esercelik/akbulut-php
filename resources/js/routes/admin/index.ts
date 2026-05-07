@@ -4,7 +4,7 @@ import consultants from './consultants'
 import messages from './messages'
 import settings from './settings'
 /**
- * @see routes/web.php:35
+ * @see routes/web.php:42
  * @route '/admin/login'
  */
 export const login = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -18,7 +18,7 @@ login.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see routes/web.php:35
+ * @see routes/web.php:42
  * @route '/admin/login'
  */
 login.url = (options?: RouteQueryOptions) => {
@@ -26,7 +26,7 @@ login.url = (options?: RouteQueryOptions) => {
 }
 
 /**
- * @see routes/web.php:35
+ * @see routes/web.php:42
  * @route '/admin/login'
  */
 login.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -34,7 +34,7 @@ login.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     method: 'get',
 })
 /**
- * @see routes/web.php:35
+ * @see routes/web.php:42
  * @route '/admin/login'
  */
 login.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -43,7 +43,7 @@ login.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
     /**
- * @see routes/web.php:35
+ * @see routes/web.php:42
  * @route '/admin/login'
  */
     const loginForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -52,7 +52,7 @@ login.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     })
 
             /**
- * @see routes/web.php:35
+ * @see routes/web.php:42
  * @route '/admin/login'
  */
         loginForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -60,7 +60,7 @@ login.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
             method: 'get',
         })
             /**
- * @see routes/web.php:35
+ * @see routes/web.php:42
  * @route '/admin/login'
  */
         loginForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Admin\ConsultantsController::update
- * @see app/Http/Controllers/Admin/ConsultantsController.php:279
+ * @see app/Http/Controllers/Admin/ConsultantsController.php:285
  * @route '/admin/consultants/{consultant}/profile-photo'
  */
 export const update = (args: { consultant: number | { id: number } } | [consultant: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -16,7 +16,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\ConsultantsController::update
- * @see app/Http/Controllers/Admin/ConsultantsController.php:279
+ * @see app/Http/Controllers/Admin/ConsultantsController.php:285
  * @route '/admin/consultants/{consultant}/profile-photo'
  */
 update.url = (args: { consultant: number | { id: number } } | [consultant: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -49,7 +49,7 @@ update.url = (args: { consultant: number | { id: number } } | [consultant: numbe
 
 /**
 * @see \App\Http\Controllers\Admin\ConsultantsController::update
- * @see app/Http/Controllers/Admin/ConsultantsController.php:279
+ * @see app/Http/Controllers/Admin/ConsultantsController.php:285
  * @route '/admin/consultants/{consultant}/profile-photo'
  */
 update.post = (args: { consultant: number | { id: number } } | [consultant: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -59,7 +59,7 @@ update.post = (args: { consultant: number | { id: number } } | [consultant: numb
 
     /**
 * @see \App\Http\Controllers\Admin\ConsultantsController::update
- * @see app/Http/Controllers/Admin/ConsultantsController.php:279
+ * @see app/Http/Controllers/Admin/ConsultantsController.php:285
  * @route '/admin/consultants/{consultant}/profile-photo'
  */
     const updateForm = (args: { consultant: number | { id: number } } | [consultant: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -69,7 +69,7 @@ update.post = (args: { consultant: number | { id: number } } | [consultant: numb
 
             /**
 * @see \App\Http\Controllers\Admin\ConsultantsController::update
- * @see app/Http/Controllers/Admin/ConsultantsController.php:279
+ * @see app/Http/Controllers/Admin/ConsultantsController.php:285
  * @route '/admin/consultants/{consultant}/profile-photo'
  */
         updateForm.post = (args: { consultant: number | { id: number } } | [consultant: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

@@ -237,7 +237,7 @@ edit.head = (args: { consultant: number | { id: number } } | [consultant: number
     edit.form = editForm
 /**
 * @see \App\Http\Controllers\Admin\ConsultantsController::update
- * @see app/Http/Controllers/Admin/ConsultantsController.php:228
+ * @see app/Http/Controllers/Admin/ConsultantsController.php:234
  * @route '/admin/consultants/{consultant}'
  */
 export const update = (args: { consultant: number | { id: number } } | [consultant: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -252,7 +252,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\ConsultantsController::update
- * @see app/Http/Controllers/Admin/ConsultantsController.php:228
+ * @see app/Http/Controllers/Admin/ConsultantsController.php:234
  * @route '/admin/consultants/{consultant}'
  */
 update.url = (args: { consultant: number | { id: number } } | [consultant: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -285,7 +285,7 @@ update.url = (args: { consultant: number | { id: number } } | [consultant: numbe
 
 /**
 * @see \App\Http\Controllers\Admin\ConsultantsController::update
- * @see app/Http/Controllers/Admin/ConsultantsController.php:228
+ * @see app/Http/Controllers/Admin/ConsultantsController.php:234
  * @route '/admin/consultants/{consultant}'
  */
 update.put = (args: { consultant: number | { id: number } } | [consultant: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -295,7 +295,7 @@ update.put = (args: { consultant: number | { id: number } } | [consultant: numbe
 
     /**
 * @see \App\Http\Controllers\Admin\ConsultantsController::update
- * @see app/Http/Controllers/Admin/ConsultantsController.php:228
+ * @see app/Http/Controllers/Admin/ConsultantsController.php:234
  * @route '/admin/consultants/{consultant}'
  */
     const updateForm = (args: { consultant: number | { id: number } } | [consultant: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -310,7 +310,7 @@ update.put = (args: { consultant: number | { id: number } } | [consultant: numbe
 
             /**
 * @see \App\Http\Controllers\Admin\ConsultantsController::update
- * @see app/Http/Controllers/Admin/ConsultantsController.php:228
+ * @see app/Http/Controllers/Admin/ConsultantsController.php:234
  * @route '/admin/consultants/{consultant}'
  */
         updateForm.put = (args: { consultant: number | { id: number } } | [consultant: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -326,7 +326,7 @@ update.put = (args: { consultant: number | { id: number } } | [consultant: numbe
     update.form = updateForm
 /**
 * @see \App\Http\Controllers\Admin\ConsultantsController::destroy
- * @see app/Http/Controllers/Admin/ConsultantsController.php:301
+ * @see app/Http/Controllers/Admin/ConsultantsController.php:307
  * @route '/admin/consultants/{consultant}'
  */
 export const destroy = (args: { consultant: number | { id: number } } | [consultant: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -341,7 +341,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\ConsultantsController::destroy
- * @see app/Http/Controllers/Admin/ConsultantsController.php:301
+ * @see app/Http/Controllers/Admin/ConsultantsController.php:307
  * @route '/admin/consultants/{consultant}'
  */
 destroy.url = (args: { consultant: number | { id: number } } | [consultant: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -374,7 +374,7 @@ destroy.url = (args: { consultant: number | { id: number } } | [consultant: numb
 
 /**
 * @see \App\Http\Controllers\Admin\ConsultantsController::destroy
- * @see app/Http/Controllers/Admin/ConsultantsController.php:301
+ * @see app/Http/Controllers/Admin/ConsultantsController.php:307
  * @route '/admin/consultants/{consultant}'
  */
 destroy.delete = (args: { consultant: number | { id: number } } | [consultant: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -384,7 +384,7 @@ destroy.delete = (args: { consultant: number | { id: number } } | [consultant: n
 
     /**
 * @see \App\Http\Controllers\Admin\ConsultantsController::destroy
- * @see app/Http/Controllers/Admin/ConsultantsController.php:301
+ * @see app/Http/Controllers/Admin/ConsultantsController.php:307
  * @route '/admin/consultants/{consultant}'
  */
     const destroyForm = (args: { consultant: number | { id: number } } | [consultant: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -399,7 +399,7 @@ destroy.delete = (args: { consultant: number | { id: number } } | [consultant: n
 
             /**
 * @see \App\Http\Controllers\Admin\ConsultantsController::destroy
- * @see app/Http/Controllers/Admin/ConsultantsController.php:301
+ * @see app/Http/Controllers/Admin/ConsultantsController.php:307
  * @route '/admin/consultants/{consultant}'
  */
         destroyForm.delete = (args: { consultant: number | { id: number } } | [consultant: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

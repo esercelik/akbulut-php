@@ -1,4 +1,4 @@
-import { Form, Head, Link } from '@inertiajs/react';
+import { Form, Head, Link, usePage } from '@inertiajs/react';
 import { ArrowLeft, ImagePlus, Save, UserRound } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { update } from '@/routes/admin/consultants';
@@ -26,8 +26,87 @@ const inputClass =
 const textareaClass =
     'mt-2 w-full rounded-[2px] border border-stone-line bg-white px-3 py-3 text-sm outline-none focus:border-gold';
 
+const permissionLabels: Record<string, string> = {
+    DASHBOARD_VIEW: 'Dashboard goruntuleme',
+    LISTINGS_VIEW: 'Ilanlari goruntuleme',
+    LISTINGS_CREATE: 'Ilan olusturma',
+    LISTINGS_EDIT: 'Ilan duzenleme',
+    LISTINGS_DELETE: 'Ilan silme',
+    LISTINGS_PUBLISH: 'Ilan yayinlama',
+    LISTINGS_FEATURE: 'Ilan one cikarma',
+    CONSULTANTS_VIEW: 'Kullanicilari goruntuleme',
+    CONSULTANTS_CREATE: 'Kullanici olusturma',
+    CONSULTANTS_EDIT: 'Kullanici duzenleme',
+    CONSULTANTS_DELETE: 'Kullanici silme',
+    USERS_VIEW: 'Users goruntuleme',
+    USERS_CREATE: 'Users olusturma',
+    USERS_EDIT: 'Users duzenleme',
+    USERS_DELETE: 'Users silme',
+    MESSAGES_VIEW: 'Mesajlari goruntuleme',
+    MESSAGES_EDIT: 'Mesaj duzenleme',
+    SETTINGS_VIEW: 'Ayarlari goruntuleme',
+    SETTINGS_EDIT: 'Ayar duzenleme',
+};
+
+const permissionCategories: Record<string, string[]> = {
+    'İlan Yönetimi': [
+        'DASHBOARD_VIEW',
+        'LISTINGS_VIEW',
+        'LISTINGS_CREATE',
+        'LISTINGS_EDIT',
+        'LISTINGS_DELETE',
+        'LISTINGS_PUBLISH',
+        'LISTINGS_FEATURE',
+    ],
+    'Kullanıcı Yönetimi': [
+        'CONSULTANTS_VIEW',
+        'CONSULTANTS_CREATE',
+        'CONSULTANTS_EDIT',
+        'CONSULTANTS_DELETE',
+        'USERS_VIEW',
+        'USERS_CREATE',
+        'USERS_EDIT',
+        'USERS_DELETE',
+    ],
+    Mesajlar: ['MESSAGES_VIEW', 'MESSAGES_EDIT'],
+    'Site Ayarları': ['SETTINGS_VIEW', 'SETTINGS_EDIT'],
+};
+
 export default function ConsultantEdit({ consultant }: ConsultantEditProps) {
     const [photoPreview, setPhotoPreview] = useState<string | null>(null);
+
+    const page = usePage<any>();
+    const allPermissionValues: string[] = (page.props.permissionValues ?? Object.keys(permissionLabels));
+    const consultantExistingPermissions: string[] = (page.props.consultant?.permissions ?? []);
+    const [selectedPermissions, setSelectedPermissions] = useState<string[]>(consultantExistingPermissions);
+
+    useEffect(() => {
+        setSelectedPermissions(page.props.consultant?.permissions ?? []);
+    }, [page.props.consultant?.permissions]);
+
+    function togglePermission(permission: string) {
+        setSelectedPermissions((prev) =>
+            prev.includes(permission) ? prev.filter((p) => p !== permission) : [...prev, permission],
+        );
+    }
+
+    function categoryAllSelected(perms: string[]) {
+        return perms.every((p) => selectedPermissions.includes(p));
+    }
+
+    function toggleCategory(perms: string[]) {
+        const allSelected = categoryAllSelected(perms);
+        if (allSelected) {
+            setSelectedPermissions((prev) => prev.filter((p) => !perms.includes(p)));
+        } else {
+            setSelectedPermissions((prev) => Array.from(new Set([...prev, ...perms])));
+        }
+    }
+
+    function toggleAll() {
+        const allSelected = allPermissionValues.every((p) => selectedPermissions.includes(p));
+        setSelectedPermissions(allSelected ? [] : [...allPermissionValues]);
+    }
 
     useEffect(() => {
         return () => {
@@ -314,6 +393,79 @@ export default function ConsultantEdit({ consultant }: ConsultantEditProps) {
                                                     </option>
                                                 </select>
                                             </label>
+                                            <div className="md:col-span-2">
+                                                <div className="flex items-center justify-between">
+                                                    <p className="text-sm font-semibold text-navy">Yetkiler</p>
+                                                    <div className="flex items-center gap-2">
+                                                        <button
+                                                            type="button"
+                                                            onClick={toggleAll}
+                                                            className="inline-flex h-9 items-center gap-2 rounded-[2px] border border-gold bg-gold px-3 text-sm font-semibold text-navy transition hover:bg-gold-soft"
+                                                        >
+                                                            Tüm Yetkiler
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div className="mt-4 space-y-4">
+                                                    {Object.entries(permissionCategories).map(
+                                                        ([category, perms]) => (
+                                                            <div key={category} className="premium-card-shadow border border-stone-line bg-white p-4">
+                                                                <div className="flex items-center justify-between">
+                                                                    <h4 className="text-sm font-semibold text-navy">{category}</h4>
+                                                                    <button
+                                                                        type="button"
+                                                                        onClick={() => toggleCategory(perms)}
+                                                                        className="inline-flex h-8 items-center gap-2 rounded-[2px] border border-stone-line bg-white px-2 text-xs font-semibold text-navy transition hover:border-gold"
+                                                                    >
+                                                                        {categoryAllSelected(perms) ? 'Tümünü Kapat' : 'Tümünü Aç'}
+                                                                    </button>
+                                                                </div>
+
+                                                                <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                                                                    {perms.map((permission) => {
+                                                                        const active = selectedPermissions.includes(permission);
+                                                                        return (
+                                                                            <label
+                                                                                key={permission}
+                                                                                className="group flex items-center justify-between gap-3 rounded-[6px] border border-stone-line bg-white px-3 py-3 transition hover:shadow-md"
+                                                                            >
+                                                                                <div className="min-w-0">
+                                                                                    <p className="text-sm font-semibold text-navy">{permissionLabels[permission] ?? permission}</p>
+                                                                                </div>
+
+                                                                                <div className="flex items-center gap-3">
+                                                                                    <input
+                                                                                        type="checkbox"
+                                                                                        name="permissions[]"
+                                                                                        value={permission}
+                                                                                        checked={active}
+                                                                                        onChange={() => togglePermission(permission)}
+                                                                                        className="sr-only"
+                                                                                    />
+
+                                                                                    <div
+                                                                                        role="switch"
+                                                                                        aria-checked={active}
+                                                                                        tabIndex={0}
+                                                                                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePermission(permission); } }}
+                                                                                        onClick={() => togglePermission(permission)}
+                                                                                        className={
+                                                                                            `w-11 h-6 flex items-center rounded-full p-[3px] transition-colors cursor-pointer ${active ? 'bg-gold' : 'bg-slate-200'}`
+                                                                                        }
+                                                                                    >
+                                                                                        <span className={`block w-4 h-4 bg-white rounded-full shadow transform transition ${active ? 'translate-x-5' : ''}`} />
+                                                                                    </div>
+                                                                                </div>
+                                                                            </label>
+                                                                        );
+                                                                    })}
+                                                                </div>
+                                                            </div>
+                                                        ),
+                                                    )}
+                                                </div>
+                                            </div>
                                             <label>
                                                 <span className="text-sm font-semibold text-navy">
                                                     Durum

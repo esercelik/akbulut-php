@@ -221,7 +221,13 @@ class ConsultantsController extends Controller
                 'bio' => $consultant->bio,
                 'avatar' => $consultant->avatar,
                 'active' => $consultant->active,
+                'permissions' => $consultant->permissions
+                    ->where('allowed', true)
+                    ->pluck('permission')
+                    ->values()
+                    ->all(),
             ],
+            'permissionValues' => $this->permissionValues(),
         ]);
     }
 
