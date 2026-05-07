@@ -7,3 +7,8 @@ deployment:
     - /home/akbulute/nodevenv/public_html/public/24/bin/npm --prefix /home/akbulute/repositories/akbulut install
     - /home/akbulute/nodevenv/public_html/public/24/bin/npm --prefix /home/akbulute/repositories/akbulut run build
     - /bin/cp -R * $DEPLOYPATH
+    - cd $DEPLOYPATH && mkdir -p storage/app/public bootstrap/cache
+    - cd $DEPLOYPATH && php artisan storage:link || true
+    - cd $DEPLOYPATH && if [ ! -e public/storage ]; then mkdir -p public/storage; fi
+    - cd $DEPLOYPATH && chmod -R 775 storage bootstrap/cache public/storage || true
+    - cd $DEPLOYPATH && php artisan optimize:clear || true

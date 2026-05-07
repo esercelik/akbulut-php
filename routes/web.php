@@ -6,18 +6,25 @@ use App\Http\Controllers\Admin\ListingsController;
 use App\Http\Controllers\Admin\MessagesController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\LocationController;
-use App\Http\Controllers\Web\ContactRequestController;
+use App\Http\Controllers\PublicStorageController;
 use App\Http\Controllers\Web\ConsultantPortfolioController;
 use App\Http\Controllers\Web\ConsultantsController as WebConsultantsController;
+use App\Http\Controllers\Web\ContactRequestController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\ListingController as WebListingController;
 use App\Http\Controllers\Web\SeoController;
+use App\Http\Middleware\HandleAppearance;
+use App\Http\Middleware\HandleInertiaRequests;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/sitemap.xml', [SeoController::class, 'sitemap'])->name('seo.sitemap');
 Route::get('/robots.txt', [SeoController::class, 'robots'])->name('seo.robots');
+Route::get('/storage/{path}', PublicStorageController::class)
+    ->where('path', '.*')
+    ->withoutMiddleware([HandleAppearance::class, HandleInertiaRequests::class])
+    ->name('public-storage.show');
 Route::get('/locations/cities', [LocationController::class, 'cities'])->name('locations.cities');
 Route::get('/locations/districts', [LocationController::class, 'districts'])->name('locations.districts');
 Route::get('/locations/neighborhoods', [LocationController::class, 'neighborhoods'])->name('locations.neighborhoods');
