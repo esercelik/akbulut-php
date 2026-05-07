@@ -5,6 +5,7 @@ namespace App\Support\Locations;
 use App\Models\City;
 use App\Models\District;
 use App\Models\Neighborhood;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 class LocationResolver
@@ -125,6 +126,7 @@ class LocationResolver
 
         $value = preg_replace('/\s*\([^)]*\)/u', '', $value) ?? $value;
         $value = preg_replace('/\s+/u', ' ', $value) ?? $value;
+        $value = Str::ascii($value, 'tr');
 
         return mb_strtolower(trim($value), 'UTF-8');
     }

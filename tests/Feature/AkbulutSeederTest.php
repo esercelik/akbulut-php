@@ -12,7 +12,10 @@ test('database seeder inserts the akbulut seed data', function () {
     expect(DB::table('users')->count())->toBe(9)
         ->and(DB::table('properties')->count())->toBe(8)
         ->and(DB::table('property_images')->count())->toBe(24)
-        ->and(DB::table('contact_requests')->count())->toBe(2);
+        ->and(DB::table('contact_requests')->count())->toBe(2)
+        ->and(DB::table('cities')->count())->toBe(81)
+        ->and(DB::table('districts')->count())->toBe(973)
+        ->and(DB::table('neighborhoods')->count())->toBe(49655);
 
     $admin = DB::table('users')->where('username', 'admin')->first();
 
@@ -35,5 +38,8 @@ test('database seeder inserts the akbulut seed data', function () {
     expect($featuredRent)->not->toBeNull()
         ->and((bool) $featuredRent->featured)->toBeTrue()
         ->and((bool) $featuredRent->furnished)->toBeTrue()
-        ->and((bool) $featuredRent->credit_eligible)->toBeFalse();
+        ->and((bool) $featuredRent->credit_eligible)->toBeFalse()
+        ->and($featuredRent->city_id)->not->toBeNull()
+        ->and($featuredRent->district_id)->not->toBeNull()
+        ->and($featuredRent->neighborhood_id)->not->toBeNull();
 });

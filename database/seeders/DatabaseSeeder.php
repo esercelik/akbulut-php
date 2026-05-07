@@ -21,6 +21,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        if (
+            Schema::hasTable('cities')
+            && Schema::hasTable('districts')
+            && Schema::hasTable('neighborhoods')
+        ) {
+            $this->call(TurkeyLocationSeeder::class);
+        }
+
         $locationResolver = app(LocationResolver::class);
 
         $imagePool = [
