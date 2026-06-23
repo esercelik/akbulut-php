@@ -1,6 +1,7 @@
 import AdminTable from '@/components/admin/AdminTable';
 import StatCard from '@/components/admin/StatCard';
 import { Head } from '@inertiajs/react';
+import { listingTypeLabels } from '@/lib/listing-taxonomy';
 import { Building2, Home, KeyRound, Mail, UsersRound } from 'lucide-react';
 
 type DashboardStats = {
@@ -19,7 +20,7 @@ type RecentListing = {
     price: number;
     city: string;
     district: string;
-    listingType: 'SALE' | 'RENT';
+    listingType: string;
     status: 'ACTIVE' | 'PASSIVE' | 'SOLD' | 'RENTED';
     imageUrl: string | null;
 };
@@ -38,11 +39,6 @@ type DashboardProps = {
     consultantSummaries: ConsultantSummary[];
 };
 
-const listingTypeLabels = {
-    SALE: 'Satilik',
-    RENT: 'Kiralik',
-};
-
 const statusLabels = {
     ACTIVE: 'Aktif',
     PASSIVE: 'Pasif',
@@ -57,7 +53,9 @@ function formatPrice(price: number, listingType: RecentListing['listingType']) {
         maximumFractionDigits: 0,
     }).format(price);
 
-    return listingType === 'RENT' ? `${formatted} / Ay` : formatted;
+    return ['RENT', 'TRANSFER_RENT'].includes(listingType)
+        ? `${formatted} / Ay`
+        : formatted;
 }
 
 export default function Dashboard({
@@ -148,9 +146,9 @@ export default function Dashboard({
                                     </td>
                                     <td className="px-5 py-4 text-slate-600">
                                         {
-                                            listingTypeLabels[
-                                                property.listingType
-                                            ]
+                                                listingTypeLabels[
+                                                    property.listingType
+                                                ] ?? property.listingType
                                         }
                                     </td>
                                     <td className="px-5 py-4">

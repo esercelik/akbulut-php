@@ -10,6 +10,7 @@ use App\Models\City;
 use App\Models\Property;
 use App\Models\PropertyImage;
 use App\Models\User;
+use App\Support\Listings\ListingTaxonomy;
 use App\Support\Locations\LocationResolver;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -45,7 +46,7 @@ class ListingsController extends Controller
             $validated['neighborhood_id'] ?? null,
         );
 
-        return [
+        $payload = [
             ...Arr::only($validated, [
                 'ilan_no',
                 'ilan_tarihi',
@@ -84,6 +85,31 @@ class ListingsController extends Controller
             'featured' => (bool) ($validated['featured'] ?? false),
             'consultant_id' => $consultantId,
         ];
+
+        if (ListingTaxonomy::isLand($payload['property_type'])) {
+            $payload = [
+                ...$payload,
+                'net_m2' => null,
+                'room_count' => ListingTaxonomy::defaultRoomCountFor($payload['property_type']),
+                'building_age' => null,
+                'floor' => null,
+                'total_floors' => null,
+                'heating' => null,
+                'bathroom_count' => null,
+                'mutfak' => null,
+                'balcony' => false,
+                'asansor' => false,
+                'otopark' => false,
+                'furnished' => false,
+                'usage_status' => null,
+                'site_icerisinde' => false,
+                'site_adi' => null,
+                'aidat' => null,
+                'enerji_kimlik_belgesi' => null,
+            ];
+        }
+
+        return $payload;
     }
 
     private function uniqueSlug(string $title, ?Property $ignore = null): string

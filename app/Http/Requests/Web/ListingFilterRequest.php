@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Web;
 
+use App\Support\Listings\ListingTaxonomy;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -30,8 +31,8 @@ class ListingFilterRequest extends FormRequest
             'city' => ['nullable', 'string', 'max:255'],
             'district' => ['nullable', 'string', 'max:255'],
             'neighborhood' => ['nullable', 'string', 'max:255'],
-            'listingType' => ['nullable', Rule::in(['SALE', 'RENT'])],
-            'propertyType' => ['nullable', Rule::in(['APARTMENT', 'VILLA', 'OFFICE', 'SHOP', 'LAND', 'BUILDING'])],
+            'listingType' => ['nullable', Rule::in(ListingTaxonomy::listingTypeKeys())],
+            'propertyType' => ['nullable', Rule::in(ListingTaxonomy::propertyTypeKeys())],
             'minPrice' => ['nullable', 'numeric', 'min:0'],
             'maxPrice' => ['nullable', 'numeric', 'min:0', Rule::when($this->filled('minPrice'), ['gte:minPrice'])],
         ];

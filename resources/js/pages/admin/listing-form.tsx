@@ -8,6 +8,14 @@ import {
     normalizeLocationValue,
     type LocationOption,
 } from '@/lib/locations';
+import {
+    defaultListingTypeFor,
+    defaultPropertyTypeFor,
+    findCategoryByPropertyType,
+    listingCategories,
+    type CategoryValue,
+    type ListingTypeValue,
+} from '@/lib/listing-taxonomy';
 
 type ConsultantOption = {
     id: number;
@@ -75,6 +83,8 @@ const inputClass =
     'mt-2 h-[48px] w-full rounded-[2px] border border-stone-line bg-white px-3 text-sm outline-none focus:border-gold';
 const textareaClass =
     'mt-2 w-full rounded-[2px] border border-stone-line bg-white px-3 py-3 text-sm outline-none focus:border-gold';
+const categoryButtonClass =
+    'flex h-9 w-full items-center justify-between px-3 text-left text-sm transition';
 
 const roomOptions = [
     '1+0',
@@ -140,17 +150,26 @@ function SelectField({
     defaultValue,
     options,
     errors,
+    hidden = false,
+    disabled = false,
 }: {
     name: string;
     label: string;
     defaultValue?: string | number | null;
     options: { value: string; label: string }[];
     errors: Record<string, string>;
+    hidden?: boolean;
+    disabled?: boolean;
 }) {
     return (
-        <label>
+        <label className={hidden ? 'hidden' : undefined}>
             <span className="text-sm font-semibold text-navy">{label}</span>
-            <select name={name} defaultValue={defaultValue ?? ''} className={inputClass}>
+            <select
+                name={name}
+                defaultValue={defaultValue ?? ''}
+                disabled={disabled}
+                className={inputClass}
+            >
                 <option value="">Seciniz</option>
                 {options.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -201,24 +220,48 @@ export default function ListingForm({
     const [brutM2, setBrutM2] = useState(() =>
         normalizeLocationValue(listing?.brut_m2 ?? listing?.square_meters),
     );
-    const propertyTypeOptions = useMemo(
-        () => [
-            { value: 'APARTMENT', label: 'Daire' },
-            { value: 'VILLA', label: 'Villa' },
-            { value: 'LAND', label: 'Arsa' },
-            { value: 'OFFICE', label: 'Ofis' },
-            { value: 'SHOP', label: 'Dukkan' },
-            { value: 'BUILDING', label: 'Bina' },
-        ],
-        [],
+    const initialCategory = findCategoryByPropertyType(listing?.property_type);
+    const [categoryValue, setCategoryValue] = useState<CategoryValue>(
+        initialCategory.value,
     );
+    const [listingType, setListingType] = useState<ListingTypeValue>(
+        (listing?.listing_type as ListingTypeValue | undefined) ??
+            defaultListingTypeFor(initialCategory),
+    );
+    const [propertyType, setPropertyType] = useState(
+        listing?.property_type ?? defaultPropertyTypeFor(initialCategory),
+    );
+    const selectedCategory = useMemo(
+        () =>
+            listingCategories.find((category) => category.value === categoryValue) ??
+            listingCategories[0],
+        [categoryValue],
+    );
+    const categoryProfile = selectedCategory.value;
+    const showsLandFields = categoryProfile === 'LAND';
+    const showsResidentialFields =
+        categoryProfile === 'HOUSING' || categoryProfile === 'TIMESHARE';
+    const showsRoomFields =
+        showsResidentialFields ||
+        categoryProfile === 'WORKPLACE' ||
+        categoryProfile === 'TOURISTIC';
+    const showsBuildingFields = categoryProfile !== 'LAND';
 
     useEffect(() => {
         setCityId(normalizeLocationValue(listing?.city_id));
         setDistrictId(normalizeLocationValue(listing?.district_id));
         setNeighborhoodId(normalizeLocationValue(listing?.neighborhood_id));
         setBrutM2(normalizeLocationValue(listing?.brut_m2 ?? listing?.square_meters));
-    }, [listing?.city_id, listing?.district_id, listing?.neighborhood_id, listing?.brut_m2, listing?.square_meters]);
+        const nextCategory = findCategoryByPropertyType(listing?.property_type);
+        setCategoryValue(nextCategory.value);
+        setListingType(
+            (listing?.listing_type as ListingTypeValue | undefined) ??
+                defaultListingTypeFor(nextCategory),
+        );
+        setPropertyType(
+            listing?.property_type ?? defaultPropertyTypeFor(nextCategory),
+        );
+    }, [listing?.city_id, listing?.district_id, listing?.neighborhood_id, listing?.brut_m2, listing?.square_meters, listing?.property_type, listing?.listing_type]);
 
     useEffect(() => {
         if (!cityId) {
@@ -276,6 +319,24 @@ export default function ListingForm({
         return () => controller.abort();
     }, [districtId, neighborhoodId]);
 
+    function chooseCategory(nextCategoryValue: CategoryValue) {
+        const nextCategory =
+            listingCategories.find((category) => category.value === nextCategoryValue) ??
+            listingCategories[0];
+
+        setCategoryValue(nextCategory.value);
+        setListingType(defaultListingTypeFor(nextCategory));
+        setPropertyType(defaultPropertyTypeFor(nextCategory));
+    }
+
+    function chooseListingType(nextListingType: ListingTypeValue) {
+        setListingType(nextListingType);
+    }
+
+    function choosePropertyType(nextPropertyType: string) {
+        setPropertyType(nextPropertyType);
+    }
+
     return (
         <>
             <Head title={title} />
@@ -295,6 +356,92 @@ export default function ListingForm({
                 >
                     {({ errors, processing }) => (
                         <>
+                            <section className="premium-card-shadow border border-stone-line bg-white p-6">
+                                <div className="flex flex-col justify-between gap-3 border-b border-stone-line pb-4 md:flex-row md:items-end">
+                                    <div>
+                                        <p className="section-eyebrow">Ilan Kategori Secimi</p>
+                                        <h2 className="mt-2 text-xl font-semibold text-navy">
+                                            Adim Adim Kategori Sec
+                                        </h2>
+                                    </div>
+                                    <p className="text-sm font-semibold text-slate-500">
+                                        Emlak &gt; {selectedCategory.label} &gt;{' '}
+                                        {
+                                            selectedCategory.listingTypes.find(
+                                                (option) => option.value === listingType,
+                                            )?.label
+                                        }
+                                    </p>
+                                </div>
+
+                                <input type="hidden" name="listing_type" value={listingType} />
+                                <input type="hidden" name="property_type" value={propertyType} />
+
+                                <div className="mt-5 grid gap-4 lg:grid-cols-3">
+                                    <div className="min-h-[220px] border border-stone-line bg-white p-2">
+                                        {listingCategories.map((category) => (
+                                            <button
+                                                key={category.value}
+                                                type="button"
+                                                onClick={() => chooseCategory(category.value)}
+                                                className={`${categoryButtonClass} ${
+                                                    category.value === categoryValue
+                                                        ? 'bg-slate-200 font-semibold text-navy'
+                                                        : 'text-slate-700 hover:bg-light-gray'
+                                                }`}
+                                            >
+                                                {category.label}
+                                                {category.value === categoryValue ? (
+                                                    <span className="h-0 w-0 border-y-[8px] border-l-[10px] border-y-transparent border-l-slate-400" />
+                                                ) : null}
+                                            </button>
+                                        ))}
+                                    </div>
+
+                                    <div className="min-h-[220px] border border-stone-line bg-white p-2">
+                                        {selectedCategory.listingTypes.map((option) => (
+                                            <button
+                                                key={option.value}
+                                                type="button"
+                                                onClick={() => chooseListingType(option.value)}
+                                                className={`${categoryButtonClass} ${
+                                                    option.value === listingType
+                                                        ? 'bg-slate-500 font-semibold text-white'
+                                                        : 'text-slate-700 hover:bg-light-gray'
+                                                }`}
+                                            >
+                                                {option.label}
+                                                {option.value === listingType ? (
+                                                    <span className="h-0 w-0 border-y-[8px] border-l-[10px] border-y-transparent border-l-slate-300" />
+                                                ) : null}
+                                            </button>
+                                        ))}
+                                    </div>
+
+                                    <div className="min-h-[220px] border border-sky-200 bg-sky-50 p-2 shadow-sm shadow-sky-100">
+                                        {selectedCategory.propertyTypes.map((option) => (
+                                            <button
+                                                key={option.value}
+                                                type="button"
+                                                onClick={() => choosePropertyType(option.value)}
+                                                className={`${categoryButtonClass} ${
+                                                    option.value === propertyType
+                                                        ? 'bg-white font-semibold text-navy shadow-sm'
+                                                        : 'text-slate-700 hover:bg-white/80'
+                                                }`}
+                                            >
+                                                {option.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                                {errors.listing_type || errors.property_type ? (
+                                    <p className="mt-3 text-xs font-semibold text-red-600">
+                                        {errors.listing_type ?? errors.property_type}
+                                    </p>
+                                ) : null}
+                            </section>
+
                             <section className="premium-card-shadow border border-stone-line bg-white p-6">
                                 <h2 className="text-xl font-semibold text-navy">
                                     Genel Bilgiler
@@ -348,16 +495,6 @@ export default function ListingForm({
                                             </p>
                                         ) : null}
                                     </label>
-                                    <SelectField
-                                        name="listing_type"
-                                        label="Ilan Tipi"
-                                        defaultValue={listing?.listing_type ?? 'SALE'}
-                                        options={[
-                                            { value: 'SALE', label: 'Satilik' },
-                                            { value: 'RENT', label: 'Kiralik' },
-                                        ]}
-                                        errors={errors}
-                                    />
                                     <label className="xl:col-span-2">
                                         <span className="text-sm font-semibold text-navy">
                                             Baslik
@@ -374,13 +511,6 @@ export default function ListingForm({
                                             </p>
                                         ) : null}
                                     </label>
-                                    <SelectField
-                                        name="property_type"
-                                        label="Emlak Tipi"
-                                        defaultValue={listing?.property_type ?? 'APARTMENT'}
-                                        options={propertyTypeOptions}
-                                        errors={errors}
-                                    />
                                     <label className="md:col-span-2 xl:col-span-4">
                                         <span className="text-sm font-semibold text-navy">
                                             Aciklama
@@ -507,12 +637,12 @@ export default function ListingForm({
 
                             <section className="premium-card-shadow border border-stone-line bg-white p-6">
                                 <h2 className="text-xl font-semibold text-navy">
-                                    Konut Ozellikleri
+                                    {selectedCategory.label} Bilgileri
                                 </h2>
                                 <div className="mt-5 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
                                     <label>
                                         <span className="text-sm font-semibold text-navy">
-                                            m² (Brut)
+                                            {showsLandFields ? 'Arsa m2' : 'm2 (Brut)'}
                                         </span>
                                         <input
                                             name="brut_m2"
@@ -533,7 +663,7 @@ export default function ListingForm({
                                             </p>
                                         ) : null}
                                     </label>
-                                    <label>
+                                    <label className={showsLandFields ? 'hidden' : undefined}>
                                         <span className="text-sm font-semibold text-navy">
                                             m² (Net)
                                         </span>
@@ -541,6 +671,7 @@ export default function ListingForm({
                                             name="net_m2"
                                             defaultValue={listing?.net_m2 ?? ''}
                                             inputMode="numeric"
+                                            disabled={showsLandFields}
                                             className={inputClass}
                                         />
                                         {errors.net_m2 ? (
@@ -551,22 +682,37 @@ export default function ListingForm({
                                     </label>
                                     <SelectField
                                         name="room_count"
-                                        label="Oda Sayisi"
+                                        label={categoryProfile === 'TOURISTIC' ? 'Oda / Kapasite' : 'Oda Sayisi'}
                                         defaultValue={listing?.room_count ?? ''}
                                         options={roomOptions.map((option) => ({
                                             value: option,
                                             label: option,
                                         }))}
                                         errors={errors}
+                                        hidden={!showsRoomFields}
+                                        disabled={!showsRoomFields}
                                     />
-                                    <label>
+                                    <label
+                                        className={
+                                            showsResidentialFields ||
+                                            categoryProfile === 'WORKPLACE' ||
+                                            categoryProfile === 'TOURISTIC'
+                                                ? undefined
+                                                : 'hidden'
+                                        }
+                                    >
                                         <span className="text-sm font-semibold text-navy">
-                                            Banyo Sayisi
+                                            Banyo / WC Sayisi
                                         </span>
                                         <input
                                             name="bathroom_count"
                                             defaultValue={listing?.bathroom_count ?? ''}
                                             inputMode="numeric"
+                                            disabled={
+                                                !showsResidentialFields &&
+                                                categoryProfile !== 'WORKPLACE' &&
+                                                categoryProfile !== 'TOURISTIC'
+                                            }
                                             className={inputClass}
                                         />
                                         {errors.bathroom_count ? (
@@ -584,6 +730,8 @@ export default function ListingForm({
                                             label: option,
                                         }))}
                                         errors={errors}
+                                        hidden={!showsResidentialFields}
+                                        disabled={!showsResidentialFields}
                                     />
                                     <SelectField
                                         name="balcony"
@@ -591,6 +739,8 @@ export default function ListingForm({
                                         defaultValue={listing?.balcony ? '1' : '0'}
                                         options={yesNoOptions}
                                         errors={errors}
+                                        hidden={!showsResidentialFields}
+                                        disabled={!showsResidentialFields}
                                     />
                                     <SelectField
                                         name="furnished"
@@ -598,6 +748,8 @@ export default function ListingForm({
                                         defaultValue={listing?.furnished ? '1' : '0'}
                                         options={yesNoGeneralOptions}
                                         errors={errors}
+                                        hidden={!showsResidentialFields}
+                                        disabled={!showsResidentialFields}
                                     />
                                     <SelectField
                                         name="usage_status"
@@ -608,11 +760,17 @@ export default function ListingForm({
                                             label: option,
                                         }))}
                                         errors={errors}
+                                        hidden={showsLandFields}
+                                        disabled={showsLandFields}
                                     />
                                 </div>
                             </section>
 
-                            <section className="premium-card-shadow border border-stone-line bg-white p-6">
+                            <section
+                                className={`premium-card-shadow border border-stone-line bg-white p-6 ${
+                                    showsBuildingFields ? '' : 'hidden'
+                                }`}
+                            >
                                 <h2 className="text-xl font-semibold text-navy">
                                     Bina Ozellikleri
                                 </h2>
@@ -626,6 +784,7 @@ export default function ListingForm({
                                             label: option,
                                         }))}
                                         errors={errors}
+                                        disabled={!showsBuildingFields}
                                     />
                                     <label>
                                         <span className="text-sm font-semibold text-navy">
@@ -634,6 +793,7 @@ export default function ListingForm({
                                         <input
                                             name="floor"
                                             defaultValue={listing?.floor ?? ''}
+                                            disabled={!showsBuildingFields}
                                             className={inputClass}
                                         />
                                         {errors.floor ? (
@@ -650,6 +810,7 @@ export default function ListingForm({
                                             name="total_floors"
                                             defaultValue={listing?.total_floors ?? ''}
                                             inputMode="numeric"
+                                            disabled={!showsBuildingFields}
                                             className={inputClass}
                                         />
                                         {errors.total_floors ? (
@@ -667,6 +828,7 @@ export default function ListingForm({
                                             label: option,
                                         }))}
                                         errors={errors}
+                                        disabled={!showsBuildingFields}
                                     />
                                     <SelectField
                                         name="asansor"
@@ -674,6 +836,7 @@ export default function ListingForm({
                                         defaultValue={listing?.asansor ? '1' : '0'}
                                         options={yesNoOptions}
                                         errors={errors}
+                                        disabled={!showsBuildingFields}
                                     />
                                     <SelectField
                                         name="otopark"
@@ -681,6 +844,7 @@ export default function ListingForm({
                                         defaultValue={listing?.otopark ? '1' : '0'}
                                         options={yesNoOptions}
                                         errors={errors}
+                                        disabled={!showsBuildingFields}
                                     />
                                     <SelectField
                                         name="site_icerisinde"
@@ -688,6 +852,7 @@ export default function ListingForm({
                                         defaultValue={listing?.site_icerisinde ? '1' : '0'}
                                         options={yesNoGeneralOptions}
                                         errors={errors}
+                                        disabled={!showsBuildingFields}
                                     />
                                     <label>
                                         <span className="text-sm font-semibold text-navy">
@@ -696,6 +861,7 @@ export default function ListingForm({
                                         <input
                                             name="site_adi"
                                             defaultValue={listing?.site_adi ?? ''}
+                                            disabled={!showsBuildingFields}
                                             className={inputClass}
                                         />
                                         {errors.site_adi ? (

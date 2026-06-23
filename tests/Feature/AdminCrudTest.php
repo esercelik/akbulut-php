@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\City;
 use App\Models\ContactRequest;
+use App\Models\District;
+use App\Models\Neighborhood;
 use App\Models\Property;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
@@ -13,22 +16,39 @@ function adminUser(): User
 
 function listingPayload(User $consultant, array $overrides = []): array
 {
+    $city = City::query()->firstOrCreate(
+        ['source_id' => 4100],
+        ['name' => 'Kocaeli'],
+    );
+    $district = District::query()->firstOrCreate(
+        ['source_id' => 4101],
+        ['city_id' => $city->id, 'name' => 'Izmit'],
+    );
+    $neighborhood = Neighborhood::query()->firstOrCreate(
+        ['source_id' => 4102],
+        [
+            'district_id' => $district->id,
+            'source_semt_id' => 4103,
+            'name' => 'Merkez',
+        ],
+    );
+
     return [
         'title' => 'Test Portfoy',
         'description' => 'Test aciklama',
         'price' => 1250000,
-        'city' => 'Kocaeli',
-        'district' => 'Izmit',
-        'neighborhood' => 'Merkez',
+        'city_id' => $city->id,
+        'district_id' => $district->id,
+        'neighborhood_id' => $neighborhood->id,
         'address' => 'Test adres',
         'property_type' => 'APARTMENT',
         'listing_type' => 'SALE',
         'square_meters' => 120,
         'room_count' => '3+1',
-        'building_age' => '1-5',
+        'building_age' => '1-5 arasi',
         'floor' => '2',
         'total_floors' => '5',
-        'heating' => 'Kombi',
+        'heating' => 'Kombi (Dogalgaz)',
         'bathroom_count' => 1,
         'balcony' => 1,
         'furnished' => 0,
@@ -77,6 +97,42 @@ test('admin can create update and delete listings', function () {
         ->assertRedirect(route('admin.listings.index'));
 
     $this->assertDatabaseMissing('properties', ['id' => $property->id]);
+});
+
+test('admin can create land listing without residential fields', function () {
+    $admin = adminUser();
+    $consultant = User::factory()->create(['role' => 'CONSULTANT']);
+    $payload = listingPayload($consultant, [
+        'title' => 'Arsa Portfoyu',
+        'property_type' => 'LAND_ZONED',
+        'listing_type' => 'BUILD_FOR_SALE',
+        'square_meters' => 500,
+        'brut_m2' => 500,
+    ]);
+
+    unset(
+        $payload['room_count'],
+        $payload['building_age'],
+        $payload['floor'],
+        $payload['total_floors'],
+        $payload['heating'],
+        $payload['bathroom_count'],
+        $payload['balcony'],
+        $payload['furnished'],
+    );
+
+    $this->actingAs($admin)
+        ->post(route('admin.listings.store'), $payload)
+        ->assertRedirect(route('admin.listings.index'));
+
+    $this->assertDatabaseHas('properties', [
+        'title' => 'Arsa Portfoyu',
+        'property_type' => 'LAND_ZONED',
+        'listing_type' => 'BUILD_FOR_SALE',
+        'room_count' => 'Arsa',
+        'balcony' => false,
+        'furnished' => false,
+    ]);
 });
 
 test('admin can create update and delete users', function () {

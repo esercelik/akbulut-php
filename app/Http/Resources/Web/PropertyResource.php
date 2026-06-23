@@ -2,31 +2,12 @@
 
 namespace App\Http\Resources\Web;
 
+use App\Support\Listings\ListingTaxonomy;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PropertyResource extends JsonResource
 {
-    /**
-     * @var array<string, string>
-     */
-    private const LISTING_TYPE_LABELS = [
-        'SALE' => 'Satilik',
-        'RENT' => 'Kiralik',
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    private const PROPERTY_TYPE_LABELS = [
-        'APARTMENT' => 'Daire',
-        'VILLA' => 'Villa',
-        'OFFICE' => 'Ofis',
-        'SHOP' => 'Dukkan',
-        'LAND' => 'Arsa',
-        'BUILDING' => 'Bina',
-    ];
-
     /**
      * Transform the resource into an array.
      *
@@ -56,8 +37,8 @@ class PropertyResource extends JsonResource
             'neighborhood' => $neighborhood,
             'district' => $district,
             'city' => $city,
-            'type' => self::PROPERTY_TYPE_LABELS[$this->property_type] ?? $this->property_type,
-            'status' => self::LISTING_TYPE_LABELS[$this->listing_type] ?? $this->listing_type,
+            'type' => ListingTaxonomy::propertyTypeLabel($this->property_type),
+            'status' => ListingTaxonomy::listingTypeLabel($this->listing_type),
             'area' => $this->square_meters,
             'rooms' => $this->room_count,
             'baths' => $this->bathroom_count ?? 0,
@@ -104,7 +85,7 @@ class PropertyResource extends JsonResource
         return [
             ['label' => 'Ilan No', 'value' => $this->stringOrDefault($this->ilan_no)],
             ['label' => 'Ilan Tarihi', 'value' => $this->stringOrDefault($this->ilan_tarihi?->format('d.m.Y'))],
-            ['label' => 'Emlak Tipi', 'value' => $this->stringOrDefault(self::PROPERTY_TYPE_LABELS[$this->property_type] ?? $this->property_type)],
+            ['label' => 'Emlak Tipi', 'value' => $this->stringOrDefault(ListingTaxonomy::propertyTypeLabel($this->property_type))],
             ['label' => 'm² (Brut)', 'value' => $this->numericOrDefault($this->brut_m2)],
             ['label' => 'm² (Net)', 'value' => $this->numericOrDefault($this->net_m2)],
             ['label' => 'Oda Sayisi', 'value' => $this->stringOrDefault($this->room_count)],

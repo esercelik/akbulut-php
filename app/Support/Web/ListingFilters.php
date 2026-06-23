@@ -4,6 +4,7 @@ namespace App\Support\Web;
 
 use App\Models\City;
 use App\Models\Property;
+use App\Support\Listings\ListingTaxonomy;
 use Illuminate\Database\Eloquent\Builder;
 
 class ListingFilters
@@ -102,8 +103,8 @@ class ListingFilters
                     'name' => $city->name,
                 ])
                 ->all(),
-            'listingTypes' => self::LISTING_TYPES,
-            'propertyTypes' => self::PROPERTY_TYPES,
+            'listingTypes' => ListingTaxonomy::LISTING_TYPES,
+            'propertyTypes' => ListingTaxonomy::PROPERTY_TYPES,
         ];
     }
 }

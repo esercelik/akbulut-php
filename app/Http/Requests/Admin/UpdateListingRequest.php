@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Support\Listings\ListingTaxonomy;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -14,6 +15,20 @@ class UpdateListingRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $propertyType = (string) $this->input('property_type', '');
+
+        $this->merge([
+            'square_meters' => $this->filled('square_meters')
+                ? $this->input('square_meters')
+                : $this->input('brut_m2'),
+            'room_count' => $this->filled('room_count')
+                ? $this->input('room_count')
+                : ListingTaxonomy::defaultRoomCountFor($propertyType),
+        ]);
     }
 
     /**
@@ -33,14 +48,12 @@ class UpdateListingRequest extends FormRequest
             'district_id' => ['required', 'integer', Rule::exists('districts', 'id')->where('city_id', $this->integer('city_id'))],
             'neighborhood_id' => ['required', 'integer', Rule::exists('neighborhoods', 'id')->where('district_id', $this->integer('district_id'))],
             'address' => ['nullable', 'string', 'max:255'],
-            'property_type' => ['required', Rule::in(['APARTMENT', 'VILLA', 'OFFICE', 'SHOP', 'LAND', 'BUILDING'])],
-            'listing_type' => ['required', Rule::in(['SALE', 'RENT'])],
+            'property_type' => ['required', Rule::in(ListingTaxonomy::propertyTypeKeys())],
+            'listing_type' => ['required', Rule::in(ListingTaxonomy::listingTypeKeys())],
             'square_meters' => ['required', 'integer', 'min:1'],
             'brut_m2' => ['nullable', 'integer', 'min:0'],
             'net_m2' => ['nullable', 'integer', 'min:0'],
-            'room_count' => ['required', Rule::in([
-                '1+0', '1+1', '2+1', '2+2', '3+1', '3+2', '4+1', '4+2', '5+1', '5+2', '6+1', '6+2', '7+1', '8+1', 'Acik Plan', 'Tek Bolum', 'Studyo', 'Arsa', 'Muadil',
-            ])],
+            'room_count' => ['required', 'string', 'max:50'],
             'building_age' => ['nullable', Rule::in([
                 '0', '1-5 arasi', '6-10 arasi', '11-15 arasi', '16-20 arasi', '21-25 arasi', '26-30 arasi', '30+',
             ])],

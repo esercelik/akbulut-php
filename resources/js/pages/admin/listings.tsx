@@ -1,6 +1,7 @@
 import AdminTable from '@/components/admin/AdminTable';
 import { Head, Link, Form } from '@inertiajs/react';
 import { create, destroy, edit } from '@/routes/admin/listings';
+import { listingTypeLabels } from '@/lib/listing-taxonomy';
 import { Pencil, Search, Trash2 } from 'lucide-react';
 
 type PropertyRow = {
@@ -10,7 +11,7 @@ type PropertyRow = {
     price: number;
     city: string;
     district: string;
-    listingType: 'SALE' | 'RENT';
+    listingType: string;
     status: 'ACTIVE' | 'PASSIVE' | 'SOLD' | 'RENTED';
     consultantName: string | null;
     imageUrl: string | null;
@@ -37,11 +38,6 @@ const statusLabels = {
     RENTED: 'Kiralandi',
 };
 
-const listingTypeLabels = {
-    SALE: 'Satilik',
-    RENT: 'Kiralik',
-};
-
 function formatPrice(price: number, listingType: PropertyRow['listingType']) {
     const formatted = new Intl.NumberFormat('tr-TR', {
         style: 'currency',
@@ -49,7 +45,9 @@ function formatPrice(price: number, listingType: PropertyRow['listingType']) {
         maximumFractionDigits: 0,
     }).format(price);
 
-    return listingType === 'RENT' ? `${formatted} / Ay` : formatted;
+    return ['RENT', 'TRANSFER_RENT'].includes(listingType)
+        ? `${formatted} / Ay`
+        : formatted;
 }
 
 export default function Listings({
@@ -134,7 +132,7 @@ export default function Listings({
                                 </p>
                                 <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-xs font-bold tracking-[0.12em] text-slate-400 uppercase">
                                     <span>
-                                        {listingTypeLabels[property.listingType]}
+                                        {listingTypeLabels[property.listingType] ?? property.listingType}
                                     </span>
                                     {property.listingNo ? (
                                         <span>Ilan No: {property.listingNo}</span>
