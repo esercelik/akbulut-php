@@ -80,7 +80,7 @@ class StoreListingRequest extends FormRequest
             'status' => ['required', Rule::in(['ACTIVE', 'PASSIVE', 'SOLD', 'RENTED'])],
             'featured' => ['sometimes', 'boolean'],
             'consultant_id' => ['nullable', 'integer', 'exists:users,id'],
-            'images' => ['nullable', 'array', 'max:6'],
+            'images' => ['nullable', 'array'],
             'images.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
         ];
     }

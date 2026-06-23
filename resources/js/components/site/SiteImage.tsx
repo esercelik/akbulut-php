@@ -10,13 +10,15 @@ export default function SiteImage({
     priority = false,
     className = '',
     sizes,
+    decoding,
     ...props
 }: SiteImageProps) {
     return (
         <img
             {...props}
             className={`${fill ? 'absolute inset-0 h-full w-full' : ''} ${className}`}
-            loading={priority ? 'eager' : props.loading}
+            decoding={decoding ?? 'async'}
+            loading={priority ? 'eager' : props.loading ?? 'lazy'}
             sizes={sizes}
         />
     );

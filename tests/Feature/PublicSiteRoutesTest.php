@@ -179,15 +179,31 @@ test('public listing detail exposes consultant portfolio link data', function ()
     $property = Property::factory()->for($consultant, 'consultant')->create([
         'slug' => 'active-public-listing',
         'status' => 'ACTIVE',
+        'city' => 'Kocaeli',
+        'district' => 'Izmit',
     ]);
-    PropertyImage::factory()->for($property)->create(['sort_order' => 0]);
+    PropertyImage::factory()
+        ->for($property)
+        ->count(7)
+        ->sequence(fn ($sequence) => ['sort_order' => $sequence->index])
+        ->create();
+    $relatedProperty = Property::factory()->for($consultant, 'consultant')->create([
+        'status' => 'ACTIVE',
+        'title' => 'Related Public Listing',
+        'city' => 'Kocaeli',
+        'district' => 'Izmit',
+    ]);
+    PropertyImage::factory()->for($relatedProperty)->create(['sort_order' => 0]);
 
     $this->get(route('listings.show', $property->slug))
         ->assertOk()
         ->assertInertia(fn (Assert $page) => $page
             ->component('site/listing-detail')
             ->where('property.advisor.slug', 'detail-consultant')
-            ->where('property.advisor.url', route('consultants.show', ['consultant' => 'detail-consultant'])));
+            ->where('property.advisor.url', route('consultants.show', ['consultant' => 'detail-consultant']))
+            ->has('property.gallery', 7)
+            ->has('relatedProperties', 1)
+            ->where('relatedProperties.0.title', 'Related Public Listing'));
 });
 
 test('consultant portfolio page lists only active listings for that consultant', function () {

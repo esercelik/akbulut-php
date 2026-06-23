@@ -199,20 +199,6 @@ class ListingsController extends Controller
             ]));
     }
 
-    private function ensureImageLimit(Property $property, Request $request, array $removeImageIds = []): void
-    {
-        $remainingImages = $property->images()
-            ->when($removeImageIds !== [], fn ($query) => $query->whereNotIn('id', $removeImageIds))
-            ->count();
-        $uploadedImages = count($request->file('images', []));
-
-        if ($remainingImages + $uploadedImages > 6) {
-            throw ValidationException::withMessages([
-                'images' => 'Bir ilan icin en fazla 6 gorsel yuklenebilir.',
-            ]);
-        }
-    }
-
     /**
      * @return array<int, array{id: int, name: string}>
      */
@@ -432,7 +418,6 @@ class ListingsController extends Controller
 
         $validated = $request->validated();
         $removeImageIds = $validated['remove_image_ids'] ?? [];
-        $this->ensureImageLimit($property, $request, $removeImageIds);
 
         $property->update([
             ...$this->listingPayload($validated, $user, $locationResolver),

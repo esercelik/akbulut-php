@@ -1005,7 +1005,7 @@ export default function ListingForm({
                                                 Ilan gorselleri
                                             </p>
                                             <p className="mt-1 text-sm text-slate-500">
-                                                JPG, PNG veya WebP yukleyin. Tek seferde en fazla 6 dosya, dosya basina 5 MB.
+                                                JPG, PNG veya WebP yukleyin. Fotograf siniri yoktur, dosya basina 5 MB.
                                             </p>
                                         </div>
                                     </div>

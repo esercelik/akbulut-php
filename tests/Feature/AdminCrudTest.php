@@ -135,6 +135,27 @@ test('admin can create land listing without residential fields', function () {
     ]);
 });
 
+test('admin can upload more than six listing images', function () {
+    Storage::fake('public');
+
+    $admin = adminUser();
+    $consultant = User::factory()->create(['role' => 'CONSULTANT']);
+
+    $images = collect(range(1, 7))
+        ->map(fn (int $index) => UploadedFile::fake()->image("listing-{$index}.webp"))
+        ->all();
+
+    $this->actingAs($admin)
+        ->post(route('admin.listings.store'), listingPayload($consultant, [
+            'images' => $images,
+        ]))
+        ->assertRedirect(route('admin.listings.index'));
+
+    $property = Property::query()->where('title', 'Test Portfoy')->firstOrFail();
+
+    expect($property->images()->count())->toBe(7);
+});
+
 test('admin can create update and delete users', function () {
     $admin = adminUser();
 
