@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\City;
+use App\Models\District;
+use App\Models\Neighborhood;
 use App\Models\Property;
 use App\Models\PropertyImage;
 use App\Models\User;
@@ -36,6 +39,72 @@ test('public listings page renders database backed listings', function () {
             ->component('site/listings')
             ->has('properties', 1)
             ->where('properties.0.title', 'Active Public Listing'));
+});
+
+test('home page exposes portfolio search options', function () {
+    City::query()->create([
+        'source_id' => 41,
+        'name' => 'Kocaeli',
+    ]);
+
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('site/home')
+            ->has('filterOptions.cities', 1)
+            ->where('filterOptions.cities.0.name', 'Kocaeli')
+            ->where('filterOptions.listingTypes.SALE', fn (string $label): bool => $label !== '')
+            ->where('filterOptions.propertyTypes.APARTMENT', 'Daire'));
+});
+
+test('public listings page filters by location ids from portfolio search', function () {
+    $consultant = User::factory()->create([
+        'role' => 'CONSULTANT',
+        'active' => true,
+    ]);
+    $city = City::query()->create([
+        'source_id' => 41,
+        'name' => 'Kocaeli',
+    ]);
+    $district = District::query()->create([
+        'city_id' => $city->id,
+        'source_id' => 1,
+        'name' => 'Izmit',
+    ]);
+    $neighborhood = Neighborhood::query()->create([
+        'district_id' => $district->id,
+        'source_id' => 1,
+        'source_semt_id' => 1,
+        'name' => 'Yahya Kaptan',
+    ]);
+
+    $matchingProperty = Property::factory()->for($consultant, 'consultant')->create([
+        'status' => 'ACTIVE',
+        'title' => 'Matching Location Id Listing',
+        'city_id' => $city->id,
+        'district_id' => $district->id,
+        'neighborhood_id' => $neighborhood->id,
+    ]);
+    PropertyImage::factory()->for($matchingProperty)->create(['sort_order' => 0]);
+
+    Property::factory()->for($consultant, 'consultant')->create([
+        'status' => 'ACTIVE',
+        'title' => 'Different Location Id Listing',
+    ]);
+
+    $this->get(route('listings.index', [
+        'cityId' => $city->id,
+        'districtId' => $district->id,
+        'neighborhoodId' => $neighborhood->id,
+    ]))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('site/listings')
+            ->where('filters.cityId', fn (int|string $cityId): bool => (int) $cityId === $city->id)
+            ->where('filters.districtId', fn (int|string $districtId): bool => (int) $districtId === $district->id)
+            ->where('filters.neighborhoodId', fn (int|string $neighborhoodId): bool => (int) $neighborhoodId === $neighborhood->id)
+            ->has('properties', 1)
+            ->where('properties.0.title', 'Matching Location Id Listing'));
 });
 
 test('public listings page filters by location type and price range', function () {

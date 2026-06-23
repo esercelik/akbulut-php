@@ -1,3 +1,4 @@
+import { router } from "@inertiajs/react";
 import { Search } from "lucide-react";
 import { FormEvent, useEffect, useState } from "react";
 import {
@@ -6,6 +7,7 @@ import {
   normalizeLocationValue,
   type LocationOption,
 } from "@/lib/locations";
+import { index as listingsIndex } from "@/routes/listings";
 
 export type ListingFilters = {
   cityId?: string | number;
@@ -48,6 +50,8 @@ type SearchBarProps = {
   compact?: boolean;
 };
 
+const emptyFilters: ListingFilters = {};
+
 type SearchFormState = {
   cityId: string;
   districtId: string;
@@ -59,17 +63,15 @@ type SearchFormState = {
 };
 
 function buildListingsUrl(filters: SearchFormState) {
-  const query = new URLSearchParams();
+  const query: Record<string, string> = {};
 
   Object.entries(filters).forEach(([key, value]) => {
     if (value !== "") {
-      query.set(key, value);
+      query[key] = value;
     }
   });
 
-  const queryString = query.toString();
-
-  return queryString ? `/listings?${queryString}` : "/listings";
+  return listingsIndex.url({ query });
 }
 
 function initialFormState(filters: ListingFilters): SearchFormState {
@@ -85,7 +87,7 @@ function initialFormState(filters: ListingFilters): SearchFormState {
 }
 
 export default function SearchBar({
-  filters: initialFilters = {},
+  filters: initialFilters = emptyFilters,
   filterOptions = defaultFilterOptions,
   compact = false,
 }: SearchBarProps) {
@@ -175,7 +177,11 @@ export default function SearchBar({
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    window.location.href = buildListingsUrl(filters);
+    router.visit(buildListingsUrl(filters), {
+      method: "get",
+      preserveScroll: false,
+      preserveState: false,
+    });
   }
 
   return (

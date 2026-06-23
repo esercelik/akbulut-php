@@ -1,3 +1,5 @@
+import { districts, neighborhoods } from "@/routes/locations";
+
 export type LocationOption = {
   id: number;
   name: string;
@@ -33,15 +35,12 @@ async function fetchLocationOptions(url: string, signal?: AbortSignal): Promise<
 }
 
 export function fetchDistrictOptions(cityId: string | number, signal?: AbortSignal): Promise<LocationOption[]> {
-  return fetchLocationOptions(`/locations/districts?city_id=${encodeURIComponent(String(cityId))}`, signal);
+  return fetchLocationOptions(districts.url({ query: { city_id: cityId } }), signal);
 }
 
 export function fetchNeighborhoodOptions(
   districtId: string | number,
   signal?: AbortSignal,
 ): Promise<LocationOption[]> {
-  return fetchLocationOptions(
-    `/locations/neighborhoods?district_id=${encodeURIComponent(String(districtId))}`,
-    signal,
-  );
+  return fetchLocationOptions(neighborhoods.url({ query: { district_id: districtId } }), signal);
 }
