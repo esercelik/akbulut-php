@@ -99,12 +99,16 @@ type ImportedListingData = {
     total_floors: string;
     heating: string;
     bathroom_count: number | null;
+    kitchen: string;
     balcony: boolean | null;
     furnished: boolean | null;
+    usage_status: string;
     site_name: string;
     dues: number | null;
     credit_eligible: boolean | null;
     deed_status: string;
+    energy_certificate: string;
+    seller_type: string;
     exchange: boolean | null;
     features: string[];
     contact_name: string;
@@ -201,6 +205,7 @@ function normalizeComparable(value: string | null | undefined): string {
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
         .replace(/ı/g, 'i')
+        .replace(/ı/g, 'i')
         .replace(/[^a-z0-9+]+/g, '');
 }
 
@@ -217,7 +222,13 @@ function findOptionByText<T extends { value?: string; label?: string; name?: str
     return options.find((option) =>
         [option.value, option.label, option.name]
             .filter(Boolean)
-            .some((candidate) => normalizeComparable(candidate) === normalized),
+            .some((candidate) => {
+                const normalizedCandidate = normalizeComparable(candidate);
+
+                return normalizedCandidate === normalized
+                    || (normalized.length > 3 && normalizedCandidate.includes(normalized))
+                    || (normalizedCandidate.length > 3 && normalized.includes(normalizedCandidate));
+            }),
     );
 }
 
@@ -498,6 +509,36 @@ export default function ListingForm({
         }
     }
 
+    function setSelectByTextOrValue(name: string, value: string | number | null | undefined) {
+        const form = formElement();
+        const field = form?.elements.namedItem(name);
+
+        if (!(field instanceof HTMLSelectElement)) {
+            return;
+        }
+
+        const nextValue = value === null || value === undefined ? '' : String(value);
+
+        if (!nextValue) {
+            return;
+        }
+
+        const option = Array.from(field.options).find((candidate) => {
+            const normalizedCandidateValue = normalizeComparable(candidate.value);
+            const normalizedCandidateText = normalizeComparable(candidate.text);
+            const normalizedValue = normalizeComparable(nextValue);
+
+            return normalizedCandidateValue === normalizedValue
+                || normalizedCandidateText === normalizedValue
+                || (normalizedValue.length > 3 && normalizedCandidateText.includes(normalizedValue))
+                || (normalizedCandidateText.length > 3 && normalizedValue.includes(normalizedCandidateText));
+        });
+
+        if (option) {
+            setFieldValue(name, option.value);
+        }
+    }
+
     function matchConsultant(data: ImportedListingData): number | null {
         if (data.matched_consultant_id && consultants.some((consultant) => consultant.id === data.matched_consultant_id)) {
             return data.matched_consultant_id;
@@ -604,19 +645,31 @@ export default function ListingForm({
         setFieldValue('brut_m2', m2Value);
         setFieldValue('square_meters', m2Value);
         setFieldValue('net_m2', data.net_m2);
-        setSelectIfOptionExists('room_count', data.room_count);
+        setSelectByTextOrValue('room_count', data.room_count);
         setFieldValue('bathroom_count', data.bathroom_count);
-        setSelectIfOptionExists('building_age', data.building_age);
+        setSelectByTextOrValue('building_age', data.building_age);
         setFieldValue('floor', data.floor);
         setFieldValue('total_floors', data.total_floors);
-        setSelectIfOptionExists('heating', data.heating);
+        setSelectByTextOrValue('heating', data.heating);
+        setSelectByTextOrValue('mutfak', data.kitchen);
+        setSelectByTextOrValue('usage_status', data.usage_status);
         setSelectIfOptionExists('balcony', booleanSelectValue(data.balcony));
         setSelectIfOptionExists('furnished', booleanSelectValue(data.furnished));
         setSelectIfOptionExists('credit_eligible', booleanSelectValue(data.credit_eligible));
         setSelectIfOptionExists('takas', booleanSelectValue(data.exchange));
-        setSelectIfOptionExists('deed_status', data.deed_status);
+        setSelectByTextOrValue('deed_status', data.deed_status);
+        setSelectByTextOrValue('enerji_kimlik_belgesi', data.energy_certificate);
+        setSelectByTextOrValue('kimden', data.seller_type || data.source_portal);
         setFieldValue('site_adi', data.site_name);
         setFieldValue('aidat', data.dues);
+
+        if (!data.seller_type && normalizeComparable(data.source_portal).includes('sahibinden')) {
+            setSelectByTextOrValue('kimden', 'Sahibinden');
+        }
+
+        if (normalizeComparable(data.source_portal).includes('emlak') || normalizeComparable(data.seller_type).includes('emlak')) {
+            setSelectByTextOrValue('kimden', 'Emlak Ofisinden');
+        }
 
         if (matchedConsultantId) {
             setSelectIfOptionExists('consultant_id', matchedConsultantId);

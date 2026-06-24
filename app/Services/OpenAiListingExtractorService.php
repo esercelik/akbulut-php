@@ -33,6 +33,10 @@ class OpenAiListingExtractorService
                     'input' => [
                         [
                             'role' => 'system',
+                            'content' => 'Sen Turkce emlak ilan PDFlerinden yapilandirilmis ilan verisi cikaran bir asistansin. Sadece verilen PDF metnine dayan. Bilgi yoksa uydurma. Tapu durumu, mahalle, kimden, isitma, bina yasi, kullanim durumu, enerji kimlik belgesi, mutfak ve benzeri tum ilan detaylarini ozellikle ara. Cevabi sadece gecerli JSON olarak dondur.',
+                        ],
+                        [
+                            'role' => 'system',
                             'content' => 'Sen Türkçe emlak ilan PDF’lerinden yapılandırılmış ilan verisi çıkaran bir asistansın. Sadece verilen PDF metnine dayan. Bilgi yoksa uydurma. Cevabı sadece geçerli JSON olarak döndür.',
                         ],
                         [
@@ -111,12 +115,16 @@ PROMPT."\n\n".$pdfText;
                 'total_floors',
                 'heating',
                 'bathroom_count',
+                'kitchen',
                 'balcony',
                 'furnished',
+                'usage_status',
                 'site_name',
                 'dues',
                 'credit_eligible',
                 'deed_status',
+                'energy_certificate',
+                'seller_type',
                 'exchange',
                 'features',
                 'contact_name',
@@ -146,12 +154,16 @@ PROMPT."\n\n".$pdfText;
                 'total_floors' => ['type' => 'string'],
                 'heating' => ['type' => 'string'],
                 'bathroom_count' => ['type' => ['integer', 'null']],
+                'kitchen' => ['type' => 'string'],
                 'balcony' => ['type' => ['boolean', 'null']],
                 'furnished' => ['type' => ['boolean', 'null']],
+                'usage_status' => ['type' => 'string'],
                 'site_name' => ['type' => 'string'],
                 'dues' => ['type' => ['integer', 'null']],
                 'credit_eligible' => ['type' => ['boolean', 'null']],
                 'deed_status' => ['type' => 'string'],
+                'energy_certificate' => ['type' => 'string'],
+                'seller_type' => ['type' => 'string'],
                 'exchange' => ['type' => ['boolean', 'null']],
                 'features' => [
                     'type' => 'array',
@@ -249,12 +261,16 @@ PROMPT."\n\n".$pdfText;
             'total_floors' => '',
             'heating' => '',
             'bathroom_count' => null,
+            'kitchen' => '',
             'balcony' => null,
             'furnished' => null,
+            'usage_status' => '',
             'site_name' => '',
             'dues' => null,
             'credit_eligible' => null,
             'deed_status' => '',
+            'energy_certificate' => '',
+            'seller_type' => '',
             'exchange' => null,
             'features' => [],
             'contact_name' => '',
@@ -273,7 +289,7 @@ PROMPT."\n\n".$pdfText;
 
         $data = array_replace_recursive($defaults, Arr::only($data, array_keys($defaults)));
 
-        foreach (['title', 'description', 'currency', 'listing_type', 'property_type', 'city', 'district', 'neighborhood', 'address', 'room_count', 'building_age', 'floor', 'total_floors', 'heating', 'site_name', 'deed_status', 'contact_name', 'contact_phone', 'source_portal', 'source_listing_no'] as $key) {
+        foreach (['title', 'description', 'currency', 'listing_type', 'property_type', 'city', 'district', 'neighborhood', 'address', 'room_count', 'building_age', 'floor', 'total_floors', 'heating', 'kitchen', 'usage_status', 'site_name', 'deed_status', 'energy_certificate', 'seller_type', 'contact_name', 'contact_phone', 'source_portal', 'source_listing_no'] as $key) {
             $data[$key] = $this->sanitizeString($data[$key] ?? '');
         }
 
