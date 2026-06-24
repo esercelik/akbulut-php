@@ -57,9 +57,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
             ->middleware('throttle:6,1')
             ->name('listings.import-pdf');
         Route::post('listings', [ListingsController::class, 'store'])->name('listings.store');
-        Route::get('listings/{property}/edit', [ListingsController::class, 'edit'])->name('listings.edit');
-        Route::put('listings/{property}', [ListingsController::class, 'update'])->name('listings.update');
-        Route::delete('listings/{property}', [ListingsController::class, 'destroy'])->name('listings.destroy');
+        Route::get('listings/{property}/edit', [ListingsController::class, 'edit'])->whereNumber('property')->name('listings.edit');
+        Route::put('listings/{property}', [ListingsController::class, 'update'])->whereNumber('property')->name('listings.update');
+        Route::delete('listings/{property}', [ListingsController::class, 'destroy'])->whereNumber('property')->name('listings.destroy');
         Route::get('consultants', ConsultantsController::class)->name('consultants.index');
         Route::post('consultants', [ConsultantsController::class, 'store'])->name('consultants.store');
         Route::get('consultants/{consultant}/edit', [ConsultantsController::class, 'edit'])->name('consultants.edit');
