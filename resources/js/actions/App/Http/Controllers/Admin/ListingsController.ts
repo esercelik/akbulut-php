@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::__invoke
- * @see app/Http/Controllers/Admin/ListingsController.php:305
+ * @see app/Http/Controllers/Admin/ListingsController.php:309
  * @route '/admin/listings'
  */
 const ListingsController = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ ListingsController.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::__invoke
- * @see app/Http/Controllers/Admin/ListingsController.php:305
+ * @see app/Http/Controllers/Admin/ListingsController.php:309
  * @route '/admin/listings'
  */
 ListingsController.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ ListingsController.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::__invoke
- * @see app/Http/Controllers/Admin/ListingsController.php:305
+ * @see app/Http/Controllers/Admin/ListingsController.php:309
  * @route '/admin/listings'
  */
 ListingsController.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -34,7 +34,7 @@ ListingsController.get = (options?: RouteQueryOptions): RouteDefinition<'get'> =
 })
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::__invoke
- * @see app/Http/Controllers/Admin/ListingsController.php:305
+ * @see app/Http/Controllers/Admin/ListingsController.php:309
  * @route '/admin/listings'
  */
 ListingsController.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -44,7 +44,7 @@ ListingsController.head = (options?: RouteQueryOptions): RouteDefinition<'head'>
 
     /**
 * @see \App\Http\Controllers\Admin\ListingsController::__invoke
- * @see app/Http/Controllers/Admin/ListingsController.php:305
+ * @see app/Http/Controllers/Admin/ListingsController.php:309
  * @route '/admin/listings'
  */
     const ListingsControllerForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -54,7 +54,7 @@ ListingsController.head = (options?: RouteQueryOptions): RouteDefinition<'head'>
 
             /**
 * @see \App\Http\Controllers\Admin\ListingsController::__invoke
- * @see app/Http/Controllers/Admin/ListingsController.php:305
+ * @see app/Http/Controllers/Admin/ListingsController.php:309
  * @route '/admin/listings'
  */
         ListingsControllerForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -63,7 +63,7 @@ ListingsController.head = (options?: RouteQueryOptions): RouteDefinition<'head'>
         })
             /**
 * @see \App\Http\Controllers\Admin\ListingsController::__invoke
- * @see app/Http/Controllers/Admin/ListingsController.php:305
+ * @see app/Http/Controllers/Admin/ListingsController.php:309
  * @route '/admin/listings'
  */
         ListingsControllerForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -79,7 +79,7 @@ ListingsController.head = (options?: RouteQueryOptions): RouteDefinition<'head'>
     ListingsController.form = ListingsControllerForm
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::create
- * @see app/Http/Controllers/Admin/ListingsController.php:360
+ * @see app/Http/Controllers/Admin/ListingsController.php:364
  * @route '/admin/listings/create'
  */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -94,7 +94,7 @@ create.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::create
- * @see app/Http/Controllers/Admin/ListingsController.php:360
+ * @see app/Http/Controllers/Admin/ListingsController.php:364
  * @route '/admin/listings/create'
  */
 create.url = (options?: RouteQueryOptions) => {
@@ -103,7 +103,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::create
- * @see app/Http/Controllers/Admin/ListingsController.php:360
+ * @see app/Http/Controllers/Admin/ListingsController.php:364
  * @route '/admin/listings/create'
  */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -112,7 +112,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::create
- * @see app/Http/Controllers/Admin/ListingsController.php:360
+ * @see app/Http/Controllers/Admin/ListingsController.php:364
  * @route '/admin/listings/create'
  */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -122,7 +122,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\Admin\ListingsController::create
- * @see app/Http/Controllers/Admin/ListingsController.php:360
+ * @see app/Http/Controllers/Admin/ListingsController.php:364
  * @route '/admin/listings/create'
  */
     const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -132,7 +132,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\Admin\ListingsController::create
- * @see app/Http/Controllers/Admin/ListingsController.php:360
+ * @see app/Http/Controllers/Admin/ListingsController.php:364
  * @route '/admin/listings/create'
  */
         createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -141,7 +141,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\Admin\ListingsController::create
- * @see app/Http/Controllers/Admin/ListingsController.php:360
+ * @see app/Http/Controllers/Admin/ListingsController.php:364
  * @route '/admin/listings/create'
  */
         createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -157,7 +157,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     create.form = createForm
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::store
- * @see app/Http/Controllers/Admin/ListingsController.php:376
+ * @see app/Http/Controllers/Admin/ListingsController.php:380
  * @route '/admin/listings'
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -172,7 +172,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::store
- * @see app/Http/Controllers/Admin/ListingsController.php:376
+ * @see app/Http/Controllers/Admin/ListingsController.php:380
  * @route '/admin/listings'
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -181,7 +181,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::store
- * @see app/Http/Controllers/Admin/ListingsController.php:376
+ * @see app/Http/Controllers/Admin/ListingsController.php:380
  * @route '/admin/listings'
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -191,7 +191,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \App\Http\Controllers\Admin\ListingsController::store
- * @see app/Http/Controllers/Admin/ListingsController.php:376
+ * @see app/Http/Controllers/Admin/ListingsController.php:380
  * @route '/admin/listings'
  */
     const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -201,7 +201,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \App\Http\Controllers\Admin\ListingsController::store
- * @see app/Http/Controllers/Admin/ListingsController.php:376
+ * @see app/Http/Controllers/Admin/ListingsController.php:380
  * @route '/admin/listings'
  */
         storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -212,7 +212,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     store.form = storeForm
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::edit
- * @see app/Http/Controllers/Admin/ListingsController.php:395
+ * @see app/Http/Controllers/Admin/ListingsController.php:399
  * @route '/admin/listings/{property}/edit'
  */
 export const edit = (args: { property: number | { id: number } } | [property: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -227,7 +227,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::edit
- * @see app/Http/Controllers/Admin/ListingsController.php:395
+ * @see app/Http/Controllers/Admin/ListingsController.php:399
  * @route '/admin/listings/{property}/edit'
  */
 edit.url = (args: { property: number | { id: number } } | [property: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -260,7 +260,7 @@ edit.url = (args: { property: number | { id: number } } | [property: number | { 
 
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::edit
- * @see app/Http/Controllers/Admin/ListingsController.php:395
+ * @see app/Http/Controllers/Admin/ListingsController.php:399
  * @route '/admin/listings/{property}/edit'
  */
 edit.get = (args: { property: number | { id: number } } | [property: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -269,7 +269,7 @@ edit.get = (args: { property: number | { id: number } } | [property: number | { 
 })
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::edit
- * @see app/Http/Controllers/Admin/ListingsController.php:395
+ * @see app/Http/Controllers/Admin/ListingsController.php:399
  * @route '/admin/listings/{property}/edit'
  */
 edit.head = (args: { property: number | { id: number } } | [property: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -279,7 +279,7 @@ edit.head = (args: { property: number | { id: number } } | [property: number | {
 
     /**
 * @see \App\Http\Controllers\Admin\ListingsController::edit
- * @see app/Http/Controllers/Admin/ListingsController.php:395
+ * @see app/Http/Controllers/Admin/ListingsController.php:399
  * @route '/admin/listings/{property}/edit'
  */
     const editForm = (args: { property: number | { id: number } } | [property: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -289,7 +289,7 @@ edit.head = (args: { property: number | { id: number } } | [property: number | {
 
             /**
 * @see \App\Http\Controllers\Admin\ListingsController::edit
- * @see app/Http/Controllers/Admin/ListingsController.php:395
+ * @see app/Http/Controllers/Admin/ListingsController.php:399
  * @route '/admin/listings/{property}/edit'
  */
         editForm.get = (args: { property: number | { id: number } } | [property: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -298,7 +298,7 @@ edit.head = (args: { property: number | { id: number } } | [property: number | {
         })
             /**
 * @see \App\Http\Controllers\Admin\ListingsController::edit
- * @see app/Http/Controllers/Admin/ListingsController.php:395
+ * @see app/Http/Controllers/Admin/ListingsController.php:399
  * @route '/admin/listings/{property}/edit'
  */
         editForm.head = (args: { property: number | { id: number } } | [property: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -314,7 +314,7 @@ edit.head = (args: { property: number | { id: number } } | [property: number | {
     edit.form = editForm
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::update
- * @see app/Http/Controllers/Admin/ListingsController.php:412
+ * @see app/Http/Controllers/Admin/ListingsController.php:416
  * @route '/admin/listings/{property}'
  */
 export const update = (args: { property: number | { id: number } } | [property: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -329,7 +329,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::update
- * @see app/Http/Controllers/Admin/ListingsController.php:412
+ * @see app/Http/Controllers/Admin/ListingsController.php:416
  * @route '/admin/listings/{property}'
  */
 update.url = (args: { property: number | { id: number } } | [property: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -362,7 +362,7 @@ update.url = (args: { property: number | { id: number } } | [property: number | 
 
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::update
- * @see app/Http/Controllers/Admin/ListingsController.php:412
+ * @see app/Http/Controllers/Admin/ListingsController.php:416
  * @route '/admin/listings/{property}'
  */
 update.put = (args: { property: number | { id: number } } | [property: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -372,7 +372,7 @@ update.put = (args: { property: number | { id: number } } | [property: number | 
 
     /**
 * @see \App\Http\Controllers\Admin\ListingsController::update
- * @see app/Http/Controllers/Admin/ListingsController.php:412
+ * @see app/Http/Controllers/Admin/ListingsController.php:416
  * @route '/admin/listings/{property}'
  */
     const updateForm = (args: { property: number | { id: number } } | [property: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -387,7 +387,7 @@ update.put = (args: { property: number | { id: number } } | [property: number | 
 
             /**
 * @see \App\Http\Controllers\Admin\ListingsController::update
- * @see app/Http/Controllers/Admin/ListingsController.php:412
+ * @see app/Http/Controllers/Admin/ListingsController.php:416
  * @route '/admin/listings/{property}'
  */
         updateForm.put = (args: { property: number | { id: number } } | [property: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -403,7 +403,7 @@ update.put = (args: { property: number | { id: number } } | [property: number | 
     update.form = updateForm
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::destroy
- * @see app/Http/Controllers/Admin/ListingsController.php:436
+ * @see app/Http/Controllers/Admin/ListingsController.php:440
  * @route '/admin/listings/{property}'
  */
 export const destroy = (args: { property: number | { id: number } } | [property: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -418,7 +418,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::destroy
- * @see app/Http/Controllers/Admin/ListingsController.php:436
+ * @see app/Http/Controllers/Admin/ListingsController.php:440
  * @route '/admin/listings/{property}'
  */
 destroy.url = (args: { property: number | { id: number } } | [property: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -451,7 +451,7 @@ destroy.url = (args: { property: number | { id: number } } | [property: number |
 
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::destroy
- * @see app/Http/Controllers/Admin/ListingsController.php:436
+ * @see app/Http/Controllers/Admin/ListingsController.php:440
  * @route '/admin/listings/{property}'
  */
 destroy.delete = (args: { property: number | { id: number } } | [property: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -461,7 +461,7 @@ destroy.delete = (args: { property: number | { id: number } } | [property: numbe
 
     /**
 * @see \App\Http\Controllers\Admin\ListingsController::destroy
- * @see app/Http/Controllers/Admin/ListingsController.php:436
+ * @see app/Http/Controllers/Admin/ListingsController.php:440
  * @route '/admin/listings/{property}'
  */
     const destroyForm = (args: { property: number | { id: number } } | [property: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -476,7 +476,7 @@ destroy.delete = (args: { property: number | { id: number } } | [property: numbe
 
             /**
 * @see \App\Http\Controllers\Admin\ListingsController::destroy
- * @see app/Http/Controllers/Admin/ListingsController.php:436
+ * @see app/Http/Controllers/Admin/ListingsController.php:440
  * @route '/admin/listings/{property}'
  */
         destroyForm.delete = (args: { property: number | { id: number } } | [property: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

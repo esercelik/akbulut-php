@@ -137,6 +137,32 @@ test('admin can create land listing without residential fields', function () {
     ]);
 });
 
+test('admin can create listing with minimal data', function () {
+    $admin = adminUser();
+    $listingNo = 'PDF-'.uniqid();
+
+    $this->withoutMiddleware();
+
+    $this->actingAs($admin)
+        ->post(route('admin.listings.store'), [
+            'ilan_no' => $listingNo,
+        ])
+        ->assertRedirect(route('admin.listings.index'));
+
+    $this->assertDatabaseHas('properties', [
+        'ilan_no' => $listingNo,
+        'title' => 'Yeni ilan',
+        'description' => 'Aciklama girilmedi.',
+        'price' => 0,
+        'city' => 'Belirtilmedi',
+        'district' => 'Belirtilmedi',
+        'property_type' => 'APARTMENT',
+        'listing_type' => 'SALE',
+        'square_meters' => 1,
+        'status' => 'ACTIVE',
+    ]);
+});
+
 test('admin can upload more than six listing images', function () {
     Storage::fake('public');
 
@@ -160,6 +186,12 @@ test('admin can upload more than six listing images', function () {
 
 test('admin can import listing data from pdf', function () {
     $admin = adminUser();
+    $consultantName = 'Pdfimport'.uniqid();
+    $consultant = User::factory()->create([
+        'role' => 'CONSULTANT',
+        'name' => $consultantName,
+        'surname' => 'Danisman',
+    ]);
 
     $this->mock(PdfListingTextExtractor::class)
         ->shouldReceive('extract')
@@ -197,7 +229,7 @@ test('admin can import listing data from pdf', function () {
             'deed_status' => '',
             'exchange' => null,
             'features' => ['asansor'],
-            'contact_name' => '',
+            'contact_name' => "{$consultantName} Danisman",
             'contact_phone' => '',
             'source_portal' => 'Sahibinden',
             'source_listing_no' => '12345',
@@ -211,6 +243,8 @@ test('admin can import listing data from pdf', function () {
             'missing_fields' => [],
         ]);
 
+    $this->withoutMiddleware();
+
     $this->actingAs($admin)
         ->postJson(route('admin.listings.import-pdf'), [
             'pdf' => UploadedFile::fake()->create('listing.pdf', 100, 'application/pdf'),
@@ -218,7 +252,8 @@ test('admin can import listing data from pdf', function () {
         ->assertSuccessful()
         ->assertJsonPath('data.title', 'PDF Baslik')
         ->assertJsonPath('data.price', 8450000)
-        ->assertJsonPath('data.room_count', '3+1');
+        ->assertJsonPath('data.room_count', '3+1')
+        ->assertJsonPath('data.matched_consultant_id', $consultant->id);
 });
 
 test('listing pdf import only accepts pdf files', function () {

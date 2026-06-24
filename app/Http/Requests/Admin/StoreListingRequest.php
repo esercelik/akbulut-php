@@ -19,15 +19,22 @@ class StoreListingRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
-        $propertyType = (string) $this->input('property_type', '');
+        $propertyType = (string) $this->input('property_type', 'APARTMENT');
 
         $this->merge([
+            'ilan_tarihi' => $this->filled('ilan_tarihi') ? $this->input('ilan_tarihi') : now()->toDateString(),
+            'title' => $this->filled('title') ? $this->input('title') : 'Yeni ilan',
+            'description' => $this->filled('description') ? $this->input('description') : 'Aciklama girilmedi.',
+            'price' => $this->filled('price') ? $this->input('price') : 0,
+            'property_type' => $this->filled('property_type') ? $this->input('property_type') : 'APARTMENT',
+            'listing_type' => $this->filled('listing_type') ? $this->input('listing_type') : 'SALE',
             'square_meters' => $this->filled('square_meters')
                 ? $this->input('square_meters')
-                : $this->input('brut_m2'),
+                : ($this->input('brut_m2') ?: 1),
             'room_count' => $this->filled('room_count')
                 ? $this->input('room_count')
                 : ListingTaxonomy::defaultRoomCountFor($propertyType),
+            'status' => $this->filled('status') ? $this->input('status') : 'ACTIVE',
         ]);
     }
 
@@ -41,19 +48,19 @@ class StoreListingRequest extends FormRequest
         return [
             'ilan_no' => ['nullable', 'string', 'max:50', 'unique:properties,ilan_no'],
             'ilan_tarihi' => ['nullable', 'date'],
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string'],
-            'price' => ['required', 'integer', 'min:0'],
-            'city_id' => ['required', 'integer', 'exists:cities,id'],
-            'district_id' => ['required', 'integer', Rule::exists('districts', 'id')->where('city_id', $this->integer('city_id'))],
-            'neighborhood_id' => ['required', 'integer', Rule::exists('neighborhoods', 'id')->where('district_id', $this->integer('district_id'))],
+            'title' => ['nullable', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'price' => ['nullable', 'integer', 'min:0'],
+            'city_id' => ['nullable', 'integer', 'exists:cities,id'],
+            'district_id' => ['nullable', 'integer', Rule::exists('districts', 'id')->where('city_id', $this->integer('city_id'))],
+            'neighborhood_id' => ['nullable', 'integer', Rule::exists('neighborhoods', 'id')->where('district_id', $this->integer('district_id'))],
             'address' => ['nullable', 'string', 'max:255'],
             'property_type' => ['required', Rule::in(ListingTaxonomy::propertyTypeKeys())],
             'listing_type' => ['required', Rule::in(ListingTaxonomy::listingTypeKeys())],
-            'square_meters' => ['required', 'integer', 'min:1'],
+            'square_meters' => ['nullable', 'integer', 'min:1'],
             'brut_m2' => ['nullable', 'integer', 'min:0'],
             'net_m2' => ['nullable', 'integer', 'min:0'],
-            'room_count' => ['required', 'string', 'max:50'],
+            'room_count' => ['nullable', 'string', 'max:50'],
             'building_age' => ['nullable', Rule::in([
                 '0', '1-5 arasi', '6-10 arasi', '11-15 arasi', '16-20 arasi', '21-25 arasi', '26-30 arasi', '30+',
             ])],

@@ -20,6 +20,12 @@ class PdfListingTextExtractor
         $text = $this->cleanText($text);
 
         if (mb_strlen($text) < 20) {
+            $filename = trim($pdf->getClientOriginalName());
+
+            if ($filename !== '') {
+                return "PDF metni cikarilamadi. Dosya adi: {$filename}";
+            }
+
             throw new RuntimeException('PDF icinden metin cikarilamadi.');
         }
 

@@ -111,6 +111,7 @@ type ImportedListingData = {
     contact_phone: string;
     source_portal: string;
     source_listing_no: string;
+    matched_consultant_id?: number | null;
     confidence: {
         title: number;
         price: number;
@@ -230,6 +231,10 @@ function booleanSelectValue(value: boolean | null | undefined): string {
     }
 
     return '';
+}
+
+function todayInputValue(): string {
+    return new Date().toISOString().slice(0, 10);
 }
 
 function SelectField({
@@ -492,6 +497,26 @@ export default function ListingForm({
         }
     }
 
+    function matchConsultant(data: ImportedListingData): number | null {
+        if (data.matched_consultant_id && consultants.some((consultant) => consultant.id === data.matched_consultant_id)) {
+            return data.matched_consultant_id;
+        }
+
+        const normalizedContactName = normalizeComparable(data.contact_name);
+
+        if (!normalizedContactName) {
+            return null;
+        }
+
+        return consultants.find((consultant) => {
+            const normalizedConsultantName = normalizeComparable(consultant.name);
+
+            return normalizedConsultantName === normalizedContactName
+                || normalizedContactName.includes(normalizedConsultantName)
+                || normalizedConsultantName.includes(normalizedContactName);
+        })?.id ?? null;
+    }
+
     function matchListingType(value: string): ListingTypeValue | null {
         const aliases: Record<string, ListingTypeValue> = {
             satilik: 'SALE',
@@ -567,8 +592,10 @@ export default function ListingForm({
     function fillImportedFields(data: ImportedListingData) {
         const m2Value = data.land_m2 ?? data.gross_m2 ?? data.net_m2 ?? '';
         const featureText = data.features.map((feature) => normalizeComparable(feature)).join(' ');
+        const matchedConsultantId = matchConsultant(data);
 
         setFieldValue('ilan_no', data.source_listing_no);
+        setFieldValue('ilan_tarihi', todayInputValue());
         setFieldValue('price', data.price);
         setFieldValue('title', data.title);
         setFieldValue('description', data.description);
@@ -589,6 +616,10 @@ export default function ListingForm({
         setSelectIfOptionExists('deed_status', data.deed_status);
         setFieldValue('site_adi', data.site_name);
         setFieldValue('aidat', data.dues);
+
+        if (matchedConsultantId) {
+            setSelectIfOptionExists('consultant_id', matchedConsultantId);
+        }
 
         if (featureText.includes('asansor')) {
             setSelectIfOptionExists('asansor', '1');
@@ -1009,7 +1040,7 @@ export default function ListingForm({
                                         <input
                                             type="date"
                                             name="ilan_tarihi"
-                                            defaultValue={listing?.ilan_tarihi ?? ''}
+                                            defaultValue={listing?.ilan_tarihi ?? todayInputValue()}
                                             className={inputClass}
                                         />
                                         {errors.ilan_tarihi ? (
@@ -1026,7 +1057,6 @@ export default function ListingForm({
                                             name="price"
                                             defaultValue={listing?.price}
                                             inputMode="numeric"
-                                            required
                                             className={inputClass}
                                         />
                                         {errors.price ? (
@@ -1047,7 +1077,6 @@ export default function ListingForm({
                                         <input
                                             name="title"
                                             defaultValue={listing?.title}
-                                            required
                                             className={inputClass}
                                         />
                                         {errors.title ? (
@@ -1069,7 +1098,6 @@ export default function ListingForm({
                                             name="description"
                                             rows={5}
                                             defaultValue={listing?.description}
-                                            required
                                             className={textareaClass}
                                         />
                                         {errors.description ? (
@@ -1098,7 +1126,6 @@ export default function ListingForm({
                                                 setDistrictId('');
                                                 setNeighborhoodId('');
                                             }}
-                                            required
                                             className={inputClass}
                                         >
                                             <option value="">Sehir secin</option>
@@ -1130,7 +1157,6 @@ export default function ListingForm({
                                                 setDistrictId(event.target.value);
                                                 setNeighborhoodId('');
                                             }}
-                                            required
                                             disabled={!cityId}
                                             className={`${inputClass} disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400`}
                                         >
@@ -1155,7 +1181,6 @@ export default function ListingForm({
                                             name="neighborhood_id"
                                             value={neighborhoodId}
                                             onChange={(event) => setNeighborhoodId(event.target.value)}
-                                            required
                                             disabled={!districtId}
                                             className={`${inputClass} disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400`}
                                         >
@@ -1521,7 +1546,6 @@ export default function ListingForm({
                                             <select
                                                 name="consultant_id"
                                                 defaultValue={listing?.consultant_id ?? ''}
-                                                required
                                                 className={inputClass}
                                             >
                                                 <option value="">Danisman secin</option>

@@ -17,7 +17,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -34,17 +33,22 @@ class ListingsController extends Controller
             ? $user->id
             : $validated['consultant_id'] ?? null;
 
-        if ($consultantId === null) {
-            throw ValidationException::withMessages([
-                'consultant_id' => 'Danisman secimi zorunludur.',
-            ]);
-        }
+        $location = [
+            'city_id' => null,
+            'district_id' => null,
+            'neighborhood_id' => null,
+            'city' => 'Belirtilmedi',
+            'district' => 'Belirtilmedi',
+            'neighborhood' => null,
+        ];
 
-        $location = $locationResolver->resolveForProperty(
-            $validated['city_id'] ?? null,
-            $validated['district_id'] ?? null,
-            $validated['neighborhood_id'] ?? null,
-        );
+        if (($validated['city_id'] ?? null) && ($validated['district_id'] ?? null) && ($validated['neighborhood_id'] ?? null)) {
+            $location = $locationResolver->resolveForProperty(
+                $validated['city_id'],
+                $validated['district_id'],
+                $validated['neighborhood_id'],
+            );
+        }
 
         $payload = [
             ...Arr::only($validated, [
