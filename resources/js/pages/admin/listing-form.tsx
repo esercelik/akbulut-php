@@ -206,6 +206,7 @@ function normalizeComparable(value: string | null | undefined): string {
         .replace(/[\u0300-\u036f]/g, '')
         .replace(/ı/g, 'i')
         .replace(/ı/g, 'i')
+        .replace(/ı/g, 'i')
         .replace(/[^a-z0-9+]+/g, '');
 }
 
@@ -246,6 +247,144 @@ function booleanSelectValue(value: boolean | null | undefined): string {
 
 function todayInputValue(): string {
     return new Date().toISOString().slice(0, 10);
+}
+
+function firstTextValue(...values: Array<string | number | boolean | null | undefined>): string {
+    const value = values.find((candidate) => candidate !== null && candidate !== undefined && String(candidate).trim() !== '');
+
+    return value === null || value === undefined ? '' : String(value);
+}
+
+function usageStatusValue(value: string): string {
+    const normalized = normalizeComparable(value);
+
+    if (!normalized) {
+        return '';
+    }
+
+    if (['hementeslim', 'hemenbos', 'teslimehazir'].some((alias) => normalized.includes(alias))) {
+        return 'Hemen Teslim';
+    }
+
+    if (['bos', 'bostur', 'kiracisiz', 'kullanilmiyor'].some((alias) => normalized.includes(alias))) {
+        return 'Bos';
+    }
+
+    if (['kiracili', 'kiracivar', 'kirada'].some((alias) => normalized.includes(alias))) {
+        return 'Kiracili';
+    }
+
+    if (['malsahibi', 'malik', 'evsahibioturuyor'].some((alias) => normalized.includes(alias))) {
+        return 'Mal Sahibi Oturuyor';
+    }
+
+    if (['yapimasamasinda', 'insaat', 'insahalde'].some((alias) => normalized.includes(alias))) {
+        return 'Yapim Asamasinda';
+    }
+
+    return value;
+}
+
+function buildingAgeValue(value: string): string {
+    const normalized = normalizeComparable(value);
+    const numericMatch = normalized.match(/\d+/);
+
+    if (!normalized) {
+        return '';
+    }
+
+    if (normalized.includes('sifir') || normalized.includes('yenibina')) {
+        return '0';
+    }
+
+    if (normalized.includes('30') && (normalized.includes('+') || normalized.includes('ustu') || normalized.includes('uzeri'))) {
+        return '30+';
+    }
+
+    if (!numericMatch) {
+        return value;
+    }
+
+    const age = Number(numericMatch[0]);
+
+    if (age <= 0) {
+        return '0';
+    }
+    if (age <= 5) {
+        return '1-5 arasi';
+    }
+    if (age <= 10) {
+        return '6-10 arasi';
+    }
+    if (age <= 15) {
+        return '11-15 arasi';
+    }
+    if (age <= 20) {
+        return '16-20 arasi';
+    }
+    if (age <= 25) {
+        return '21-25 arasi';
+    }
+    if (age <= 30) {
+        return '26-30 arasi';
+    }
+
+    return '30+';
+}
+
+function sellerTypeValue(value: string): string {
+    const normalized = normalizeComparable(value);
+
+    if (normalized.includes('sahibinden')) {
+        return 'Sahibinden';
+    }
+
+    if (['emlakofisinden', 'emlakci', 'emlakofisi', 'akbulutemlak', 'gayrimenkul'].some((alias) => normalized.includes(alias))) {
+        return 'Emlak Ofisinden';
+    }
+
+    if (normalized.includes('banka')) {
+        return 'Bankadan';
+    }
+
+    if (['muteahhit', 'insaatfirmasi'].some((alias) => normalized.includes(alias))) {
+        return 'Muteahhitten';
+    }
+
+    return value;
+}
+
+function kitchenValue(value: string): string {
+    const normalized = normalizeComparable(value);
+
+    if (normalized.includes('amerikan')) {
+        return 'Amerikan';
+    }
+
+    if (normalized.includes('acik')) {
+        return 'Acik';
+    }
+
+    if (normalized.includes('kapali')) {
+        return 'Kapali';
+    }
+
+    if (normalized.includes('yok')) {
+        return 'Yok';
+    }
+
+    return value;
+}
+
+function energyCertificateValue(value: string): string {
+    const normalized = normalizeComparable(value);
+    const match = normalized.match(/[abcdefg]/);
+
+    if (normalized.includes('yok') || normalized.includes('belirtilmemis')) {
+        return 'Belirtilmemis';
+    }
+
+    return match ? match[0].toUpperCase() : value;
 }
 
 function SelectField({
@@ -574,6 +713,26 @@ export default function ListingForm({
             return value as ListingTypeValue;
         }
 
+        if (normalized.includes('devren') && normalized.includes('kiralik')) {
+            return 'TRANSFER_RENT';
+        }
+
+        if (normalized.includes('devren') && normalized.includes('satilik')) {
+            return 'TRANSFER_SALE';
+        }
+
+        if (normalized.includes('katkarsiligi')) {
+            return 'BUILD_FOR_SALE';
+        }
+
+        if (normalized.includes('kiralik')) {
+            return 'RENT';
+        }
+
+        if (normalized.includes('satilik')) {
+            return 'SALE';
+        }
+
         return aliases[normalized] ?? null;
     }
 
@@ -591,15 +750,29 @@ export default function ListingForm({
             ofis: 'OFFICE',
             dukkan: 'SHOP',
             dükkan: 'SHOP',
+            magaza: 'STORE',
+            depo: 'WAREHOUSE',
+            fabrika: 'FACTORY',
+            atolye: 'WORKSHOP',
+            cafe: 'CAFE_RESTAURANT',
+            restoran: 'CAFE_RESTAURANT',
             bina: 'BUILDING',
             apartman: 'APARTMENT_BUILDING',
+            devremulk: 'TIMESHARE',
+            otel: 'HOTEL',
+            butikotel: 'BOUTIQUE_HOTEL',
+            apartotel: 'APART_HOTEL',
+            pansiyon: 'PENSION',
+            turistiktesis: 'TOURISTIC_FACILITY',
         };
         const normalized = normalizeComparable(value);
         const allPropertyTypes = listingCategories.flatMap((category) => category.propertyTypes);
         const exact = allPropertyTypes.find((option) => option.value === value);
         const byLabel = findOptionByText(allPropertyTypes, value);
 
-        return exact?.value ?? byLabel?.value ?? aliases[normalized] ?? null;
+        const byAlias = Object.entries(aliases).find(([alias]) => normalized.includes(alias))?.[1];
+
+        return exact?.value ?? byLabel?.value ?? aliases[normalized] ?? byAlias ?? null;
     }
 
     async function applyImportedLocation(data: ImportedListingData) {
@@ -632,9 +805,21 @@ export default function ListingForm({
     }
 
     function fillImportedFields(data: ImportedListingData) {
+        const rawData = data as ImportedListingData & Record<string, string | number | boolean | null | undefined>;
         const m2Value = data.land_m2 ?? data.gross_m2 ?? data.net_m2 ?? '';
         const featureText = data.features.map((feature) => normalizeComparable(feature)).join(' ');
         const matchedConsultantId = matchConsultant(data);
+        const detailsText = [
+            ...data.features,
+            data.description,
+            data.title,
+            data.source_portal,
+        ].filter(Boolean).join(' ');
+        const rawUsageStatus = firstTextValue(data.usage_status, rawData.usage, rawData.occupancy_status, rawData.kullanim_durumu, detailsText);
+        const rawBuildingAge = firstTextValue(data.building_age, rawData.age, rawData.bina_yasi);
+        const rawSellerType = firstTextValue(data.seller_type, rawData.kimden, rawData.from, data.source_portal, detailsText);
+        const rawEnergyCertificate = firstTextValue(data.energy_certificate, rawData.energy_identity, rawData.energy_certificate_status, rawData.enerji_kimlik_belgesi);
+        const rawKitchen = firstTextValue(data.kitchen, rawData.mutfak, rawData.kitchen_type, detailsText);
 
         setFieldValue('ilan_no', data.source_listing_no);
         setFieldValue('ilan_tarihi', todayInputValue());
@@ -647,19 +832,19 @@ export default function ListingForm({
         setFieldValue('net_m2', data.net_m2);
         setSelectByTextOrValue('room_count', data.room_count);
         setFieldValue('bathroom_count', data.bathroom_count);
-        setSelectByTextOrValue('building_age', data.building_age);
+        setSelectByTextOrValue('building_age', buildingAgeValue(rawBuildingAge));
         setFieldValue('floor', data.floor);
         setFieldValue('total_floors', data.total_floors);
         setSelectByTextOrValue('heating', data.heating);
-        setSelectByTextOrValue('mutfak', data.kitchen);
-        setSelectByTextOrValue('usage_status', data.usage_status);
+        setSelectByTextOrValue('mutfak', kitchenValue(rawKitchen));
+        setSelectByTextOrValue('usage_status', usageStatusValue(rawUsageStatus));
         setSelectIfOptionExists('balcony', booleanSelectValue(data.balcony));
         setSelectIfOptionExists('furnished', booleanSelectValue(data.furnished));
         setSelectIfOptionExists('credit_eligible', booleanSelectValue(data.credit_eligible));
         setSelectIfOptionExists('takas', booleanSelectValue(data.exchange));
         setSelectByTextOrValue('deed_status', data.deed_status);
-        setSelectByTextOrValue('enerji_kimlik_belgesi', data.energy_certificate);
-        setSelectByTextOrValue('kimden', data.seller_type || data.source_portal);
+        setSelectByTextOrValue('enerji_kimlik_belgesi', energyCertificateValue(rawEnergyCertificate));
+        setSelectByTextOrValue('kimden', sellerTypeValue(rawSellerType));
         setFieldValue('site_adi', data.site_name);
         setFieldValue('aidat', data.dues);
 
@@ -689,21 +874,28 @@ export default function ListingForm({
     }
 
     async function applyImportedListing(data: ImportedListingData) {
-        const matchedPropertyType = matchPropertyType(data.property_type);
+        const classificationText = [
+            data.property_type,
+            data.listing_type,
+            data.title,
+            data.description,
+            data.source_portal,
+        ].filter(Boolean).join(' ');
+        const matchedPropertyType = matchPropertyType(classificationText);
 
         if (matchedPropertyType) {
             const matchedCategory = findCategoryByPropertyType(matchedPropertyType);
             setCategoryValue(matchedCategory.value);
             setPropertyType(matchedPropertyType);
 
-            const matchedListingType = matchListingType(data.listing_type);
+            const matchedListingType = matchListingType(classificationText);
             setListingType(
                 matchedListingType && matchedCategory.listingTypes.some((option) => option.value === matchedListingType)
                     ? matchedListingType
                     : defaultListingTypeFor(matchedCategory),
             );
         } else {
-            const matchedListingType = matchListingType(data.listing_type);
+            const matchedListingType = matchListingType(classificationText);
 
             if (matchedListingType) {
                 setListingType(matchedListingType);
