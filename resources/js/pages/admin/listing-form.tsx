@@ -351,6 +351,7 @@ export default function ListingForm({
     const [importStatus, setImportStatus] = useState<'idle' | 'analyzing' | 'success' | 'error'>('idle');
     const [importMessage, setImportMessage] = useState<string | null>(null);
     const [fillVersion, setFillVersion] = useState(0);
+    const [selectedImageCount, setSelectedImageCount] = useState(0);
     const lowConfidenceFields = useMemo(() => {
         if (!importedListing) {
             return [];
@@ -925,7 +926,14 @@ export default function ListingForm({
                     className="space-y-8"
                     encType="multipart/form-data"
                 >
-                    {({ errors, processing }) => (
+                    {({ errors, processing, progress }) => {
+                        const uploadPercentage = Math.min(100, Math.max(0, Math.round(progress?.percentage ?? 0)));
+                        const uploadedImageCount = selectedImageCount > 0
+                            ? Math.min(selectedImageCount, Math.floor((selectedImageCount * uploadPercentage) / 100))
+                            : 0;
+                        const showUploadProgress = selectedImageCount > 0 && processing;
+
+                        return (
                         <>
                             <section className="premium-card-shadow border border-stone-line bg-white p-6">
                                 <div className="flex flex-col justify-between gap-3 border-b border-stone-line pb-4 md:flex-row md:items-end">
@@ -1629,8 +1637,14 @@ export default function ListingForm({
                                             type="file"
                                             multiple
                                             accept="image/jpeg,image/png,image/webp"
+                                            onChange={(event) => setSelectedImageCount(event.target.files?.length ?? 0)}
                                             className="mt-3 w-full text-sm text-slate-600 file:mr-4 file:h-10 file:rounded-[2px] file:border-0 file:bg-navy file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-navy-soft"
                                         />
+                                        {selectedImageCount > 0 ? (
+                                            <p className="mt-3 text-xs font-semibold text-slate-500">
+                                                {selectedImageCount} gorsel secildi.
+                                            </p>
+                                        ) : null}
                                         {errors.images ? (
                                             <p className="mt-2 text-xs font-semibold text-red-600">
                                                 {errors.images}
@@ -1642,6 +1656,27 @@ export default function ListingForm({
                                             </p>
                                         ) : null}
                                     </label>
+                                    {showUploadProgress ? (
+                                        <div className="mt-5 border border-gold/40 bg-white p-4" role="status" aria-live="polite">
+                                            <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                                                <p className="text-sm font-bold text-navy">
+                                                    Gorseller yukleniyor
+                                                </p>
+                                                <p className="text-sm font-semibold text-slate-600">
+                                                    {uploadedImageCount} / {selectedImageCount} gorsel - %{uploadPercentage}
+                                                </p>
+                                            </div>
+                                            <div className="mt-3 h-3 overflow-hidden rounded-[2px] bg-light-gray">
+                                                <div
+                                                    className="h-full rounded-[2px] bg-gold transition-all duration-300"
+                                                    style={{ width: `${uploadPercentage}%` }}
+                                                />
+                                            </div>
+                                            <p className="mt-2 text-xs text-slate-500">
+                                                Yukleme bitene kadar sayfayi kapatmayin.
+                                            </p>
+                                        </div>
+                                    ) : null}
                                 </div>
                             </section>
 
@@ -1665,7 +1700,8 @@ export default function ListingForm({
                                 </button>
                             </div>
                         </>
-                    )}
+                        );
+                    }}
                 </Form>
             </div>
         </>

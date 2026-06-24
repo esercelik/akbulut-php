@@ -208,7 +208,7 @@ importPdf.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
             action: importPdf.url(options),
             method: 'post',
         })
-
+    
     importPdf.form = importPdfForm
 /**
 * @see \App\Http\Controllers\Admin\ListingsController::store
