@@ -1,7 +1,7 @@
 import { Head, Form, Link } from '@inertiajs/react';
-import { index, store, update } from '@/routes/admin/listings';
-import { ArrowLeft, ImagePlus, Save } from 'lucide-react';
-import { useEffect, useMemo, useState } from 'react';
+import { importPdf, index, store, update } from '@/routes/admin/listings';
+import { ArrowLeft, FileText, ImagePlus, LoaderCircle, RotateCcw, Save, Wand2, XCircle } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
     fetchDistrictOptions,
     fetchNeighborhoodOptions,
@@ -79,6 +79,56 @@ type ListingFormProps = {
     canChooseConsultant: boolean;
 };
 
+type ImportedListingData = {
+    title: string;
+    description: string;
+    price: number | null;
+    currency: string;
+    listing_type: string;
+    property_type: string;
+    city: string;
+    district: string;
+    neighborhood: string;
+    address: string;
+    gross_m2: number | null;
+    net_m2: number | null;
+    land_m2: number | null;
+    room_count: string;
+    building_age: string;
+    floor: string;
+    total_floors: string;
+    heating: string;
+    bathroom_count: number | null;
+    balcony: boolean | null;
+    furnished: boolean | null;
+    site_name: string;
+    dues: number | null;
+    credit_eligible: boolean | null;
+    deed_status: string;
+    exchange: boolean | null;
+    features: string[];
+    contact_name: string;
+    contact_phone: string;
+    source_portal: string;
+    source_listing_no: string;
+    confidence: {
+        title: number;
+        price: number;
+        location: number;
+        m2: number;
+        contact: number;
+    };
+    missing_fields: string[];
+};
+
+type ImportResponse = {
+    data?: ImportedListingData;
+    message?: string;
+    errors?: {
+        pdf?: string[];
+    };
+};
+
 const inputClass =
     'mt-2 h-[48px] w-full rounded-[2px] border border-stone-line bg-white px-3 text-sm outline-none focus:border-gold';
 const textareaClass =
@@ -143,6 +193,44 @@ const yesNoGeneralOptions = [
     { value: '1', label: 'Evet' },
     { value: '0', label: 'Hayir' },
 ];
+
+function normalizeComparable(value: string | null | undefined): string {
+    return (value ?? '')
+        .toLocaleLowerCase('tr-TR')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/ı/g, 'i')
+        .replace(/[^a-z0-9+]+/g, '');
+}
+
+function findOptionByText<T extends { value?: string; label?: string; name?: string }>(
+    options: T[],
+    value: string,
+): T | undefined {
+    const normalized = normalizeComparable(value);
+
+    if (!normalized) {
+        return undefined;
+    }
+
+    return options.find((option) =>
+        [option.value, option.label, option.name]
+            .filter(Boolean)
+            .some((candidate) => normalizeComparable(candidate) === normalized),
+    );
+}
+
+function booleanSelectValue(value: boolean | null | undefined): string {
+    if (value === true) {
+        return '1';
+    }
+
+    if (value === false) {
+        return '0';
+    }
+
+    return '';
+}
 
 function SelectField({
     name,
@@ -246,6 +334,37 @@ export default function ListingForm({
         categoryProfile === 'WORKPLACE' ||
         categoryProfile === 'TOURISTIC';
     const showsBuildingFields = categoryProfile !== 'LAND';
+    const pdfInputRef = useRef<HTMLInputElement>(null);
+    const csrfToken = useMemo(
+        () => typeof document === 'undefined'
+            ? ''
+            : document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]')?.content ?? '',
+        [],
+    );
+    const [selectedPdf, setSelectedPdf] = useState<File | null>(null);
+    const [importedListing, setImportedListing] = useState<ImportedListingData | null>(null);
+    const [importStatus, setImportStatus] = useState<'idle' | 'analyzing' | 'success' | 'error'>('idle');
+    const [importMessage, setImportMessage] = useState<string | null>(null);
+    const [fillVersion, setFillVersion] = useState(0);
+    const lowConfidenceFields = useMemo(() => {
+        if (!importedListing) {
+            return [];
+        }
+
+        return Object.entries(importedListing.confidence)
+            .filter(([, score]) => score > 0 && score < 0.6)
+            .map(([field]) => field);
+    }, [importedListing]);
+
+    function confidenceWarning(field: keyof ImportedListingData['confidence']): string | null {
+        const score = importedListing?.confidence[field] ?? 0;
+
+        if (score > 0 && score < 0.6) {
+            return 'Bu alan PDF’den düşük güvenle çıkarıldı, kontrol edin.';
+        }
+
+        return null;
+    }
 
     useEffect(() => {
         setCityId(normalizeLocationValue(listing?.city_id));
@@ -337,6 +456,304 @@ export default function ListingForm({
         setPropertyType(nextPropertyType);
     }
 
+    function formElement(): HTMLFormElement | null {
+        return document.querySelector<HTMLFormElement>('[data-listing-form="true"]');
+    }
+
+    function setFieldValue(name: string, value: string | number | boolean | null | undefined) {
+        const form = formElement();
+        const field = form?.elements.namedItem(name);
+
+        if (!field || field instanceof RadioNodeList) {
+            return;
+        }
+
+        const nextValue = value === null || value === undefined ? '' : String(value);
+
+        if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement || field instanceof HTMLSelectElement) {
+            field.value = nextValue;
+            field.dispatchEvent(new Event('input', { bubbles: true }));
+            field.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+    }
+
+    function setSelectIfOptionExists(name: string, value: string | number | null | undefined) {
+        const form = formElement();
+        const field = form?.elements.namedItem(name);
+
+        if (!(field instanceof HTMLSelectElement)) {
+            return;
+        }
+
+        const nextValue = value === null || value === undefined ? '' : String(value);
+
+        if (!nextValue || Array.from(field.options).some((option) => option.value === nextValue)) {
+            setFieldValue(name, nextValue);
+        }
+    }
+
+    function matchListingType(value: string): ListingTypeValue | null {
+        const aliases: Record<string, ListingTypeValue> = {
+            satilik: 'SALE',
+            satilikilan: 'SALE',
+            kiralik: 'RENT',
+            devrensatilik: 'TRANSFER_SALE',
+            devrenkiralik: 'TRANSFER_RENT',
+            katkarsiligisatilik: 'BUILD_FOR_SALE',
+        };
+        const normalized = normalizeComparable(value);
+
+        if (listingCategories.flatMap((category) => category.listingTypes).some((option) => option.value === value)) {
+            return value as ListingTypeValue;
+        }
+
+        return aliases[normalized] ?? null;
+    }
+
+    function matchPropertyType(value: string): string | null {
+        const aliases: Record<string, string> = {
+            daire: 'APARTMENT',
+            konut: 'APARTMENT',
+            villa: 'VILLA',
+            mustakilev: 'DETACHED_HOUSE',
+            arsa: 'LAND',
+            imarliarsa: 'LAND_ZONED',
+            tarla: 'FIELD',
+            isyeri: 'OFFICE',
+            isyeriilan: 'OFFICE',
+            ofis: 'OFFICE',
+            dukkan: 'SHOP',
+            dükkan: 'SHOP',
+            bina: 'BUILDING',
+            apartman: 'APARTMENT_BUILDING',
+        };
+        const normalized = normalizeComparable(value);
+        const allPropertyTypes = listingCategories.flatMap((category) => category.propertyTypes);
+        const exact = allPropertyTypes.find((option) => option.value === value);
+        const byLabel = findOptionByText(allPropertyTypes, value);
+
+        return exact?.value ?? byLabel?.value ?? aliases[normalized] ?? null;
+    }
+
+    async function applyImportedLocation(data: ImportedListingData) {
+        const importedCity = findOptionByText(cities, data.city);
+
+        if (!importedCity) {
+            return;
+        }
+
+        setCityId(String(importedCity.id));
+
+        const importedDistrictOptions = await fetchDistrictOptions(importedCity.id);
+        setDistrictOptions(importedDistrictOptions);
+
+        const importedDistrict = findOptionByText(importedDistrictOptions, data.district);
+
+        if (!importedDistrict) {
+            setDistrictId('');
+            setNeighborhoodId('');
+            return;
+        }
+
+        setDistrictId(String(importedDistrict.id));
+
+        const importedNeighborhoodOptions = await fetchNeighborhoodOptions(importedDistrict.id);
+        setNeighborhoodOptions(importedNeighborhoodOptions);
+
+        const importedNeighborhood = findOptionByText(importedNeighborhoodOptions, data.neighborhood);
+        setNeighborhoodId(importedNeighborhood ? String(importedNeighborhood.id) : '');
+    }
+
+    function fillImportedFields(data: ImportedListingData) {
+        const m2Value = data.land_m2 ?? data.gross_m2 ?? data.net_m2 ?? '';
+        const featureText = data.features.map((feature) => normalizeComparable(feature)).join(' ');
+
+        setFieldValue('ilan_no', data.source_listing_no);
+        setFieldValue('price', data.price);
+        setFieldValue('title', data.title);
+        setFieldValue('description', data.description);
+        setFieldValue('address', data.address);
+        setFieldValue('brut_m2', m2Value);
+        setFieldValue('square_meters', m2Value);
+        setFieldValue('net_m2', data.net_m2);
+        setSelectIfOptionExists('room_count', data.room_count);
+        setFieldValue('bathroom_count', data.bathroom_count);
+        setSelectIfOptionExists('building_age', data.building_age);
+        setFieldValue('floor', data.floor);
+        setFieldValue('total_floors', data.total_floors);
+        setSelectIfOptionExists('heating', data.heating);
+        setSelectIfOptionExists('balcony', booleanSelectValue(data.balcony));
+        setSelectIfOptionExists('furnished', booleanSelectValue(data.furnished));
+        setSelectIfOptionExists('credit_eligible', booleanSelectValue(data.credit_eligible));
+        setSelectIfOptionExists('takas', booleanSelectValue(data.exchange));
+        setSelectIfOptionExists('deed_status', data.deed_status);
+        setFieldValue('site_adi', data.site_name);
+        setFieldValue('aidat', data.dues);
+
+        if (featureText.includes('asansor')) {
+            setSelectIfOptionExists('asansor', '1');
+        }
+
+        if (featureText.includes('otopark') || featureText.includes('garaj')) {
+            setSelectIfOptionExists('otopark', '1');
+        }
+
+        if (data.site_name) {
+            setSelectIfOptionExists('site_icerisinde', '1');
+        }
+    }
+
+    async function applyImportedListing(data: ImportedListingData) {
+        const matchedPropertyType = matchPropertyType(data.property_type);
+
+        if (matchedPropertyType) {
+            const matchedCategory = findCategoryByPropertyType(matchedPropertyType);
+            setCategoryValue(matchedCategory.value);
+            setPropertyType(matchedPropertyType);
+
+            const matchedListingType = matchListingType(data.listing_type);
+            setListingType(
+                matchedListingType && matchedCategory.listingTypes.some((option) => option.value === matchedListingType)
+                    ? matchedListingType
+                    : defaultListingTypeFor(matchedCategory),
+            );
+        } else {
+            const matchedListingType = matchListingType(data.listing_type);
+
+            if (matchedListingType) {
+                setListingType(matchedListingType);
+            }
+        }
+
+        setBrutM2(normalizeLocationValue(data.land_m2 ?? data.gross_m2 ?? data.net_m2));
+        try {
+            await applyImportedLocation(data);
+        } catch {
+            setImportMessage('PDF’den ilan bilgileri aktarıldı; konum seçenekleri otomatik eşleştirilemedi, lütfen kontrol edin.');
+        }
+
+        setFillVersion((value) => value + 1);
+    }
+
+    async function analyzePdf() {
+        if (!selectedPdf) {
+            setImportStatus('error');
+            setImportMessage('Lutfen once bir PDF dosyasi secin.');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('pdf', selectedPdf);
+        setImportStatus('analyzing');
+        setImportMessage('PDF analiz ediliyor...');
+
+        try {
+            const response = await fetch(importPdf.url(), {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,
+                },
+                body: formData,
+            });
+            const payload = (await response.json()) as ImportResponse;
+
+            if (!response.ok || !payload.data) {
+                throw new Error(payload.errors?.pdf?.[0] ?? payload.message ?? 'PDF analizi tamamlanamadi.');
+            }
+
+            setImportedListing(payload.data);
+            await applyImportedListing(payload.data);
+            setImportStatus('success');
+            setImportMessage(payload.message ?? 'PDF’den ilan bilgileri aktarıldı. Lütfen kontrol edip kaydedin.');
+        } catch (error) {
+            setImportStatus('error');
+            setImportMessage(error instanceof Error ? error.message : 'PDF analizi tamamlanamadi.');
+        }
+    }
+
+    function choosePdf(file: File | null) {
+        setImportedListing(null);
+        setImportStatus('idle');
+        setImportMessage(null);
+
+        if (!file) {
+            setSelectedPdf(null);
+            return;
+        }
+
+        if (file.type !== 'application/pdf' && !file.name.toLocaleLowerCase('tr-TR').endsWith('.pdf')) {
+            setSelectedPdf(null);
+            setImportStatus('error');
+            setImportMessage('Sadece PDF dosyasi yukleyebilirsiniz.');
+            return;
+        }
+
+        if (file.size > 10 * 1024 * 1024) {
+            setSelectedPdf(null);
+            setImportStatus('error');
+            setImportMessage('PDF dosyasi en fazla 10 MB olabilir.');
+            return;
+        }
+
+        setSelectedPdf(file);
+    }
+
+    function clearPdfImport() {
+        setSelectedPdf(null);
+        setImportedListing(null);
+        setImportStatus('idle');
+        setImportMessage(null);
+        setFillVersion((value) => value + 1);
+
+        if (pdfInputRef.current) {
+            pdfInputRef.current.value = '';
+        }
+
+        setCityId(normalizeLocationValue(listing?.city_id));
+        setDistrictId(normalizeLocationValue(listing?.district_id));
+        setNeighborhoodId(normalizeLocationValue(listing?.neighborhood_id));
+        setBrutM2(normalizeLocationValue(listing?.brut_m2 ?? listing?.square_meters));
+        const nextCategory = findCategoryByPropertyType(listing?.property_type);
+        setCategoryValue(nextCategory.value);
+        setListingType((listing?.listing_type as ListingTypeValue | undefined) ?? defaultListingTypeFor(nextCategory));
+        setPropertyType(listing?.property_type ?? defaultPropertyTypeFor(nextCategory));
+
+        window.setTimeout(() => {
+            setFieldValue('ilan_no', listing?.ilan_no ?? '');
+            setFieldValue('price', listing?.price ?? '');
+            setFieldValue('title', listing?.title ?? '');
+            setFieldValue('description', listing?.description ?? '');
+            setFieldValue('address', listing?.address ?? '');
+            setFieldValue('brut_m2', listing?.brut_m2 ?? listing?.square_meters ?? '');
+            setFieldValue('square_meters', listing?.brut_m2 ?? listing?.square_meters ?? '');
+            setFieldValue('net_m2', listing?.net_m2 ?? '');
+            setSelectIfOptionExists('room_count', listing?.room_count ?? '');
+            setFieldValue('bathroom_count', listing?.bathroom_count ?? '');
+            setSelectIfOptionExists('building_age', listing?.building_age ?? '');
+            setFieldValue('floor', listing?.floor ?? '');
+            setFieldValue('total_floors', listing?.total_floors ?? '');
+            setSelectIfOptionExists('heating', listing?.heating ?? '');
+            setSelectIfOptionExists('balcony', listing?.balcony ? '1' : '0');
+            setSelectIfOptionExists('furnished', listing?.furnished ? '1' : '0');
+            setSelectIfOptionExists('credit_eligible', listing?.credit_eligible ? '1' : '0');
+            setSelectIfOptionExists('takas', listing?.takas ? '1' : '0');
+            setSelectIfOptionExists('deed_status', listing?.deed_status ?? '');
+            setFieldValue('site_adi', listing?.site_adi ?? '');
+            setFieldValue('aidat', listing?.aidat ?? '');
+        }, 0);
+    }
+
+    useEffect(() => {
+        if (!importedListing) {
+            return;
+        }
+
+        const timeout = window.setTimeout(() => fillImportedFields(importedListing), 0);
+
+        return () => window.clearTimeout(timeout);
+    }, [fillVersion, importedListing, categoryValue, listingType, propertyType, brutM2]);
+
     return (
         <>
             <Head title={title} />
@@ -349,8 +766,131 @@ export default function ListingForm({
                     Ilanlara Don
                 </Link>
 
+                <section className="premium-card-shadow border border-stone-line bg-white p-6">
+                    <div className="flex flex-col justify-between gap-4 border-b border-stone-line pb-4 lg:flex-row lg:items-end">
+                        <div>
+                            <p className="section-eyebrow">PDF’den Ilan Aktar</p>
+                            <h2 className="mt-2 text-xl font-semibold text-navy">
+                                Portal PDF’ini analiz edip formu doldur
+                            </h2>
+                            <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-500">
+                                Sahibinden, Hepsiemlak, Emlakjet veya benzer portallardan alinan metin tabanli PDF’leri analiz eder. Bilgiler once forma aktarilir, kayit icin yine sizin onayiniz gerekir.
+                            </p>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                            <button
+                                type="button"
+                                onClick={() => pdfInputRef.current?.click()}
+                                className="inline-flex h-11 items-center justify-center gap-2 border border-stone-line bg-white px-4 text-sm font-bold tracking-[0.1em] text-navy uppercase transition hover:border-gold"
+                            >
+                                <FileText size={17} />
+                                PDF Sec
+                            </button>
+                            <button
+                                type="button"
+                                onClick={analyzePdf}
+                                disabled={!selectedPdf || importStatus === 'analyzing'}
+                                className="inline-flex h-11 items-center justify-center gap-2 border border-gold bg-gold px-4 text-sm font-bold tracking-[0.1em] text-navy uppercase transition hover:bg-gold-soft disabled:cursor-not-allowed disabled:opacity-60"
+                            >
+                                {importStatus === 'analyzing' ? (
+                                    <LoaderCircle size={17} className="animate-spin" />
+                                ) : (
+                                    <Wand2 size={17} />
+                                )}
+                                PDF’yi Analiz Et
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    if (importedListing) {
+                                        void applyImportedListing(importedListing);
+                                    }
+                                }}
+                                disabled={!importedListing || importStatus === 'analyzing'}
+                                className="inline-flex h-11 items-center justify-center gap-2 border border-navy bg-navy px-4 text-sm font-bold tracking-[0.1em] text-white uppercase transition hover:border-gold hover:bg-gold hover:text-navy disabled:cursor-not-allowed disabled:opacity-60"
+                            >
+                                <RotateCcw size={17} />
+                                Formu Doldur
+                            </button>
+                            <button
+                                type="button"
+                                onClick={clearPdfImport}
+                                className="inline-flex h-11 items-center justify-center gap-2 border border-stone-line bg-white px-4 text-sm font-bold tracking-[0.1em] text-navy uppercase transition hover:border-red-300 hover:text-red-600"
+                            >
+                                <XCircle size={17} />
+                                Temizle
+                            </button>
+                        </div>
+                    </div>
+
+                    <input
+                        ref={pdfInputRef}
+                        type="file"
+                        accept="application/pdf,.pdf"
+                        className="hidden"
+                        onChange={(event) => choosePdf(event.target.files?.[0] ?? null)}
+                    />
+
+                    <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(260px,360px)]">
+                        <div className="border border-dashed border-stone-line bg-light-gray p-4">
+                            <p className="text-sm font-semibold text-navy">
+                                {selectedPdf ? selectedPdf.name : 'Henuz PDF secilmedi'}
+                            </p>
+                            <p className="mt-1 text-xs leading-5 text-slate-500">
+                                Sadece PDF, maksimum 10 MB. Gorsel agirlikli PDF’lerde OCR bu ilk surumde desteklenmez.
+                            </p>
+                        </div>
+
+                        {importMessage ? (
+                            <div
+                                className={`border px-4 py-3 text-sm font-semibold ${
+                                    importStatus === 'error'
+                                        ? 'border-red-200 bg-red-50 text-red-700'
+                                        : importStatus === 'success'
+                                          ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
+                                          : 'border-gold/40 bg-gold/10 text-navy'
+                                }`}
+                                role="status"
+                            >
+                                {importMessage}
+                            </div>
+                        ) : null}
+                    </div>
+
+                    {importedListing ? (
+                        <div className="mt-5 grid gap-4 lg:grid-cols-2">
+                            {importedListing.missing_fields.length ? (
+                                <div className="border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
+                                    <p className="font-semibold">PDF’den şu alanlar bulunamadı:</p>
+                                    <p className="mt-2 leading-6">{importedListing.missing_fields.join(', ')}</p>
+                                </div>
+                            ) : null}
+                            {lowConfidenceFields.length ? (
+                                <div className="border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
+                                    <p className="font-semibold">Düşük güvenle çıkarılan alanlar:</p>
+                                    <p className="mt-2 leading-6">
+                                        {lowConfidenceFields.join(', ')}. Bu alanları kaydetmeden önce kontrol edin.
+                                    </p>
+                                </div>
+                            ) : null}
+                            {importedListing.source_portal || importedListing.contact_phone ? (
+                                <div className="border border-stone-line bg-white p-4 text-sm text-slate-600 lg:col-span-2">
+                                    <p>
+                                        Kaynak: <span className="font-semibold text-navy">{importedListing.source_portal || '-'}</span>
+                                    </p>
+                                    <p className="mt-1">
+                                        PDF iletişim: <span className="font-semibold text-navy">{importedListing.contact_name || '-'}</span>{' '}
+                                        {importedListing.contact_phone ? `- ${importedListing.contact_phone}` : ''}
+                                    </p>
+                                </div>
+                            ) : null}
+                        </div>
+                    ) : null}
+                </section>
+
                 <Form
                     {...formProps}
+                    data-listing-form="true"
                     className="space-y-8"
                     encType="multipart/form-data"
                 >
@@ -494,6 +1034,11 @@ export default function ListingForm({
                                                 {errors.price}
                                             </p>
                                         ) : null}
+                                        {confidenceWarning('price') ? (
+                                            <p className="mt-2 text-xs font-semibold text-amber-700">
+                                                {confidenceWarning('price')}
+                                            </p>
+                                        ) : null}
                                     </label>
                                     <label className="xl:col-span-2">
                                         <span className="text-sm font-semibold text-navy">
@@ -508,6 +1053,11 @@ export default function ListingForm({
                                         {errors.title ? (
                                             <p className="mt-2 text-xs font-semibold text-red-600">
                                                 {errors.title}
+                                            </p>
+                                        ) : null}
+                                        {confidenceWarning('title') ? (
+                                            <p className="mt-2 text-xs font-semibold text-amber-700">
+                                                {confidenceWarning('title')}
                                             </p>
                                         ) : null}
                                     </label>
@@ -561,6 +1111,11 @@ export default function ListingForm({
                                         {errors.city_id ? (
                                             <p className="mt-2 text-xs font-semibold text-red-600">
                                                 {errors.city_id}
+                                            </p>
+                                        ) : null}
+                                        {confidenceWarning('location') ? (
+                                            <p className="mt-2 text-xs font-semibold text-amber-700">
+                                                {confidenceWarning('location')}
                                             </p>
                                         ) : null}
                                     </label>
@@ -660,6 +1215,11 @@ export default function ListingForm({
                                         {errors.brut_m2 || errors.square_meters ? (
                                             <p className="mt-2 text-xs font-semibold text-red-600">
                                                 {errors.brut_m2 ?? errors.square_meters}
+                                            </p>
+                                        ) : null}
+                                        {confidenceWarning('m2') ? (
+                                            <p className="mt-2 text-xs font-semibold text-amber-700">
+                                                {confidenceWarning('m2')}
                                             </p>
                                         ) : null}
                                     </label>

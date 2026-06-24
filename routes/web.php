@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ConsultantsController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ListingPdfImportController;
 use App\Http\Controllers\Admin\ListingsController;
 use App\Http\Controllers\Admin\MessagesController;
 use App\Http\Controllers\Admin\SettingsController;
@@ -52,6 +53,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/', DashboardController::class)->name('dashboard');
         Route::get('listings', ListingsController::class)->name('listings.index');
         Route::get('listings/create', [ListingsController::class, 'create'])->name('listings.create');
+        Route::post('listings/import-pdf', ListingPdfImportController::class)
+            ->middleware('throttle:6,1')
+            ->name('listings.import-pdf');
         Route::post('listings', [ListingsController::class, 'store'])->name('listings.store');
         Route::get('listings/{property}/edit', [ListingsController::class, 'edit'])->name('listings.edit');
         Route::put('listings/{property}', [ListingsController::class, 'update'])->name('listings.update');

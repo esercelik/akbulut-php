@@ -6,6 +6,8 @@ use App\Models\District;
 use App\Models\Neighborhood;
 use App\Models\Property;
 use App\Models\User;
+use App\Services\OpenAiListingExtractorService;
+use App\Services\PdfListingTextExtractor;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -154,6 +156,98 @@ test('admin can upload more than six listing images', function () {
     $property = Property::query()->where('title', 'Test Portfoy')->firstOrFail();
 
     expect($property->images()->count())->toBe(7);
+});
+
+test('admin can import listing data from pdf', function () {
+    $admin = adminUser();
+
+    $this->mock(PdfListingTextExtractor::class)
+        ->shouldReceive('extract')
+        ->once()
+        ->andReturn('PDF metni');
+    $this->mock(OpenAiListingExtractorService::class)
+        ->shouldReceive('extract')
+        ->once()
+        ->with('PDF metni')
+        ->andReturn([
+            'title' => 'PDF Baslik',
+            'description' => 'PDF aciklama',
+            'price' => 8450000,
+            'currency' => 'TRY',
+            'listing_type' => 'SALE',
+            'property_type' => 'APARTMENT',
+            'city' => 'Kocaeli',
+            'district' => 'Izmit',
+            'neighborhood' => 'Merkez',
+            'address' => '',
+            'gross_m2' => 140,
+            'net_m2' => 120,
+            'land_m2' => null,
+            'room_count' => '3+1',
+            'building_age' => '',
+            'floor' => '',
+            'total_floors' => '',
+            'heating' => '',
+            'bathroom_count' => 1,
+            'balcony' => true,
+            'furnished' => false,
+            'site_name' => '',
+            'dues' => null,
+            'credit_eligible' => true,
+            'deed_status' => '',
+            'exchange' => null,
+            'features' => ['asansor'],
+            'contact_name' => '',
+            'contact_phone' => '',
+            'source_portal' => 'Sahibinden',
+            'source_listing_no' => '12345',
+            'confidence' => [
+                'title' => 0.9,
+                'price' => 0.9,
+                'location' => 0.8,
+                'm2' => 0.8,
+                'contact' => 0,
+            ],
+            'missing_fields' => [],
+        ]);
+
+    $this->actingAs($admin)
+        ->postJson(route('admin.listings.import-pdf'), [
+            'pdf' => UploadedFile::fake()->create('listing.pdf', 100, 'application/pdf'),
+        ])
+        ->assertSuccessful()
+        ->assertJsonPath('data.title', 'PDF Baslik')
+        ->assertJsonPath('data.price', 8450000)
+        ->assertJsonPath('data.room_count', '3+1');
+});
+
+test('listing pdf import only accepts pdf files', function () {
+    $admin = adminUser();
+
+    $this->actingAs($admin)
+        ->postJson(route('admin.listings.import-pdf'), [
+            'pdf' => UploadedFile::fake()->image('listing.jpg'),
+        ])
+        ->assertUnprocessable()
+        ->assertJsonValidationErrors('pdf');
+});
+
+test('listing pdf import returns a friendly error when openai key is missing', function () {
+    config(['services.openai.api_key' => null]);
+
+    $admin = adminUser();
+
+    $this->mock(PdfListingTextExtractor::class)
+        ->shouldReceive('extract')
+        ->once()
+        ->andReturn('PDF metni');
+
+    $this->actingAs($admin)
+        ->postJson(route('admin.listings.import-pdf'), [
+            'pdf' => UploadedFile::fake()->create('listing.pdf', 100, 'application/pdf'),
+        ])
+        ->assertUnprocessable()
+        ->assertJsonPath('message', 'OpenAI API anahtari tanimli degil.');
 });
 
 test('admin can create update and delete users', function () {

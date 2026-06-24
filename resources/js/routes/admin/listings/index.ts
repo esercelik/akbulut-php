@@ -156,6 +156,61 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     
     create.form = createForm
 /**
+* @see \App\Http\Controllers\Admin\ListingPdfImportController::__invoke
+ * @see app/Http/Controllers/Admin/ListingPdfImportController.php:21
+ * @route '/admin/listings/import-pdf'
+ */
+export const importPdf = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: importPdf.url(options),
+    method: 'post',
+})
+
+importPdf.definition = {
+    methods: ["post"],
+    url: '/admin/listings/import-pdf',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \App\Http\Controllers\Admin\ListingPdfImportController::__invoke
+ * @see app/Http/Controllers/Admin/ListingPdfImportController.php:21
+ * @route '/admin/listings/import-pdf'
+ */
+importPdf.url = (options?: RouteQueryOptions) => {
+    return importPdf.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\Admin\ListingPdfImportController::__invoke
+ * @see app/Http/Controllers/Admin/ListingPdfImportController.php:21
+ * @route '/admin/listings/import-pdf'
+ */
+importPdf.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: importPdf.url(options),
+    method: 'post',
+})
+
+    /**
+* @see \App\Http\Controllers\Admin\ListingPdfImportController::__invoke
+ * @see app/Http/Controllers/Admin/ListingPdfImportController.php:21
+ * @route '/admin/listings/import-pdf'
+ */
+    const importPdfForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: importPdf.url(options),
+        method: 'post',
+    })
+
+            /**
+* @see \App\Http\Controllers\Admin\ListingPdfImportController::__invoke
+ * @see app/Http/Controllers/Admin/ListingPdfImportController.php:21
+ * @route '/admin/listings/import-pdf'
+ */
+        importPdfForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: importPdf.url(options),
+            method: 'post',
+        })
+    
+    importPdf.form = importPdfForm
+/**
 * @see \App\Http\Controllers\Admin\ListingsController::store
  * @see app/Http/Controllers/Admin/ListingsController.php:376
  * @route '/admin/listings'
@@ -493,6 +548,7 @@ destroy.delete = (args: { property: number | { id: number } } | [property: numbe
 const listings = {
     index: Object.assign(index, index),
 create: Object.assign(create, create),
+importPdf: Object.assign(importPdf, importPdf),
 store: Object.assign(store, store),
 edit: Object.assign(edit, edit),
 update: Object.assign(update, update),
