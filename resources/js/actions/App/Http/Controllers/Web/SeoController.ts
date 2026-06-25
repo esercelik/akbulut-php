@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Web\SeoController::sitemap
- * @see app/Http/Controllers/Web/SeoController.php:13
+ * @see app/Http/Controllers/Web/SeoController.php:14
  * @route '/sitemap.xml'
  */
 export const sitemap = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ sitemap.definition = {
 
 /**
 * @see \App\Http\Controllers\Web\SeoController::sitemap
- * @see app/Http/Controllers/Web/SeoController.php:13
+ * @see app/Http/Controllers/Web/SeoController.php:14
  * @route '/sitemap.xml'
  */
 sitemap.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ sitemap.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Web\SeoController::sitemap
- * @see app/Http/Controllers/Web/SeoController.php:13
+ * @see app/Http/Controllers/Web/SeoController.php:14
  * @route '/sitemap.xml'
  */
 sitemap.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -34,7 +34,7 @@ sitemap.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Web\SeoController::sitemap
- * @see app/Http/Controllers/Web/SeoController.php:13
+ * @see app/Http/Controllers/Web/SeoController.php:14
  * @route '/sitemap.xml'
  */
 sitemap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -44,7 +44,7 @@ sitemap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\Web\SeoController::sitemap
- * @see app/Http/Controllers/Web/SeoController.php:13
+ * @see app/Http/Controllers/Web/SeoController.php:14
  * @route '/sitemap.xml'
  */
     const sitemapForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -54,7 +54,7 @@ sitemap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\Web\SeoController::sitemap
- * @see app/Http/Controllers/Web/SeoController.php:13
+ * @see app/Http/Controllers/Web/SeoController.php:14
  * @route '/sitemap.xml'
  */
         sitemapForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -63,7 +63,7 @@ sitemap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\Web\SeoController::sitemap
- * @see app/Http/Controllers/Web/SeoController.php:13
+ * @see app/Http/Controllers/Web/SeoController.php:14
  * @route '/sitemap.xml'
  */
         sitemapForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -79,7 +79,7 @@ sitemap.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     sitemap.form = sitemapForm
 /**
 * @see \App\Http\Controllers\Web\SeoController::robots
- * @see app/Http/Controllers/Web/SeoController.php:49
+ * @see app/Http/Controllers/Web/SeoController.php:28
  * @route '/robots.txt'
  */
 export const robots = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -94,7 +94,7 @@ robots.definition = {
 
 /**
 * @see \App\Http\Controllers\Web\SeoController::robots
- * @see app/Http/Controllers/Web/SeoController.php:49
+ * @see app/Http/Controllers/Web/SeoController.php:28
  * @route '/robots.txt'
  */
 robots.url = (options?: RouteQueryOptions) => {
@@ -103,7 +103,7 @@ robots.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Web\SeoController::robots
- * @see app/Http/Controllers/Web/SeoController.php:49
+ * @see app/Http/Controllers/Web/SeoController.php:28
  * @route '/robots.txt'
  */
 robots.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -112,7 +112,7 @@ robots.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Web\SeoController::robots
- * @see app/Http/Controllers/Web/SeoController.php:49
+ * @see app/Http/Controllers/Web/SeoController.php:28
  * @route '/robots.txt'
  */
 robots.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -122,7 +122,7 @@ robots.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\Web\SeoController::robots
- * @see app/Http/Controllers/Web/SeoController.php:49
+ * @see app/Http/Controllers/Web/SeoController.php:28
  * @route '/robots.txt'
  */
     const robotsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -132,7 +132,7 @@ robots.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\Web\SeoController::robots
- * @see app/Http/Controllers/Web/SeoController.php:49
+ * @see app/Http/Controllers/Web/SeoController.php:28
  * @route '/robots.txt'
  */
         robotsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -141,7 +141,7 @@ robots.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\Web\SeoController::robots
- * @see app/Http/Controllers/Web/SeoController.php:49
+ * @see app/Http/Controllers/Web/SeoController.php:28
  * @route '/robots.txt'
  */
         robotsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

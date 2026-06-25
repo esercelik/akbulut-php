@@ -15,7 +15,7 @@ class PublicStorageController extends Controller
         }
 
         return Storage::disk('public')->response($path, headers: [
-            'Cache-Control' => 'public, max-age=31536000',
+            'Cache-Control' => 'public, max-age=31536000, immutable',
         ]);
     }
 }

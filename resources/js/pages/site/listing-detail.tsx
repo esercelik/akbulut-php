@@ -286,8 +286,8 @@ export default function ListingDetailPage({ property, relatedProperties = [] }: 
     description: property.description,
     image: gallery,
     url: shareUrl,
-    datePosted: property.listingDate,
-    dateModified: property.updatedDate ?? property.listingDate,
+    datePosted: property.listingDateIso ?? property.listingDate,
+    dateModified: property.updatedDateIso ?? property.listingDateIso ?? property.listingDate,
     address: {
       "@type": "PostalAddress",
       addressLocality: property.district,

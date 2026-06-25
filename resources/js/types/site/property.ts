@@ -7,7 +7,9 @@ export type Property = {
   slug: string;
   listingNo?: string | null;
   listingDate?: string | null;
+  listingDateIso?: string | null;
   updatedDate?: string | null;
+  updatedDateIso?: string | null;
   title: string;
   city: string;
   district: string;

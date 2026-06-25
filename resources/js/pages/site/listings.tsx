@@ -19,6 +19,31 @@ export default function ListingsPage({
   filterOptions,
 }: ListingsPageProps) {
   const hasListings = properties.length > 0;
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Akbulut Emlak Ilanlari",
+    description: "Satilik ve kiralik guncel gayrimenkul portfoyleri.",
+    url: "/listings",
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: properties.length,
+      itemListElement: properties.slice(0, 24).map((property, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `/ilan/${property.slug}`,
+        name: property.title,
+      })),
+    },
+  };
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: "/" },
+      { "@type": "ListItem", position: 2, name: "Ilanlar", item: "/listings" },
+    ],
+  };
 
   return (
     <>
@@ -26,6 +51,7 @@ export default function ListingsPage({
         title="Ilanlar | Akbulut Emlak"
         description="Akbulut Emlak satilik ve kiralik guncel portfoylerini sehir, ilce, mahalle, emlak tipi ve fiyat araligina gore filtreleyin."
         path="/listings"
+        structuredData={[collectionSchema, breadcrumbSchema]}
       />
 
       <div className="bg-light-gray">

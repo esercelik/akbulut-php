@@ -23,6 +23,17 @@ type HomeProps = {
 
 export default function Home({ filterOptions, featuredProperties, consultants }: HomeProps) {
   const siteSettings = useSiteSettings();
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteSettings.siteName,
+    url: "/",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "/listings?city={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  };
 
   return (
     <>
@@ -30,6 +41,7 @@ export default function Home({ filterOptions, featuredProperties, consultants }:
         title={siteSettings.seoTitle}
         description={siteSettings.seoDescription}
         path="/"
+        structuredData={[websiteSchema]}
       />
       <HeroSection />
       <SearchBar filterOptions={filterOptions} />

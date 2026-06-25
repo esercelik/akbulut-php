@@ -5,6 +5,21 @@ import { Mail, MapPin, Phone } from "lucide-react";
 
 export default function ContactPage() {
   const siteSettings = useSiteSettings();
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: `Iletisim | ${siteSettings.siteName}`,
+    url: "/contact",
+    description: `${siteSettings.siteName} ile telefon, e-posta, adres ve WhatsApp uzerinden iletisime gecin.`,
+  };
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: "/" },
+      { "@type": "ListItem", position: 2, name: "Iletisim", item: "/contact" },
+    ],
+  };
 
   return (
     <>
@@ -12,6 +27,7 @@ export default function ContactPage() {
         title={`Iletisim | ${siteSettings.siteName}`}
         description={`${siteSettings.siteName} ile iletisime gecin. Telefon, e-posta, adres ve WhatsApp bilgileriyle gayrimenkul talebiniz icin bize ulasin.`}
         path="/contact"
+        structuredData={[contactSchema, breadcrumbSchema]}
       />
 
       <div className="bg-ivory">

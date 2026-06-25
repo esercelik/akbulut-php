@@ -38,14 +38,45 @@ export default function ConsultantPortfolioPage({
   properties,
 }: ConsultantPortfolioPageProps) {
   const hasListings = properties.length > 0;
+  const consultantUrl = consultant.slug ? `/danisman/${consultant.slug}` : "/consultants";
+  const consultantSchema = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    name: consultant.name,
+    url: consultantUrl,
+    image: consultant.avatar,
+    telephone: consultant.phone,
+    email: consultant.email,
+    areaServed: consultant.region,
+    description: consultant.bio,
+    makesOffer: properties.slice(0, 24).map((property) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Residence",
+        name: property.title,
+        url: `/ilan/${property.slug}`,
+        address: [property.neighborhood, property.district, property.city].filter(Boolean).join(", "),
+      },
+    })),
+  };
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: "/" },
+      { "@type": "ListItem", position: 2, name: "Danismanlar", item: "/consultants" },
+      { "@type": "ListItem", position: 3, name: consultant.name, item: consultantUrl },
+    ],
+  };
 
   return (
     <>
       <SeoHead
         title={`${consultant.name} Portfoyleri | Akbulut Emlak`}
         description={`${consultant.name} ${consultant.region ?? ""} bolgesindeki aktif satilik ve kiralik portfoyleriyle hizmet vermektedir.`.trim()}
-        path={consultant.slug ? `/danisman/${consultant.slug}` : "/consultants"}
+        path={consultantUrl}
         image={consultant.avatar}
+        structuredData={[consultantSchema, breadcrumbSchema]}
       />
 
       <div className="bg-light-gray">

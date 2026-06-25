@@ -3,13 +3,29 @@
 namespace App\Support;
 
 use App\Models\SiteSetting;
+use Illuminate\Support\Facades\Cache;
 
 class SiteSettingsData
 {
+    public const CACHE_KEY = 'site_settings.shared';
+
     /**
      * @return array<string, mixed>
      */
     public static function shared(): array
+    {
+        return Cache::remember(self::CACHE_KEY, now()->addMinutes(30), fn (): array => self::fresh());
+    }
+
+    public static function clearCache(): void
+    {
+        Cache::forget(self::CACHE_KEY);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private static function fresh(): array
     {
         $settings = SiteSetting::current();
         $data = array_merge(SiteSetting::defaults(), $settings->toArray());

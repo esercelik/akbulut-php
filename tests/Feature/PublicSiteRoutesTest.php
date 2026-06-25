@@ -7,6 +7,7 @@ use App\Models\Property;
 use App\Models\PropertyImage;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Cache;
 use Inertia\Testing\AssertableInertia as Assert;
 
 uses(RefreshDatabase::class);
@@ -195,7 +196,7 @@ test('public listing detail exposes consultant portfolio link data', function ()
     ]);
     PropertyImage::factory()->for($relatedProperty)->create(['sort_order' => 0]);
 
-    $this->get(route('listings.show', $property->slug))
+    $this->get(route('properties.show', $property->slug))
         ->assertOk()
         ->assertInertia(fn (Assert $page) => $page
             ->component('site/listing-detail')
@@ -204,6 +205,50 @@ test('public listing detail exposes consultant portfolio link data', function ()
             ->has('property.gallery', 7)
             ->has('relatedProperties', 1)
             ->where('relatedProperties.0.title', 'Related Public Listing'));
+});
+
+test('sitemap exposes indexable public pages listings consultants and images', function () {
+    Cache::forget('seo.sitemap.xml');
+
+    $consultant = User::factory()->create([
+        'slug' => 'sitemap-consultant',
+        'role' => 'CONSULTANT',
+        'active' => true,
+    ]);
+    $property = Property::factory()->for($consultant, 'consultant')->create([
+        'slug' => 'sitemap-public-listing',
+        'status' => 'ACTIVE',
+        'title' => 'Sitemap Public Listing',
+        'featured' => true,
+    ]);
+    PropertyImage::factory()->for($property)->create([
+        'image_url' => '/storage/properties/sitemap-listing.jpg',
+        'alt' => 'Sitemap listing image',
+        'sort_order' => 0,
+    ]);
+    Property::factory()->for($consultant, 'consultant')->create([
+        'slug' => 'sitemap-passive-listing',
+        'status' => 'PASSIVE',
+    ]);
+
+    $this->get(route('seo.sitemap'))
+        ->assertOk()
+        ->assertHeader('Content-Type', 'application/xml; charset=UTF-8')
+        ->assertSee(route('home'), false)
+        ->assertSee(route('listings.index'), false)
+        ->assertSee(route('consultants.show', ['consultant' => 'sitemap-consultant']), false)
+        ->assertSee(route('properties.show', ['reference' => 'sitemap-public-listing']), false)
+        ->assertSee('Sitemap listing image', false)
+        ->assertDontSee('sitemap-passive-listing');
+});
+
+test('robots file points crawlers to sitemap and keeps admin routes private', function () {
+    $this->get(route('seo.robots'))
+        ->assertOk()
+        ->assertHeader('Content-Type', 'text/plain; charset=UTF-8')
+        ->assertSee('User-agent: *')
+        ->assertSee('Disallow: /admin/')
+        ->assertSee('Sitemap: '.route('seo.sitemap'));
 });
 
 test('consultant portfolio page lists only active listings for that consultant', function () {

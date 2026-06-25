@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\SiteSettingsData;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -91,7 +92,7 @@ class SiteSetting extends Model
     public static function current(): self
     {
         if (! Schema::hasTable('site_settings')) {
-            return (new self())->forceFill(self::defaults());
+            return (new self)->forceFill(self::defaults());
         }
 
         $cachedId = Cache::get(self::CACHE_KEY);
@@ -108,7 +109,7 @@ class SiteSetting extends Model
             $setting = self::query()->first();
 
             if (! $setting) {
-                $setting = new self();
+                $setting = new self;
                 $setting->forceFill(self::defaults());
                 $setting->save();
             }
@@ -116,7 +117,7 @@ class SiteSetting extends Model
             return (int) $setting->getKey();
         });
 
-        return self::query()->find((int) $setting) ?? tap(new self(), function (self $setting): void {
+        return self::query()->find((int) $setting) ?? tap(new self, function (self $setting): void {
             $setting->forceFill(self::defaults());
             $setting->save();
         });
@@ -125,6 +126,8 @@ class SiteSetting extends Model
     public static function clearCachedCurrent(): void
     {
         Cache::forget(self::CACHE_KEY);
+        SiteSettingsData::clearCache();
+        Cache::forget('seo.sitemap.xml');
     }
 
     protected static function booted(): void

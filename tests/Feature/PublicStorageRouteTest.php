@@ -8,7 +8,7 @@ test('public storage files are served through the laravel fallback route', funct
 
     $this->get('/storage/profile-photos/1/avatar.jpg')
         ->assertOk()
-        ->assertHeader('Cache-Control', 'max-age=31536000, public');
+        ->assertHeader('Cache-Control', 'immutable, max-age=31536000, public');
 });
 
 test('missing public storage files return not found', function () {

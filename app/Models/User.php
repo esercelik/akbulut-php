@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 
@@ -62,6 +63,12 @@ class User extends Authenticatable
     public function properties(): HasMany
     {
         return $this->hasMany(Property::class, 'consultant_id');
+    }
+
+    protected static function booted(): void
+    {
+        static::saved(fn (): bool => Cache::forget('seo.sitemap.xml'));
+        static::deleted(fn (): bool => Cache::forget('seo.sitemap.xml'));
     }
 
     /**

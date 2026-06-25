@@ -6,6 +6,21 @@ import { Award, BriefcaseBusiness, Users } from "lucide-react";
 
 export default function AboutPage() {
   const siteSettings = useSiteSettings();
+  const aboutSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: `Hakkimizda | ${siteSettings.siteName}`,
+    url: "/about",
+    description: siteSettings.aboutText,
+  };
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: "/" },
+      { "@type": "ListItem", position: 2, name: "Hakkimizda", item: "/about" },
+    ],
+  };
 
   return (
     <>
@@ -13,6 +28,7 @@ export default function AboutPage() {
         title={`Hakkimizda | ${siteSettings.siteName}`}
         description={`${siteSettings.aboutTitle}. ${siteSettings.aboutText}`.slice(0, 300)}
         path="/about"
+        structuredData={[aboutSchema, breadcrumbSchema]}
       />
 
       <section className="bg-ivory px-5 py-24 lg:px-8">

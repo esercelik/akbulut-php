@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Cache;
 
 #[Fillable([
     'title',
@@ -98,6 +99,12 @@ class Property extends Model
     public function contactRequests(): HasMany
     {
         return $this->hasMany(ContactRequest::class);
+    }
+
+    protected static function booted(): void
+    {
+        static::saved(fn (): bool => Cache::forget('seo.sitemap.xml'));
+        static::deleted(fn (): bool => Cache::forget('seo.sitemap.xml'));
     }
 
     /**
