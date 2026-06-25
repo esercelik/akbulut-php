@@ -1,6 +1,8 @@
 import { Head, Form, Link } from '@inertiajs/react';
-import { importPdf, index, store, update } from '@/routes/admin/listings';
+import { edit, importPdf, importUrl, index, store, update } from '@/routes/admin/listings';
+import { store as uploadImages } from '@/routes/admin/listings/images';
 import { ArrowLeft, FileText, ImagePlus, LoaderCircle, RotateCcw, Save, Wand2, XCircle } from 'lucide-react';
+import type { FormEvent } from 'react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
     fetchDistrictOptions,
@@ -134,6 +136,17 @@ type ImportResponse = {
     };
 };
 
+type ImportSource = 'pdf' | 'url';
+
+type SaveListingResponse = {
+    message?: string;
+    property?: {
+        id: number;
+        editUrl?: string;
+    };
+    errors?: Record<string, string[]>;
+};
+
 const inputClass =
     'mt-2 h-[48px] w-full rounded-[2px] border border-stone-line bg-white px-3 text-sm outline-none focus:border-gold';
 const textareaClass =
@@ -198,6 +211,18 @@ const yesNoGeneralOptions = [
     { value: '1', label: 'Evet' },
     { value: '0', label: 'Hayir' },
 ];
+const maxImageFileSizeMb = 5;
+const maxImageFileSizeBytes = maxImageFileSizeMb * 1024 * 1024;
+const maxImageBatchSizeMb = 8;
+const maxImageBatchSizeBytes = maxImageBatchSizeMb * 1024 * 1024;
+
+function formatFileSize(bytes: number): string {
+    if (bytes < 1024 * 1024) {
+        return `${Math.max(1, Math.round(bytes / 1024))} KB`;
+    }
+
+    return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+}
 
 function normalizeComparable(value: string | null | undefined): string {
     return (value ?? '')
@@ -497,11 +522,21 @@ export default function ListingForm({
         [],
     );
     const [selectedPdf, setSelectedPdf] = useState<File | null>(null);
+    const [listingUrl, setListingUrl] = useState('');
     const [importedListing, setImportedListing] = useState<ImportedListingData | null>(null);
     const [importStatus, setImportStatus] = useState<'idle' | 'analyzing' | 'success' | 'error'>('idle');
+    const [importSource, setImportSource] = useState<ImportSource>('pdf');
     const [importMessage, setImportMessage] = useState<string | null>(null);
     const [fillVersion, setFillVersion] = useState(0);
+    const [selectedImageFiles, setSelectedImageFiles] = useState<File[]>([]);
     const [selectedImageCount, setSelectedImageCount] = useState(0);
+    const [selectedImageSize, setSelectedImageSize] = useState(0);
+    const [imageUploadError, setImageUploadError] = useState<string | null>(null);
+    const [serverErrors, setServerErrors] = useState<Record<string, string>>({});
+    const [isSaving, setIsSaving] = useState(false);
+    const [saveMessage, setSaveMessage] = useState<string | null>(null);
+    const [uploadPercentage, setUploadPercentage] = useState(0);
+    const [uploadedImageCount, setUploadedImageCount] = useState(0);
     const lowConfidenceFields = useMemo(() => {
         if (!importedListing) {
             return [];
@@ -520,6 +555,147 @@ export default function ListingForm({
         }
 
         return null;
+    }
+
+    function handleImageSelection(files: FileList | null): void {
+        const selectedFiles = Array.from(files ?? []);
+        const totalSize = selectedFiles.reduce((total, file) => total + file.size, 0);
+        const oversizedFile = selectedFiles.find((file) => file.size > maxImageFileSizeBytes);
+
+        setSelectedImageFiles(selectedFiles);
+        setSelectedImageCount(selectedFiles.length);
+        setSelectedImageSize(totalSize);
+        setUploadPercentage(0);
+        setUploadedImageCount(0);
+
+        if (oversizedFile) {
+            setImageUploadError(
+                `${oversizedFile.name} ${formatFileSize(oversizedFile.size)}. Dosya basina en fazla ${maxImageFileSizeMb} MB yukleyebilirsiniz.`,
+            );
+
+            return;
+        }
+
+        setImageUploadError(null);
+    }
+
+    function imageBatches(files: File[]): File[][] {
+        const batches: File[][] = [];
+        let currentBatch: File[] = [];
+        let currentBatchSize = 0;
+
+        files.forEach((file) => {
+            if (currentBatch.length > 0 && currentBatchSize + file.size > maxImageBatchSizeBytes) {
+                batches.push(currentBatch);
+                currentBatch = [];
+                currentBatchSize = 0;
+            }
+
+            currentBatch.push(file);
+            currentBatchSize += file.size;
+        });
+
+        if (currentBatch.length > 0) {
+            batches.push(currentBatch);
+        }
+
+        return batches;
+    }
+
+    function firstErrorFrom(payload: SaveListingResponse): string {
+        const firstMessage = Object.values(payload.errors ?? {})[0]?.[0];
+
+        return firstMessage ?? payload.message ?? 'Kayit tamamlanamadi.';
+    }
+
+    async function uploadImagesInBatches(propertyId: number, files: File[]): Promise<void> {
+        const batches = imageBatches(files);
+        let completedCount = 0;
+
+        for (const batch of batches) {
+            const formData = new FormData();
+
+            batch.forEach((file) => {
+                formData.append('images[]', file);
+            });
+
+            const response = await fetch(uploadImages.url({ property: propertyId }), {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+                body: formData,
+            });
+            const payload = (await response.json().catch(() => ({}))) as SaveListingResponse;
+
+            if (!response.ok) {
+                throw new Error(firstErrorFrom(payload));
+            }
+
+            completedCount += batch.length;
+            setUploadedImageCount(completedCount);
+            setUploadPercentage(Math.round((completedCount / files.length) * 100));
+        }
+    }
+
+    async function submitListingForm(event: FormEvent<HTMLFormElement>): Promise<void> {
+        event.preventDefault();
+
+        if (imageUploadError || isSaving) {
+            return;
+        }
+
+        const form = event.currentTarget;
+        const formData = new FormData(form);
+
+        formData.delete('images[]');
+        formData.delete('images');
+
+        setIsSaving(true);
+        setServerErrors({});
+        setSaveMessage(selectedImageFiles.length ? 'Ilan kaydediliyor, ardindan gorseller parca parca yuklenecek...' : 'Ilan kaydediliyor...');
+        setUploadPercentage(0);
+        setUploadedImageCount(0);
+
+        try {
+            const response = await fetch(form.action, {
+                method: form.method.toUpperCase(),
+                headers: {
+                    Accept: 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+                body: formData,
+            });
+            const payload = (await response.json().catch(() => ({}))) as SaveListingResponse;
+
+            if (!response.ok || !payload.property?.id) {
+                if (payload.errors) {
+                    setServerErrors(
+                        Object.fromEntries(
+                            Object.entries(payload.errors).map(([key, messages]) => [key, messages[0] ?? 'Bu alani kontrol edin.']),
+                        ),
+                    );
+                }
+
+                throw new Error(firstErrorFrom(payload));
+            }
+
+            if (selectedImageFiles.length > 0) {
+                setSaveMessage(`${selectedImageFiles.length} gorsel ${maxImageBatchSizeMb} MB'lik partiler halinde yukleniyor...`);
+                await uploadImagesInBatches(payload.property.id, selectedImageFiles);
+            }
+
+            setSaveMessage('Ilan ve gorseller kaydedildi. Yonlendiriliyorsunuz...');
+            window.location.href = mode === 'create'
+                ? edit.url({ property: payload.property.id })
+                : edit.url({ property: payload.property.id });
+        } catch (error) {
+            setSaveMessage(error instanceof Error ? error.message : 'Kayit tamamlanamadi.');
+            setIsSaving(false);
+        }
     }
 
     useEffect(() => {
@@ -921,6 +1097,7 @@ export default function ListingForm({
 
         const formData = new FormData();
         formData.append('pdf', selectedPdf);
+        setImportSource('pdf');
         setImportStatus('analyzing');
         setImportMessage('PDF analiz ediliyor...');
 
@@ -946,6 +1123,46 @@ export default function ListingForm({
         } catch (error) {
             setImportStatus('error');
             setImportMessage(error instanceof Error ? error.message : 'PDF analizi tamamlanamadi.');
+        }
+    }
+
+    async function analyzeUrl() {
+        const url = listingUrl.trim();
+
+        if (!url) {
+            setImportStatus('error');
+            setImportMessage('Lutfen once Sahibinden, Hepsiemlak veya Emlakjet ilan linkini girin.');
+            return;
+        }
+
+        setImportSource('url');
+        setImportStatus('analyzing');
+        setImportMessage('Ilan linki okunuyor ve analiz ediliyor...');
+
+        try {
+            const response = await fetch(importUrl.url(), {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+                body: JSON.stringify({ url }),
+            });
+            const payload = (await response.json()) as ImportResponse;
+
+            if (!response.ok || !payload.data) {
+                throw new Error(payload.message ?? 'Link analizi tamamlanamadi.');
+            }
+
+            setImportedListing(payload.data);
+            await applyImportedListing(payload.data);
+            setImportStatus('success');
+            setImportMessage(payload.message ?? 'Linkten ilan bilgileri aktarildi. Lutfen kontrol edip kaydedin.');
+        } catch (error) {
+            setImportStatus('error');
+            setImportMessage(error instanceof Error ? error.message : 'Link analizi tamamlanamadi.');
         }
     }
 
@@ -978,9 +1195,11 @@ export default function ListingForm({
 
     function clearPdfImport() {
         setSelectedPdf(null);
+        setListingUrl('');
         setImportedListing(null);
         setImportStatus('idle');
         setImportMessage(null);
+        setImportSource('pdf');
         setFillVersion((value) => value + 1);
 
         if (pdfInputRef.current) {
@@ -1078,6 +1297,19 @@ export default function ListingForm({
                             </button>
                             <button
                                 type="button"
+                                onClick={analyzeUrl}
+                                disabled={!listingUrl.trim() || importStatus === 'analyzing'}
+                                className="inline-flex h-11 items-center justify-center gap-2 border border-gold bg-white px-4 text-sm font-bold tracking-[0.1em] text-navy uppercase transition hover:bg-gold disabled:cursor-not-allowed disabled:opacity-60"
+                            >
+                                {importStatus === 'analyzing' && importSource === 'url' ? (
+                                    <LoaderCircle size={17} className="animate-spin" />
+                                ) : (
+                                    <Wand2 size={17} />
+                                )}
+                                Linki Analiz Et
+                            </button>
+                            <button
+                                type="button"
                                 onClick={() => {
                                     if (importedListing) {
                                         void applyImportedListing(importedListing);
@@ -1108,7 +1340,7 @@ export default function ListingForm({
                         onChange={(event) => choosePdf(event.target.files?.[0] ?? null)}
                     />
 
-                    <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(260px,360px)]">
+                    <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
                         <div className="border border-dashed border-stone-line bg-light-gray p-4">
                             <p className="text-sm font-semibold text-navy">
                                 {selectedPdf ? selectedPdf.name : 'Henuz PDF secilmedi'}
@@ -1118,9 +1350,27 @@ export default function ListingForm({
                             </p>
                         </div>
 
+                        <label className="block border border-dashed border-stone-line bg-light-gray p-4">
+                            <span className="text-sm font-semibold text-navy">Ilan linki</span>
+                            <input
+                                type="url"
+                                value={listingUrl}
+                                onChange={(event) => {
+                                    setListingUrl(event.target.value);
+                                    setImportStatus('idle');
+                                    setImportMessage(null);
+                                }}
+                                placeholder="https://www.sahibinden.com/ilan/..."
+                                className="mt-2 h-11 w-full rounded-[2px] border border-stone-line bg-white px-3 text-sm outline-none focus:border-gold"
+                            />
+                            <span className="mt-1 block text-xs leading-5 text-slate-500">
+                                Link backend tarafindan okunur. Portal engellerse PDF aktarimi daha saglikli calisir.
+                            </span>
+                        </label>
+
                         {importMessage ? (
                             <div
-                                className={`border px-4 py-3 text-sm font-semibold ${
+                                className={`border px-4 py-3 text-sm font-semibold lg:col-span-2 ${
                                     importStatus === 'error'
                                         ? 'border-red-200 bg-red-50 text-red-700'
                                         : importStatus === 'success'
@@ -1170,13 +1420,12 @@ export default function ListingForm({
                     data-listing-form="true"
                     className="space-y-8"
                     encType="multipart/form-data"
+                    onSubmit={submitListingForm}
                 >
-                    {({ errors, processing, progress }) => {
-                        const uploadPercentage = Math.min(100, Math.max(0, Math.round(progress?.percentage ?? 0)));
-                        const uploadedImageCount = selectedImageCount > 0
-                            ? Math.min(selectedImageCount, Math.floor((selectedImageCount * uploadPercentage) / 100))
-                            : 0;
-                        const showUploadProgress = selectedImageCount > 0 && processing;
+                    {({ errors: inertiaErrors, processing }) => {
+                        const errors = { ...inertiaErrors, ...serverErrors };
+                        const isProcessing = processing || isSaving;
+                        const showUploadProgress = selectedImageCount > 0 && isSaving;
 
                         return (
                         <>
@@ -1882,12 +2131,19 @@ export default function ListingForm({
                                             type="file"
                                             multiple
                                             accept="image/jpeg,image/png,image/webp"
-                                            onChange={(event) => setSelectedImageCount(event.target.files?.length ?? 0)}
+                                            onChange={(event) => handleImageSelection(event.target.files)}
                                             className="mt-3 w-full text-sm text-slate-600 file:mr-4 file:h-10 file:rounded-[2px] file:border-0 file:bg-navy file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-navy-soft"
                                         />
                                         {selectedImageCount > 0 ? (
                                             <p className="mt-3 text-xs font-semibold text-slate-500">
-                                                {selectedImageCount} gorsel secildi.
+                                                {selectedImageCount} gorsel secildi. Toplam {formatFileSize(selectedImageSize)}.
+                                                {' '}
+                                                {imageBatches(selectedImageFiles).length} parti halinde yuklenecek.
+                                            </p>
+                                        ) : null}
+                                        {imageUploadError ? (
+                                            <p className="mt-2 text-xs font-semibold text-red-600">
+                                                {imageUploadError}
                                             </p>
                                         ) : null}
                                         {errors.images ? (
@@ -1934,14 +2190,27 @@ export default function ListingForm({
                                 </div>
                             ) : null}
 
+                            {saveMessage ? (
+                                <div
+                                    className={`border px-4 py-3 text-sm font-semibold ${
+                                        isSaving
+                                            ? 'border-gold/40 bg-gold/10 text-navy'
+                                            : 'border-red-200 bg-red-50 text-red-700'
+                                    }`}
+                                    role="status"
+                                >
+                                    {saveMessage}
+                                </div>
+                            ) : null}
+
                             <div className="flex justify-stretch sm:justify-end">
                                 <button
                                     type="submit"
-                                    disabled={processing}
+                                    disabled={isProcessing || Boolean(imageUploadError)}
                                     className="inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-[2px] border border-gold bg-gold px-6 text-sm font-bold tracking-[0.12em] text-navy uppercase transition hover:bg-gold-soft disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                                 >
                                     <Save size={18} />
-                                    {processing ? 'Kaydediliyor' : 'Kaydet'}
+                                    {isProcessing ? 'Kaydediliyor' : 'Kaydet'}
                                 </button>
                             </div>
                         </>

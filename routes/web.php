@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ConsultantsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ListingPdfImportController;
 use App\Http\Controllers\Admin\ListingsController;
+use App\Http\Controllers\Admin\ListingUrlImportController;
 use App\Http\Controllers\Admin\MessagesController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\LocationController;
@@ -56,8 +57,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('listings/import-pdf', ListingPdfImportController::class)
             ->middleware('throttle:6,1')
             ->name('listings.import-pdf');
+        Route::post('listings/import-url', ListingUrlImportController::class)
+            ->middleware('throttle:10,1')
+            ->name('listings.import-url');
         Route::post('listings', [ListingsController::class, 'store'])->name('listings.store');
         Route::get('listings/{property}/edit', [ListingsController::class, 'edit'])->whereNumber('property')->name('listings.edit');
+        Route::post('listings/{property}/images', [ListingsController::class, 'uploadImages'])->whereNumber('property')->name('listings.images.store');
         Route::put('listings/{property}', [ListingsController::class, 'update'])->whereNumber('property')->name('listings.update');
         Route::delete('listings/{property}', [ListingsController::class, 'destroy'])->whereNumber('property')->name('listings.destroy');
         Route::get('consultants', ConsultantsController::class)->name('consultants.index');

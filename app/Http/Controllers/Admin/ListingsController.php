@@ -6,12 +6,14 @@ use App\Http\Controllers\Admin\Concerns\BuildsAdminProps;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreListingRequest;
 use App\Http\Requests\Admin\UpdateListingRequest;
+use App\Http\Requests\Admin\UploadListingImagesRequest;
 use App\Models\City;
 use App\Models\Property;
 use App\Models\PropertyImage;
 use App\Models\User;
 use App\Support\Listings\ListingTaxonomy;
 use App\Support\Locations\LocationResolver;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -377,7 +379,7 @@ class ListingsController extends Controller
         ]);
     }
 
-    public function store(StoreListingRequest $request, LocationResolver $locationResolver): RedirectResponse
+    public function store(StoreListingRequest $request, LocationResolver $locationResolver): RedirectResponse|JsonResponse
     {
         /** @var User $user */
         $user = $request->user();
@@ -390,6 +392,16 @@ class ListingsController extends Controller
         ]);
 
         $this->appendUploadedImages($property, $request->file('images', []));
+
+        if ($request->expectsJson()) {
+            return response()->json([
+                'message' => 'Ilan kaydedildi.',
+                'property' => [
+                    'id' => $property->id,
+                    'editUrl' => route('admin.listings.edit', ['property' => $property]),
+                ],
+            ]);
+        }
 
         return redirect()
             ->route('admin.listings.index')
@@ -413,7 +425,7 @@ class ListingsController extends Controller
         ]);
     }
 
-    public function update(UpdateListingRequest $request, Property $property, LocationResolver $locationResolver): RedirectResponse
+    public function update(UpdateListingRequest $request, Property $property, LocationResolver $locationResolver): RedirectResponse|JsonResponse
     {
         /** @var User $user */
         $user = $request->user();
@@ -432,9 +444,39 @@ class ListingsController extends Controller
         $this->appendUploadedImages($property, $request->file('images', []));
         $this->syncImageAltText($property);
 
+        if ($request->expectsJson()) {
+            return response()->json([
+                'message' => 'Ilan guncellendi.',
+                'property' => [
+                    'id' => $property->id,
+                    'editUrl' => route('admin.listings.edit', ['property' => $property]),
+                ],
+            ]);
+        }
+
         return redirect()
             ->route('admin.listings.index')
             ->with('status', 'listing-updated');
+    }
+
+    public function uploadImages(UploadListingImagesRequest $request, Property $property): JsonResponse
+    {
+        /** @var User $user */
+        $user = $request->user();
+        $this->ensurePermission($user, 'LISTINGS_EDIT');
+        $property = $property->exists
+            ? $property
+            : Property::query()->findOrFail((int) $request->route('property'));
+
+        abort_if($user->role === 'CONSULTANT' && $property->consultant_id !== $user->id, 403);
+
+        $this->appendUploadedImages($property, $request->file('images', []));
+        $this->syncImageAltText($property);
+
+        return response()->json([
+            'message' => 'Gorseller yuklendi.',
+            'uploaded' => count($request->file('images', [])),
+        ]);
     }
 
     public function destroy(Request $request, Property $property): RedirectResponse

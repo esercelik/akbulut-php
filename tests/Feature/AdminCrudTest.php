@@ -8,8 +8,23 @@ use App\Models\Property;
 use App\Models\User;
 use App\Services\OpenAiListingExtractorService;
 use App\Services\PdfListingTextExtractor;
+use App\Services\UrlListingTextExtractor;
+use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
+use Illuminate\Foundation\Http\Middleware\ValidateCsrfToken;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+
+uses(RefreshDatabase::class);
+
+beforeEach(function () {
+    $this->withoutMiddleware([
+        PreventRequestForgery::class,
+        ValidateCsrfToken::class,
+        VerifyCsrfToken::class,
+    ]);
+});
 
 function adminUser(): User
 {
@@ -67,6 +82,8 @@ test('admin can create update and delete listings', function () {
 
     $admin = adminUser();
     $consultant = User::factory()->create(['role' => 'CONSULTANT']);
+
+    $this->withoutMiddleware(VerifyCsrfToken::class);
 
     $this->actingAs($admin)
         ->post(route('admin.listings.store'), listingPayload($consultant, [
@@ -141,7 +158,7 @@ test('admin can create listing with minimal data', function () {
     $admin = adminUser();
     $listingNo = 'PDF-'.uniqid();
 
-    $this->withoutMiddleware();
+    $this->withoutMiddleware(VerifyCsrfToken::class);
 
     $this->actingAs($admin)
         ->post(route('admin.listings.store'), [
@@ -182,6 +199,46 @@ test('admin can upload more than six listing images', function () {
     $property = Property::query()->where('title', 'Test Portfoy')->firstOrFail();
 
     expect($property->images()->count())->toBe(7);
+});
+
+test('admin can save listing data first and upload images in batches', function () {
+    Storage::fake('public');
+
+    $admin = adminUser();
+    $consultant = User::factory()->create(['role' => 'CONSULTANT']);
+
+    $this->withoutMiddleware();
+
+    $response = $this->actingAs($admin)
+        ->postJson(route('admin.listings.store'), listingPayload($consultant, [
+            'title' => 'Batch Upload Listing',
+        ]))
+        ->assertSuccessful()
+        ->assertJsonPath('message', 'Ilan kaydedildi.');
+
+    $propertyId = $response->json('property.id');
+    $property = Property::query()->findOrFail($propertyId);
+
+    $this->actingAs($admin)
+        ->post(route('admin.listings.images.store', $property), [
+            'images' => [
+                UploadedFile::fake()->image('batch-1.jpg'),
+                UploadedFile::fake()->image('batch-2.jpg'),
+            ],
+        ], ['Accept' => 'application/json'])
+        ->assertSuccessful()
+        ->assertJsonPath('uploaded', 2);
+
+    $this->actingAs($admin)
+        ->post(route('admin.listings.images.store', $property), [
+            'images' => [
+                UploadedFile::fake()->image('batch-3.webp'),
+            ],
+        ], ['Accept' => 'application/json'])
+        ->assertSuccessful()
+        ->assertJsonPath('uploaded', 1);
+
+    expect($property->images()->count())->toBe(3);
 });
 
 test('admin can import listing data from pdf', function () {
@@ -253,6 +310,81 @@ test('admin can import listing data from pdf', function () {
         ->assertJsonPath('data.title', 'PDF Baslik')
         ->assertJsonPath('data.price', 8450000)
         ->assertJsonPath('data.room_count', '3+1')
+        ->assertJsonPath('data.matched_consultant_id', $consultant->id);
+});
+
+test('admin can import listing data from url', function () {
+    $admin = adminUser();
+    $consultantName = 'Urlimport'.uniqid();
+    $consultant = User::factory()->create([
+        'role' => 'CONSULTANT',
+        'name' => $consultantName,
+        'surname' => 'Danisman',
+    ]);
+
+    $this->mock(UrlListingTextExtractor::class)
+        ->shouldReceive('extract')
+        ->once()
+        ->with('https://www.sahibinden.com/ilan/test')
+        ->andReturn('Sahibinden ilan metni');
+
+    $this->mock(OpenAiListingExtractorService::class)
+        ->shouldReceive('extract')
+        ->once()
+        ->with('Sahibinden ilan metni')
+        ->andReturn([
+            'title' => 'Link Baslik',
+            'description' => 'Link aciklama',
+            'price' => 4500000,
+            'currency' => 'TRY',
+            'listing_type' => 'SALE',
+            'property_type' => 'APARTMENT',
+            'city' => 'Kocaeli',
+            'district' => 'Basiskele',
+            'neighborhood' => 'Merkez',
+            'address' => '',
+            'gross_m2' => 120,
+            'net_m2' => 100,
+            'land_m2' => null,
+            'room_count' => '3+1',
+            'building_age' => '',
+            'floor' => '',
+            'total_floors' => '',
+            'heating' => '',
+            'bathroom_count' => 1,
+            'kitchen' => '',
+            'balcony' => true,
+            'furnished' => false,
+            'usage_status' => '',
+            'site_name' => '',
+            'dues' => null,
+            'credit_eligible' => true,
+            'deed_status' => '',
+            'energy_certificate' => '',
+            'seller_type' => '',
+            'exchange' => null,
+            'features' => [],
+            'contact_name' => "{$consultantName} Danisman",
+            'contact_phone' => '',
+            'source_portal' => 'Sahibinden',
+            'source_listing_no' => '999',
+            'confidence' => [
+                'title' => 0.9,
+                'price' => 0.9,
+                'location' => 0.8,
+                'm2' => 0.8,
+                'contact' => 0.8,
+            ],
+            'missing_fields' => [],
+        ]);
+
+    $this->actingAs($admin)
+        ->postJson(route('admin.listings.import-url'), [
+            'url' => 'https://www.sahibinden.com/ilan/test',
+        ])
+        ->assertSuccessful()
+        ->assertJsonPath('data.title', 'Link Baslik')
+        ->assertJsonPath('data.source_url', 'https://www.sahibinden.com/ilan/test')
         ->assertJsonPath('data.matched_consultant_id', $consultant->id);
 });
 
