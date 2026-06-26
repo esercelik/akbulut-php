@@ -211,9 +211,9 @@ const yesNoGeneralOptions = [
     { value: '1', label: 'Evet' },
     { value: '0', label: 'Hayir' },
 ];
-const maxImageFileSizeMb = 5;
+const maxImageFileSizeMb = 100;
 const maxImageFileSizeBytes = maxImageFileSizeMb * 1024 * 1024;
-const maxImageBatchSizeMb = 8;
+const maxImageBatchSizeMb = 100;
 const maxImageBatchSizeBytes = maxImageBatchSizeMb * 1024 * 1024;
 
 function formatFileSize(bytes: number): string {
@@ -2091,7 +2091,7 @@ export default function ListingForm({
                                                 Ilan gorselleri
                                             </p>
                                             <p className="mt-1 text-sm text-slate-500">
-                                                JPG, PNG veya WebP yukleyin. Fotograf siniri yoktur, dosya basina 5 MB.
+                                                JPG, PNG veya WebP yukleyin. Fotograf siniri yoktur, dosya basina 100 MB.
                                             </p>
                                         </div>
                                     </div>

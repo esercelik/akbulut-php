@@ -241,6 +241,25 @@ test('admin can save listing data first and upload images in batches', function 
     expect($property->images()->count())->toBe(3);
 });
 
+test('admin can upload drone listing images larger than five megabytes', function () {
+    Storage::fake('public');
+
+    $admin = adminUser();
+    $consultant = User::factory()->create(['role' => 'CONSULTANT']);
+
+    $this->actingAs($admin)
+        ->post(route('admin.listings.store'), listingPayload($consultant, [
+            'images' => [
+                UploadedFile::fake()->image('drone.jpg')->size(6144),
+            ],
+        ]))
+        ->assertRedirect(route('admin.listings.index'));
+
+    $property = Property::query()->where('title', 'Test Portfoy')->firstOrFail();
+
+    expect($property->images()->count())->toBe(1);
+});
+
 test('admin can import listing data from pdf', function () {
     $admin = adminUser();
     $consultantName = 'Pdfimport'.uniqid();

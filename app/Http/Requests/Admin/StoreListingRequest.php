@@ -88,7 +88,7 @@ class StoreListingRequest extends FormRequest
             'featured' => ['sometimes', 'boolean'],
             'consultant_id' => ['nullable', 'integer', 'exists:users,id'],
             'images' => ['nullable', 'array'],
-            'images.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+            'images.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:102400'],
         ];
     }
 }

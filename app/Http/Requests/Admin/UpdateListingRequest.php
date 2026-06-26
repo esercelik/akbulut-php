@@ -88,7 +88,7 @@ class UpdateListingRequest extends FormRequest
             'featured' => ['sometimes', 'boolean'],
             'consultant_id' => ['nullable', 'integer', 'exists:users,id'],
             'images' => ['nullable', 'array'],
-            'images.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+            'images.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:102400'],
             'remove_image_ids' => ['nullable', 'array'],
             'remove_image_ids.*' => ['integer', 'exists:property_images,id'],
         ];

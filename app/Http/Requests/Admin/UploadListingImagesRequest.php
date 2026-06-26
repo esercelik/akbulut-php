@@ -24,7 +24,7 @@ class UploadListingImagesRequest extends FormRequest
     {
         return [
             'images' => ['required', 'array', 'min:1'],
-            'images.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+            'images.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:102400'],
         ];
     }
 
@@ -37,7 +37,7 @@ class UploadListingImagesRequest extends FormRequest
             'images.required' => 'Yuklenecek en az bir gorsel secin.',
             'images.*.image' => 'Yalnizca gorsel dosyasi yukleyebilirsiniz.',
             'images.*.mimes' => 'Gorseller JPG, PNG veya WebP formatinda olmalidir.',
-            'images.*.max' => 'Her gorsel en fazla 5 MB olabilir.',
+            'images.*.max' => 'Her gorsel en fazla 100 MB olabilir.',
         ];
     }
 }
